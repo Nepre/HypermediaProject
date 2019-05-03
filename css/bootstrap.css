@@ -25,7 +25,7 @@
   --warning: #ffc107;
   --danger: #dc3545;
   --light: #f8f9fa;
-  --dark: #343a40;
+  --dark: #008ECC;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -42,6 +42,7 @@
 }
 
 html {
+  zoom: 80%;
   font-family: sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
@@ -1924,6 +1925,22 @@ select.form-control:focus::-ms-value {
   background-color: #fff;
 }
 
+input[type="text"],
+select.form-control {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+input[type="text"]:focus,
+select.form-control:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
 .form-control-file,
 .form-control-range {
   display: block;
@@ -2969,10 +2986,13 @@ fieldset:disabled a.btn {
 }
 
 .btn-lg, .btn-group-lg > .btn {
-  padding: 0.5rem 1rem;
-  font-size: 1.25rem;
+  font-size: 2rem;
   line-height: 1.5;
   border-radius: 0.3rem;
+}
+
+.btn-lg:hover{
+  color: #ffd503 !important;
 }
 
 .btn-sm, .btn-group-sm > .btn {
@@ -6518,13 +6538,23 @@ button.bg-primary:focus {
 }
 
 .bg-secondary {
-  background-color: #6c757d !important;
+  background-color: #dddddd !important; /*d8d8d8*/
 }
 
 a.bg-secondary:hover, a.bg-secondary:focus,
 button.bg-secondary:hover,
 button.bg-secondary:focus {
-  background-color: #545b62 !important;
+  background-color: #A2D5EC !important;
+}
+
+.bg-footer {
+  background-color: #008ECC !important; /*d8d8d8*/
+}
+
+a.bg-footer:hover, a.bg-footer:focus,
+button.bg-footer:hover,
+button.bg-footer:focus {
+  background-color: #008ECC !important;
 }
 
 .bg-success {
@@ -6578,13 +6608,13 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color: #343a40 !important;
+  background-color: #008ECC !important;
 }
 
 a.bg-dark:hover, a.bg-dark:focus,
 button.bg-dark:hover,
 button.bg-dark:focus {
-  background-color: #1d2124 !important;
+  background-color: #008ECC !important;
 }
 
 .bg-white {
@@ -9903,13 +9933,16 @@ a.text-danger:hover, a.text-danger:focus {
 a.text-light:hover, a.text-light:focus {
   color: #cbd3da !important;
 }
+.text-LOGO{
+  color: #000  !important;
+}
 
 .text-dark {
-  color: #343a40 !important;
+  color: #2E282A !important;
 }
 
 a.text-dark:hover, a.text-dark:focus {
-  color: #121416 !important;
+  color: #000 !important;
 }
 
 .text-body {
