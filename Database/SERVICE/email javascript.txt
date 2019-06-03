@@ -1,0 +1,22 @@
+<script type="text/javascript">
+function Email() {
+  var email = document.form.email.value;
+  var object = document.form.object.value;
+  var message = document.form.message.value;
+  if ((email.indexOf("@") == (-1)) || (email == "") || (email == "undefined")) {
+    alert("Insert a valid email address.");
+    document.form.email.focus();
+  }
+  else if ((object == "") || (object == "undefined")) {
+    alert("Insert an object.");
+    document.form.object.focus();
+  }
+  else if ((message == "") || (message == "undefined")) {
+    alert("Insert a message.");
+    document.form.message.focus();
+  }
+  else {
+    location.href = "mailto:fra.lomuzio@gmail.com" + email + "?Subject=" + object + "&Body=" + message;
+  }
+}
+</script>
