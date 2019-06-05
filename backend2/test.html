@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript">
+
+    $(document).ready(function(){
+
+
+           // Get the button object by it's id.
+           var button = $('#click_button')
+
+           // When click this button then execute below function.
+           button.bind('click', function () {
+
+             $.ajax({
+               type: 'GET',
+               url: 'http://localhost:1337/paises',
+               success: function(data){
+                 console.log(data);
+                 document.getElementById('dataPh').innerHTML = "";
+                 for (var i = 0; i < data.length; i++) {
+                  document.getElementById('dataPh').innerHTML += data[i].NomPais + '<br>';
+                 }
+               }
+             });
+
+           });
+
+       });
+
+  </script>
+  <body>
+    <h1>Here is going to be the data:</h1>
+    <p id="dataPh">Data</p>
+    <button type="button" name="button" id="click_button">Ask for data!</button>
+
+  </body>
+
+</html>
