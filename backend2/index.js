@@ -47,10 +47,18 @@ app.get('/paises', function(req, res){ //localhost:3000/paises
   });
 });
 
-app.post('/paises', function(req, res) {
+app.post('/paises', function(req, res){
+  console.log(req);
+  var country = req.body.country;
 
-
-
+  connection.query("INSERT INTO paises(id, NomPais) VALUES (null, '" + country + "')", function (error, result) {
+    if(!!error){
+      console.log('Error: ' + error.message);
+    }else{
+      console.log(country + " inserted correctly.");
+      res.end();
+    }
+  })
 });
 
 app.use('/', express.static(path.join(__dirname, 'public')))
