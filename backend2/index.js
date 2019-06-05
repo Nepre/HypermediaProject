@@ -1,7 +1,11 @@
+//Requires
 var express = require('express');
 var mysql = require('mysql');
-var app = express();
+var cors = require('cors');
+var path = require('path');
 
+//Variables
+var app = express();
 var connection = mysql.createConnection({
   host: 'localhost',
   port: '3306',
@@ -10,6 +14,11 @@ var connection = mysql.createConnection({
   database: 'pidb'
 });
 
+//Configuration and packages
+app.use(cors());
+app.use(express.urlencoded())
+
+//Connection to database
 connection.connect(function(error){
   if(!!error){
     console.log('Error: '+error.message);
@@ -19,7 +28,8 @@ connection.connect(function(error){
   }
 });
 
-  app.get('/paises', function(req, res){
+
+app.get('/paises', function(req, res){ //localhost:3000/paises
   //about mysql
 
   connection.query("select * from paises", function(error, rows, fields){
@@ -31,16 +41,20 @@ connection.connect(function(error){
 
       console.log('no of records is '+rows.length);
 
-      //We have to allow control access for browsers
-      res.setHeader('Access-Control-Allow-Origin', '*');
-      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-      res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-      res.setHeader('Access-Control-Allow-Credentials', true);
-
       res.writeHead(200, { 'Content-Type': 'application/json'});
       res.end(JSON.stringify(rows));
     }
   });
 });
+
+app.post('/paises', function(req, res) {
+
+
+
+});
+
+app.use('/', express.static(path.join(__dirname, 'public')))
+
+app.use(express.static('public'))
 
 app.listen(1337);
