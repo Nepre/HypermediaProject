@@ -50,6 +50,7 @@ function books(){
        document.getElementById('auth'+i).innerHTML = (data[i].author.length > authorLength) ? data[i].author.substring(0, authorLength) + ' [...]' : data[i].author;
        document.getElementById('p'+i).innerHTML = data[i].price +'€';
        document.getElementById('book'+i).href = 'single_book.html?id='+data[i].id;
+       document.getElementById('aimg'+i).href = 'single_book.html?id='+data[i].id;
      }
     }
   });
@@ -84,7 +85,10 @@ function reloadBooksFilter(){
         document.getElementById('desc'+i).innerHTML = (data[i].description.length > descLength) ? data[i].description.substring(0,descLength) + ' [...]' : data[i].description;
         document.getElementById('img'+i).src = (data[i].image != "") ? path + data[i].image : "https://ibf.org/site_assets/img/placeholder-book-cover-default.png";
         document.getElementById('auth'+i).innerHTML = (data[i].author.length > authorLength) ? data[i].author.substring(0, authorLength) + ' [...]' : data[i].author;
-        document.getElementById('p'+i).innerHTML = data[i].price +'€';     }
+        document.getElementById('p'+i).innerHTML = data[i].price +'€';
+        document.getElementById('book'+i).href = 'single_book.html?id='+data[i].id;
+        document.getElementById('aimg'+i).href = 'single_book.html?id='+data[i].id;
+      }
     }
   });
 
