@@ -56,12 +56,15 @@ app.post('/paises', function(req, res){
       console.log('Error: ' + error.message);
     }else{
       console.log(country + " inserted correctly.");
-      res.end();
+
     }
+    res.redirect('/');
+    res.end();
   })
 });
 
-app.use('/', express.static(path.join(__dirname, 'public')))
+
+app.use('/', express.static(path.join(__dirname, 'public/pages')))
 
 app.use(express.static('public'))
 
