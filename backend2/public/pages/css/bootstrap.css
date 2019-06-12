@@ -10040,6 +10040,10 @@ a.text-muted:hover, a.text-muted:focus {
   color: rgba( 90, 229, 233, 1) !important;
   font-weight: 900;
 }
+.text-link:hover {
+  color: rgba( 90, 229, 233, 1) !important;
+  text-decoration: none;
+}
 
 .text-hide {
   font: 0/0 a;
