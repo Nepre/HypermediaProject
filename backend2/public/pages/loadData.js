@@ -1,5 +1,15 @@
 // FILE WHERE DATA WILL BE LOADED
 
+//SINGLE_BOOK.HTML
+// TODO: do the petition with the url id to http://localhost:1337/single_book/id
+// get the id from url. Example: http://localhost:1337/single_book.html?id=1
+// get related books from same genre and or author perhaps?
+
+function single_book(){
+
+}
+
+
 //BOOKS.html
 
 function exists(img){ //This checks if the image exists, but it gives errors so well
@@ -28,6 +38,7 @@ function books(){
        document.getElementById('img'+i).src = (data[i].image != "" && exists(data[i].image)) ? data[i].image : "https://ibf.org/site_assets/img/placeholder-book-cover-default.png";
        document.getElementById('auth'+i).innerHTML = (data[i].author.length > authorLength) ? data[i].author.substring(0, authorLength) + ' [...]' : data[i].author;
        document.getElementById('p'+i).innerHTML = data[i].price +'€';
+       document.getElementById('book'+i).href = 'single_book.html?id='+data[i].id;
      }
     }
   });
@@ -58,11 +69,11 @@ function reloadBooksFilter(){
     success: function(data){
       //console.log(data);
       for (var i = 0; i < data.length; i++) {
-       document.getElementById('book'+i).innerHTML = (data[i].title.length > titleLength) ? data[i].title.substring(0,titleLength) + ' [...]' : data[i].title;
-       document.getElementById('desc'+i).innerHTML = (data[i].description.length > descLength) ? data[i].description.substring(0,descLength) + ' [...]' : data[i].description;
-       let img =
-       document.getElementById('img'+i).src = (data[i].image != "" && exists(data[i].image)) ? data[i].image : "https://ibf.org/site_assets/img/placeholder-book-cover-default.png";
-     }
+        document.getElementById('book'+i).innerHTML = (data[i].title.length > titleLength) ? data[i].title.substring(0,titleLength) + ' [...]' : data[i].title;
+        document.getElementById('desc'+i).innerHTML = (data[i].description.length > descLength) ? data[i].description.substring(0,descLength) + ' [...]' : data[i].description;
+        document.getElementById('img'+i).src = (data[i].image != "" && exists(data[i].image)) ? data[i].image : "https://ibf.org/site_assets/img/placeholder-book-cover-default.png";
+        document.getElementById('auth'+i).innerHTML = (data[i].author.length > authorLength) ? data[i].author.substring(0, authorLength) + ' [...]' : data[i].author;
+        document.getElementById('p'+i).innerHTML = data[i].price +'€';     }
     }
   });
 
