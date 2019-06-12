@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>POLIBOOKS Bookstore</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <!-- Optional Bootstrap theme -->
-    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript"src="loadData.js"></script>
+
 </head>
 <body>
     <!-- HEADER -->
@@ -48,14 +49,16 @@
                 <div class="col-md-4 bg-white py-3"> <!-- book -->
                   <div class="row">
                     <div class="col">
-                      <img src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" style="width:10em;" alt="No book yet">
+                      <img id="img0" src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" style="width:10em;" alt="No book yet">
                     </div>
                     <div class="col">
                       <div class="row">
-                        <h5><a class="text-products" href="single_book.html">Book 1</a></h5>
+                        <h5><a id="book0" class="text-products" href="single_book.html">Book 1</a></h5>
                       </div>
                       <div class="row pr-3">
-                        <p>This is a book written by X. Worldwide famous for its Y. Despite its length it goes by flying.</p>
+                        <p><small id="desc0">This is a book written by X. Worldwide famous for its Y. Despite its length it goes by flying.</small></p>
+                        <p><small id="auth0">X</small> <br> <small id='p0'>X€</small></p>
+
                       </div>
 
                     </div>
@@ -64,14 +67,15 @@
                 <div class="col-md-4 bg-white py-3"> <!-- book -->
                   <div class="row">
                     <div class="col">
-                      <img src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" style="width:10em;" alt="No book yet">
+                      <img id="img1" src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" style="width:10em;" alt="No book yet">
                     </div>
                     <div class="col">
                       <div class="row">
-                        <h5><a class="text-products" href="single_book.html">Book 2</a></h5>
+                        <h5><a id="book1" class="text-products" href="single_book.html">Book 2</a></h5>
                       </div>
                       <div class="row pr-3">
-                        <p>This is a book written by X. Worldwide famous for its Y. Despite its length it goes by flying.</p>
+                        <p><small id="desc1">This is a book written by X. Worldwide famous for its Y. Despite its length it goes by flying.</small></p>
+                        <p><small id="auth1">X</small> <br> <small id='p1'>X€</small></p>
                       </div>
 
                     </div>
@@ -80,66 +84,16 @@
                 <div class="col-md-4 bg-white py-3"> <!-- book -->
                   <div class="row">
                     <div class="col">
-                      <img src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" style="width:10em;" alt="No book yet">
+                      <img id="img2" src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" style="width:10em;" alt="No book yet">
                     </div>
                     <div class="col">
                       <div class="row">
-                        <h5><a class="text-products" href="single_book.html">Book 3</a></h5>
+                        <h5><a id="book2" class="text-products" href="single_book.html">Book 3</a></h5>
                       </div>
                       <div class="row pr-3">
-                        <p>This is a book written by X. Worldwide famous for its Y. Despite its length it goes by flying.</p>
-                      </div>
+                        <p><small id="desc2">This is a book written by X. Worldwide famous for its Y. Despite its length it goes by flying.</small></p>
+                        <p><small id="auth2">X</small> <br> <small id='p2'>X€</small></p>
 
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="container"> <!-- Row 1 conatiner -->
-              <div class="row"> <!-- Row 1 -->
-                <div class="col-md-4 bg-white py-3"> <!-- book -->
-                  <div class="row">
-                    <div class="col">
-                      <img src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" style="width:10em;" alt="No book yet">
-                    </div>
-                    <div class="col">
-                      <div class="row">
-                        <h5><a class="text-products" href="single_book.html">Book 4</a></h5>
-                      </div>
-                      <div class="row pr-3">
-                        <p>This is a book written by X. Worldwide famous for its Y. Despite its length it goes by flying.</p>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 bg-white py-3"> <!-- book -->
-                  <div class="row">
-                    <div class="col">
-                      <img src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" style="width:10em;" alt="No book yet">
-                    </div>
-                    <div class="col">
-                      <div class="row">
-                        <h5><a class="text-products" href="single_book.html">Book 5</a></h5>
-                      </div>
-                      <div class="row pr-3">
-                        <p>This is a book written by X. Worldwide famous for its Y. Despite its length it goes by flying.</p>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 bg-white py-3"> <!-- book -->
-                  <div class="row">
-                    <div class="col">
-                      <img src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" style="width:10em;" alt="No book yet">
-                    </div>
-                    <div class="col">
-                      <div class="row">
-                        <h5><a class="text-products" href="single_book.html">Book 6</a></h5>
-                      </div>
-                      <div class="row pr-3">
-                        <p>This is a book written by X. Worldwide famous for its Y. Despite its length it goes by flying.</p>
                       </div>
 
                     </div>
@@ -152,14 +106,16 @@
                 <div class="col-md-4 bg-white py-3"> <!-- book -->
                   <div class="row">
                     <div class="col">
-                      <img src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" style="width:10em;" alt="No book yet">
+                      <img id="img3" src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" style="width:10em;" alt="No book yet">
                     </div>
                     <div class="col">
                       <div class="row">
-                        <h5><a class="text-products" href="single_book.html">Book 7</a></h5>
+                        <h5><a id="book3" class="text-products" href="single_book.html">Book 4</a></h5>
                       </div>
                       <div class="row pr-3">
-                        <p>This is a book written by X. Worldwide famous for its Y. Despite its length it goes by flying.</p>
+                        <p><small id="desc3">This is a book written by X. Worldwide famous for its Y. Despite its length it goes by flying.</small></p>
+                        <p><small id="auth3">X</small> <br> <small id='p3'>X€</small></p>
+
                       </div>
 
                     </div>
@@ -168,14 +124,16 @@
                 <div class="col-md-4 bg-white py-3"> <!-- book -->
                   <div class="row">
                     <div class="col">
-                      <img src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" style="width:10em;" alt="No book yet">
+                      <img id="img4" src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" style="width:10em;" alt="No book yet">
                     </div>
                     <div class="col">
                       <div class="row">
-                        <h5><a class="text-products" href="single_book.html">Book 8</a></h5>
+                        <h5><a id="book4" class="text-products" href="single_book.html">Book 5</a></h5>
                       </div>
                       <div class="row pr-3">
-                        <p>This is a book written by X. Worldwide famous for its Y. Despite its length it goes by flying.</p>
+                        <p><small id="desc4">This is a book written by X. Worldwide famous for its Y. Despite its length it goes by flying.</small></p>
+                        <p><small id="auth4">X</small> <br> <small id='p4'>X€</small></p>
+
                       </div>
 
                     </div>
@@ -184,14 +142,73 @@
                 <div class="col-md-4 bg-white py-3"> <!-- book -->
                   <div class="row">
                     <div class="col">
-                      <img src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" style="width:10em;" alt="No book yet">
+                      <img id="img5" src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" style="width:10em;" alt="No book yet">
                     </div>
                     <div class="col">
                       <div class="row">
-                        <h5><a class="text-products" href="single_book.html">Book 9</a></h5>
+                        <h5><a id="book5" class="text-products" href="single_book.html">Book 6</a></h5>
                       </div>
                       <div class="row pr-3">
-                        <p>This is a book written by X. Worldwide famous for its Y. Despite its length it goes by flying.</p>
+                        <p><small id="desc5">This is a book written by X. Worldwide famous for its Y. Despite its length it goes by flying.</small></p>
+                        <p><small id="auth5">X</small> <br> <small id='p5'>X€</small></p>
+
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="container"> <!-- Row 1 conatiner -->
+              <div class="row"> <!-- Row 1 -->
+                <div class="col-md-4 bg-white py-3"> <!-- book -->
+                  <div class="row">
+                    <div class="col">
+                      <img id="img6" src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" style="width:10em;" alt="No book yet">
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <h5><a id="book6" class="text-products" href="single_book.html">Book 7</a></h5>
+                      </div>
+                      <div class="row pr-3">
+                        <p><small id="desc6">This is a book written by X. Worldwide famous for its Y. Despite its length it goes by flying.</small></p>
+                        <p><small id="auth6">X</small> <br> <small id='p6'>X€</small></p>
+
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 bg-white py-3"> <!-- book -->
+                  <div class="row">
+                    <div class="col">
+                      <img id="img7" src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" style="width:10em;" alt="No book yet">
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <h5><a id="book7" class="text-products" href="single_book.html">Book 8</a></h5>
+                      </div>
+                      <div class="row pr-3">
+                        <p><small id="desc7">This is a book written by X. Worldwide famous for its Y. Despite its length it goes by flying.</small></p>
+                        <p><small id="auth7">X</small> <br> <small id='p7'>X€</small></p>
+
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 bg-white py-3"> <!-- book -->
+                  <div class="row">
+                    <div class="col">
+                      <img id="img8" src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" style="width:10em;" alt="No book yet">
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <h5><a id="book8" class="text-products" href="single_book.html">Book 9</a></h5>
+                      </div>
+                      <div class="row pr-3">
+                        <p><small id="desc8">This is a book written by X. Worldwide famous for its Y. Despite its length it goes by flying.</small></p>
+                        <p><small id="auth8">X</small> <br> <small id='p8'>X€</small></p>
 
                       </div>
 
@@ -229,10 +246,15 @@
             </div>
             </div>
           </div>
-
         </div>
-
       </div>
+      <script type="text/javascript">
+        books(); //Start load books
+
+        $('input[type=radio][name=filters]').change(function() {
+            reloadBooksFilter(); //If a filter is applied
+        });
+      </script>
     </main>
 
 
@@ -263,7 +285,6 @@
         </div>
       </div>
     </footer>
-    <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
   </body>
 </html>

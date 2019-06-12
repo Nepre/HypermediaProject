@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
   port: '3306',
   user: 'root',
   password: '',
-  database: 'pidb'
+  database: 'polibooks'
 });
 
 //Configuration and packages
@@ -28,11 +28,12 @@ connection.connect(function(error){
   }
 });
 
+//GET BOOKS
 
-app.get('/paises', function(req, res){ //localhost:3000/paises
+app.get('/books', function(req, res){ //localhost:3000/books
   //about mysql
 
-  connection.query("select * from paises", function(error, rows, fields){
+  connection.query("select * from books", function(error, rows, fields){
     if(!!error){
       console.log('Error: '+error.message);
     }else{
@@ -47,7 +48,118 @@ app.get('/paises', function(req, res){ //localhost:3000/paises
   });
 });
 
-app.post('/paises', function(req, res){
+app.get('/books', function(req, res){ //localhost:3000/books
+  //about mysql
+
+  connection.query("select * from books", function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+});
+
+app.get('/books/available', function(req, res){ //localhost:1337/books/available
+//about mysql
+
+  connection.query("select * from `books` order by available desc limit 9", function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+});
+
+app.get('/books/author', function(req, res){ //localhost:1337/books/authors
+//about mysql
+
+  connection.query("select * from `books` order by author asc limit 9", function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+});
+
+app.get('/books/genre', function(req, res){ //localhost:1337/books/genre
+//about mysql
+
+  connection.query("select * from `books` order by genre asc limit 9", function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+});
+
+app.get('/books/theme', function(req, res){ //localhost:1337/books/theme
+//about mysql
+
+  connection.query("select * from `books` order by theme asc limit 9", function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+});
+
+app.get('/single_book/:id', function(req, res){ //localhost:1337/books/id
+
+  connection.query("select * from `books` where id =" + req.params.id, function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+
+});
+
+
+// POST BOOKS
+
+app.post('/books', function(req, res){ // TODO: Fix post books
   console.log(req);
   var country = req.body.country;
 
@@ -63,6 +175,83 @@ app.post('/paises', function(req, res){
   })
 });
 
+
+// GET AUTHORS
+app.get('/authors', function(req, res){ //localhost:1337/books/theme
+//about mysql
+
+  connection.query("select * from `authors`", function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+});
+
+// GET AUTHORS BY NATIONALITY
+app.get('/authors/nationality', function(req, res){ //localhost:1337/books/theme
+//about mysql
+
+  connection.query("select * from `authors` order by nationality", function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+});
+
+//GET AUTHOR
+app.get('/authors/:id', function(req, res){ //localhost:1337/books/theme
+//about mysql
+
+  connection.query("select * from `authors` where id=" + req.params.id, function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+});
+
+
+//GET BOOKS FROM AUTHOR
+app.get('/authors/books/:id', function(req, res){ //localhost:1337/books/theme
+//about mysql
+
+  connection.query("select * from `authors`, `books` where authors.id = books.authorID and authors.id =" + req.params.id, function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+});
 
 app.use('/', express.static(path.join(__dirname, 'public/pages')))
 
