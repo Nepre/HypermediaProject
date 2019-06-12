@@ -19,9 +19,6 @@
           <a href="index.html"><img src="images/LOGOTEXT.png" alt="Our cool logo"  width="100%"></a>
                 </div>
         <div class="col">
-          <h6 class="text-center"><a class="text-dark" href="#">BEST-SELLERS</a></h6>
-        </div>
-        <div class="col">
           <h6 class="text-center"><a class="text-dark" href="books.html">BOOKS</a></h6>
         </div>
         <div class="col">
@@ -31,7 +28,7 @@
           <h6 class="text-center"><a class="text-dark" href="events.html">EVENTS</a></h6>
         </div>
         <div class="col">
-          <h6 class="text-center"><a class="text-dark" href="log-reg.html">LOGIN/REGISTER</a></h6>
+          <h6 class="text-center"><a class="text-dark" href="login.html">LOGIN</a>/<a class="text-dark" href="register.html">REGISTER</a></h6>
         </div>
       </div>
     </div>
@@ -44,16 +41,39 @@
     <div class="row pt-3 pb-1">
       <div class="col">
         <h2 class="text-left"><p>CONTACT US</p></h2><br>
+        <h3 class="text-center">For any question have a look at the <a href="contact_us.html">FAQ</a> or write us!</h3>
         <h4 class="text-left">
-  <form name="form" class="" action="send_form_email.php" method="post">
+  <form name="form">
     Name:<br />
     <input type="text" class="form-control" name="name"> <br />
     Email:<br />
     <input type="text" class="form-control" name="email"> <br />
-    Message:<br /><br />
+    Write here your request:<br /><br />
     <textarea name="message" class="form-control" rows="10" cols="30"></textarea> <br/>
-    <input type="button" value="Send" class="btn btn-default btn-lg">
+    <input type="button" value="Send" onClick="Email()" class="btn btn-default btn-lg">
   </form>
+  <script type="text/javascript">
+  function Email() {
+    var name = document.form.name.value;
+    var email = document.form.email.value;
+    var message = document.form.message.value;
+    if ((name == "") || (object == "undefined")) {
+      alert("Insert your name.");
+      document.form.name.focus();
+    }
+    else if ((email.indexOf("@") == (-1)) || (email == "") || (email == "undefined")) {
+      alert("Insert a valid email address.");
+      document.form.email.focus();
+    }
+    else if ((message == "") || (message == "undefined")) {
+      alert("Insert a message.");
+      document.form.message.focus();
+    }
+    else {
+      location.href = "mailto:fra.lomuzio@gmail.com" + email + "?Subject=" + object + "&Body=" + message;
+    }
+  }
+  </script>
 
 </main>
 <footer>
