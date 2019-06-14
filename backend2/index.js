@@ -1,4 +1,4 @@
-//Requires
+  //Requires
 var express = require('express');
 var mysql = require('mysql');
 var cors = require('cors');
@@ -29,24 +29,6 @@ connection.connect(function(error){
 });
 
 //GET BOOKS
-
-app.get('/books', function(req, res){ //localhost:3000/books
-  //about mysql
-
-  connection.query("select * from books", function(error, rows, fields){
-    if(!!error){
-      console.log('Error: '+error.message);
-    }else{
-      console.log('correct');
-      console.log(rows);
-
-      console.log('no of records is '+rows.length);
-
-      res.writeHead(200, { 'Content-Type': 'application/json'});
-      res.end(JSON.stringify(rows));
-    }
-  });
-});
 
 app.get('/books', function(req, res){ //localhost:3000/books
   //about mysql
@@ -252,6 +234,68 @@ app.get('/authors/books/:id', function(req, res){ //localhost:1337/books/theme
     }
   });
 });
+
+//LOGIN
+
+app.post('/login', function(req, res){
+  var usu = req.body.usu;
+  var pwd = req.body.pwd;
+
+  connection.query("select count(id) as cn from users where Email ='" + usu + "' and Password = '" + pwd + "'", function (error, rows, result) {
+    if(!!error){
+      console.log('Error: ' + error.message);
+    }else{
+      if(rows[0].cn == 0){
+        res.redirect('login.html?WP')
+      }
+      else{ //We would create a token but as it is now we will mantain it with a simple cookie with the username. This would indeed be easily hackable.
+        res.redirect('login.html?SC=' + usu);
+      }
+
+    }
+    res.end();
+  })
+});
+
+app.post('/register', async function(req, res) { //We need to put a query within the query
+  var name = req.body.name;
+  var surname = req.body.surname;
+  var email = req.body.email;
+  var pwd = req.body.pwd;
+  var pwd2 = req.body.pwd2;
+
+  if(pwd != pwd2){
+    res.redirect('register.html?WP');
+  }
+
+  connection.query("select count(id) as cn from users where Email ='" + email + "'", function (error, rows, result) {
+    if(!!error){
+      console.log('Error: ' + error.message);
+    }else{
+      if(rows[0].cn == 0){
+        let queryIns = "INSERT INTO users(id, Name, Surname, Email, Password) VALUES (null, '" + name + "','" + surname + "','" + email + "','" + pwd + "')";
+        connection.query(queryIns, function (error, result) {
+          if(!!error){
+            console.log('Error: ' + error.message);
+            res.redirect('/');
+          }else{
+            console.log(email  + " inserted correctly.");
+            res.redirect('login.html?SC=' + email);
+
+          }
+
+        });
+      }
+      else{ //We would create a token but as it is now we will mantain it with a simple cookie with the username. This would indeed be easily hackable.
+        res.redirect('register.html?UT');
+      }
+
+    }
+    res.end();
+  })
+});
+
+
 
 app.use('/', express.static(path.join(__dirname, 'public/pages')))
 

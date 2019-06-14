@@ -1,5 +1,65 @@
 // FILE WHERE DATA WILL BE LOADED
 
+//AUX FUNCTIONS
+
+function setCookie(name, value, exdays) {
+    var d, expires;
+    exdays = exdays || 1;
+    d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    expires = "expires=" + d.toUTCString();
+    document.cookie = name + "=" + value + "; " + expires;
+}
+
+function exists(img){ //This checks if the image exists, but it gives errors so well
+  var request = new XMLHttpRequest();
+  var status;
+  var statusText;
+  request.open("GET", path + img, true);
+  request.send();
+  request.onload = function(){
+  	status = request.status;
+  	statusText = request.statusText;
+  }
+}
+
+//LOGIN CHECKER
+window.onload = function loginChecker() {
+  var cookie, c;
+  var name = 'login';
+  var login = false;
+  var usu;
+
+  cookies = document.cookie.split(';');
+
+  for (var i=0; i < cookies.length; i++) {
+      c = cookies[i].split('=');
+      if (c[0] == name) {
+
+          usu = c[1];
+          login = true;
+          break;
+      }
+  }
+
+  if(login){
+    document.getElementById('logreg').style = "display:none;";
+    document.getElementById('prof').style = "white-space: nowrap;";
+    document.getElementById('cart').style = "white-space: nowrap;";
+    document.getElementById('logout').style = "white-space: nowrap;";
+
+  }
+  else {
+    document.getElementById('logreg').style = "";
+    document.getElementById('prof').style = "white-space: nowrap; display:none;";
+    document.getElementById('cart').style = "white-space: nowrap; display:none;";
+    document.getElementById('logout').style = "white-space: nowrap; display:none;";
+
+  }
+
+}
+
+
 //SINGLE_BOOK.HTML
 // TODO: do the petition with the url id to http://localhost:1337/single_book/id
 // get the id from url. Example: http://localhost:1337/single_book.html?id=1
@@ -16,24 +76,6 @@ var descLength = 80;
 var titleLength = 20;
 var authorLength = 20;
 var path = "../images/avatar/";
-
-function exists(img){ //This checks if the image exists, but it gives errors so well
-  var request = new XMLHttpRequest();
-  var status;
-  var statusText;
-  request.open("GET", path + img, true);
-  request.send();
-  request.onload = function(){
-  	status = request.status;
-  	statusText = request.statusText;
-  }
-
-  console.log(status);
-
-  return (status == 200) ? true : false;
-
-
- }
 
 
 
@@ -99,16 +141,6 @@ function single_author(){
 
 
 //BOOKS.html
-
-function exists(img){ //This checks if the image exists, but it gives errors so well
-  var image = new Image();
-  var url_image = '../images/' + img;
-
-  image.src = url_image;
-  return (image.width == 0) ? false : true;
-
-
- }
 
 var descLength = 80;
 var titleLength = 20;
@@ -176,25 +208,7 @@ function single_event(){
 var descLength = 80;
 var titleLength = 20;
 var authorLength = 20;
-var path = "../images/avatar/";
 
-function exists(img){ //This checks if the image exists, but it gives errors so well
-  var request = new XMLHttpRequest();
-  var status;
-  var statusText;
-  request.open("GET", path + img, true);
-  request.send();
-  request.onload = function(){
-  	status = request.status;
-  	statusText = request.statusText;
-  }
-
-  console.log(status);
-
-  return (status == 200) ? true : false;
-
-
- }
 
 
 

@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>POLIBOOKS Bookstore</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <!-- Optional Bootstrap theme -->
-    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <script type="text/javascript" src="loadData.js"></script>
 </head>
 <body>
   <header>
@@ -16,7 +15,7 @@
       <div class="row pt-3 pb-3">
         <div class="col">
           <a href="index.html"><img src="images/LOGOTEXT.png" alt="Our cool logo"  width="100%"></a>
-                </div>
+        </div>
         <div class="col">
           <h6 class="text-center"><a class="text-dark" href="books.html">BOOKS</a></h6>
         </div>
@@ -36,25 +35,25 @@
     </header>
     <hr>
     <main>
-
-
       <div class="container">
         <div class="row pt-3 pb-1">
           <div class="col-md-2">
-              </div>
-            <div class="col-md-8">
-            <h2 class="text-login-b"><p class="text-center">LOGIN</p></h2><br>
-            <h4 class="text-dark">
-              <form class="" action="index.html" method="post">
-                Login: <input class="form-control" type="email" name="" value="">
-                Password: <input type="password" class="form-control" name="" value="">
-                <p class="text-center"><button type="submit" value="submit" name="button" class="btn btn-default btn-lg">Login  </button></p>
-                </form>
-                <p class="text-center">Do you need to create an account? Then <a class="text-login-b" href="register.html">Register</a></p>
-            </h4>
           </div>
-          <div class="col-md-2">
-          </div>
+          <div class="col-md-8">
+          <h2 class="text-login-b"><p class="text-center">LOGIN</p></h2><br>
+          <h4 class="text-dark">
+
+            <form class="" action="/login" method="post">
+              Login: <input class="form-control" type="email" name="usu">
+              Password: <input type="password" class="form-control" name="pwd">
+              <small id = "WP" style="color:red; text-align: right;"></small>
+              <p class="text-center"><button type="submit" value="submit" name="button" class="btn btn-default btn-lg">Login  </button></p>
+            </form>
+            <p class="text-center">Do you need to create an account? Then <a class="text-login-b" href="register.html">Register</a></p>
+          </h4>
+        </div>
+        <div class="col-md-2">
+        </div>
         </div>
       </div>
 
@@ -89,7 +88,16 @@
         </div>
       </div>
     </footer>
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      //We check wether we are in Wrong Password or in Successful (C) Login (Idk why I chose SC???) by checking the parameters
+      if(window.location.href.split("?")[1] == "WP"){
+         document.getElementById("WP").innerHTML = "Wrong Username or Password. Please try again.";
+      }
+      console.log(window.location.href.split("?")[1].split("=")[0]);
+      if (window.location.href.split("?")[1].split("=")[0] == "SC") {
+        setCookie("login", window.location.href.split("?")[1].split("=")[1], 1); //This set a cookie named login with the username that lasts one day
+        window.location.replace("http://localhost:1337/index.html");
+      }
+    </script>
   </body>
 </html>
