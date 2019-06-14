@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>POLIBOOKS Bookstore</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <!-- Optional Bootstrap theme -->
-    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript"src="loadData.js"></script>
+
 </head>
 <body>
     <!-- HEADER -->
@@ -46,14 +47,15 @@
                 <div class="col-md-4 bg-white py-3"> <!-- book -->
                   <div class="row">
                     <div class="col">
-                      <img src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;" alt="No book yet">
+                        <a id="link0" href="single_event.html"><img id="img0" src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;" alt="No book yet"></a>
                     </div>
                     <div class="col">
                       <div class="row">
-                        <h5><a class="text-products" href="single_event.html">Event 1</a></h5>
+                        <h5><a id="link0" class="text-products" href="single_event.html"><small id="event0">X</small></a></h5><br>
+                        <h5 style="text-dark"><small id="date0">X</small></h5>
                       </div>
                       <div class="row pr-3">
-                        <p>Once in a lifetime event in X. You wouldn't want to miss it! <a class="text-products" href="single_author.html">[...]</a></p>
+                        <p><small id="desc0" >Once in a lifetime event in X. You wouldn't want to miss it!</small> <a id="link0" class="text-products" href="single_author.html">[...]</a></p>
                       </div>
 
                     </div>
@@ -62,14 +64,52 @@
                 <div class="col-md-4 bg-white py-3"> <!-- book -->
                   <div class="row">
                     <div class="col">
-                      <img src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;" alt="No book yet">
+                        <a id="link1" href="single_event.html"><img id="img1" src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;" alt="No book yet"></a>
                     </div>
                     <div class="col">
                       <div class="row">
-                        <h5><a class="text-products" href="single_event.html">Event 2</a></h5>
+                        <h5><a id="link1" class="text-products" href="single_event.html"><small id="event1">X</small></a></h5><br>
+                        <h5 class="text-dark"><small id="date1">X</small></h5>
                       </div>
                       <div class="row pr-3">
-                        <p>Once in a lifetime event in X. You wouldn't want to miss it! <a class="text-products" href="single_author.html">[...]</a></p>
+                        <p><small id="desc1" >Once in a lifetime event in X. You wouldn't want to miss it!</small> <a id="link1" class="text-products" href="single_author.html">[...]</a></p>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 bg-white py-3"> <!-- book -->
+                  <div class="col">
+                      <a id="link2" href="single_event.html"><img id="img2" src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;" alt="No book yet"></a>
+                  </div>
+                  <div class="col">
+                    <div class="row">
+                      <h5><a id="link2" class="text-products" href="single_event.html"><small id="event2">X</small></a></h5><br>
+                      <h5 class="text-dark"><small id="date2">X</small></h5>
+                    </div>
+                    <div class="row pr-3">
+                      <p><small id="desc2" >Once in a lifetime event in X. You wouldn't want to miss it!</small> <a id="link2" class="text-products" href="single_author.html">[...]</a></p>
+                    </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="container"> <!-- Row 1 conatiner -->
+              <div class="row"> <!-- Row 1 -->
+                <div class="col-md-4 bg-white py-3"> <!-- book -->
+                  <div class="row">
+                    <div class="col">
+                        <a id="link3" href="single_event.html"><img id="img3" src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;" alt="No book yet"></a>
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <h5><a id="link3" class="text-products" href="single_event.html"><small id="event3">X</small></a></h5><br>
+                        <h5 class="text-dark"><small id="date3">X</small></h5>
+                      </div>
+                      <div class="row pr-3">
+                        <p><small id="desc3" >Once in a lifetime event in X. You wouldn't want to miss it!</small> <a id="link3" class="text-products" href="single_author.html">[...]</a></p>
                       </div>
 
                     </div>
@@ -78,14 +118,32 @@
                 <div class="col-md-4 bg-white py-3"> <!-- book -->
                   <div class="row">
                     <div class="col">
-                      <img src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;" alt="No book yet">
+                        <a id="link4" href="single_event.html"><img id="img4" src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;" alt="No book yet"></a>
                     </div>
                     <div class="col">
                       <div class="row">
-                        <h5><a class="text-products" href="single_event.html">Event 3</a></h5>
+                        <h5><a id="link4" class="text-products" href="single_event.html"><small id="event4">X</small></a></h5><br>
+                        <h5 class="text-dark"><small id="date4">X</small></h5>
                       </div>
                       <div class="row pr-3">
-                        <p>Once in a lifetime event in X. You wouldn't want to miss it! <a class="text-products" href="single_author.html">[...]</a></p>
+                        <p><small id="desc4" >Once in a lifetime event in X. You wouldn't want to miss it!</small> <a id="link4" class="text-products" href="single_author.html">[...]</a></p>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 bg-white py-3"> <!-- book -->
+                  <div class="row">
+                    <div class="col">
+                        <a id="link5" href="single_event.html"><img id="img5" src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;" alt="No book yet"></a>
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <h5><a id="link5" class="text-products" href="single_event.html"><small id="event5">X</small></a></h5><br>
+                        <h5 class="text-dark"><small id="date5">X</small></h5>
+                      </div>
+                      <div class="row pr-3">
+                        <p><small id="desc5" >Once in a lifetime event in X. You wouldn't want to miss it!</small> <a id="link5" class="text-products" href="single_author.html">[...]</a></p>
                       </div>
 
                     </div>
@@ -98,14 +156,15 @@
                 <div class="col-md-4 bg-white py-3"> <!-- book -->
                   <div class="row">
                     <div class="col">
-                      <img src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;" alt="No book yet">
+                        <a id="link6" href="single_event.html"><img id="img6" src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;" alt="No book yet"></a>
                     </div>
                     <div class="col">
                       <div class="row">
-                        <h5><a class="text-products" href="single_event.html">Event 4</a></h5>
+                        <h5><a id="link6" class="text-products" href="single_event.html"><small id="event6">X</small></a></h5><br>
+                        <h5 class="text-dark"><small id="date6">X</small></h5>
                       </div>
                       <div class="row pr-3">
-                        <p>Once in a lifetime event in X. You wouldn't want to miss it! <a class="text-products" href="single_author.html">[...]</a></p>
+                        <p><small id="desc6" >Once in a lifetime event in X. You wouldn't want to miss it!</small> <a id="link6" class="text-products" href="single_author.html">[...]</a></p>
                       </div>
 
                     </div>
@@ -114,14 +173,15 @@
                 <div class="col-md-4 bg-white py-3"> <!-- book -->
                   <div class="row">
                     <div class="col">
-                      <img src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;" alt="No book yet">
+                        <a id="link7" href="single_event.html"><img id="img7" src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;" alt="No book yet"></a>
                     </div>
                     <div class="col">
                       <div class="row">
-                        <h5><a class="text-products" href="single_event.html">Event 5</a></h5>
+                        <h5><a id="link7" class="text-products" href="single_event.html"><small id="event7">X</small></a></h5><br>
+                        <h5 class="text-dark"><small id="date7">X</small></h5>
                       </div>
                       <div class="row pr-3">
-                        <p>Once in a lifetime event in X. You wouldn't want to miss it! <a class="text-products" href="single_author.html">[...]</a></p>
+                        <p><small id="desc7" >Once in a lifetime event in X. You wouldn't want to miss it!</small> <a id="link7" class="text-products" href="single_author.html">[...]</a></p>
                       </div>
 
                     </div>
@@ -130,66 +190,15 @@
                 <div class="col-md-4 bg-white py-3"> <!-- book -->
                   <div class="row">
                     <div class="col">
-                      <img src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;" alt="No book yet">
+                        <a id="link8" href="single_event.html"><img id="img8" src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;" alt="No book yet"></a>
                     </div>
                     <div class="col">
                       <div class="row">
-                        <h5><a class="text-products" href="single_event.html">Event 6</a></h5>
+                        <h5><a id="link8" class="text-products" href="single_event.html"><small id="event8">X</small></a></h5><br>
+                        <h5 class="text-dark"><small id="date8">X</small></h5>
                       </div>
                       <div class="row pr-3">
-                        <p>Once in a lifetime event in X. You wouldn't want to miss it! <a class="text-products" href="single_author.html">[...]</a></p>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="container"> <!-- Row 1 conatiner -->
-              <div class="row"> <!-- Row 1 -->
-                <div class="col-md-4 bg-white py-3"> <!-- book -->
-                  <div class="row">
-                    <div class="col">
-                      <img src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;" alt="No book yet">
-                    </div>
-                    <div class="col">
-                      <div class="row">
-                        <h5><a class="text-products" href="single_event.html">Event 7</a></h5>
-                      </div>
-                      <div class="row pr-3">
-                        <p>Once in a lifetime event in X. You wouldn't want to miss it! <a class="text-products" href="single_author.html">[...]</a></p>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 bg-white py-3"> <!-- book -->
-                  <div class="row">
-                    <div class="col">
-                      <img src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;" alt="No book yet">
-                    </div>
-                    <div class="col">
-                      <div class="row">
-                        <h5><a class="text-products" href="single_event.html">Event 8</a></h5>
-                      </div>
-                      <div class="row pr-3">
-                        <p>Once in a lifetime event in X. You wouldn't want to miss it! <a class="text-products" href="single_author.html">[...]</a></p>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 bg-white py-3"> <!-- book -->
-                  <div class="row">
-                    <div class="col">
-                      <img src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;" alt="No book yet">
-                    </div>
-                    <div class="col">
-                      <div class="row">
-                        <h5><a class="text-products" href="single_event.html">Event 9</a></h5>
-                      </div>
-                      <div class="row pr-3">
-                        <p>Once in a lifetime event in X. You wouldn't want to miss it! <a class="text-products" href="single_author.html">[...]</a></p>
+                        <p><small id="desc8" >Once in a lifetime event in X. You wouldn't want to miss it!</small> <a id="link8" class="text-products" href="single_author.html">[...]</a></p>
                       </div>
 
                     </div>

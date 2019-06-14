@@ -140,25 +140,22 @@ function single_author(){
 }
 
 
-//BOOKS.html
+//Authors.html
 
 var descLength = 80;
-var titleLength = 20;
 var authorLength = 20;
 
 function authors(){
   $.ajax({
     type: 'GET',
-    url: 'http://localhost:1337/books',
+    url: 'http://localhost:1337/authors',
     success: function(data){
       //console.log(data);
-      for (var i = 0; i < data.length; i++) {
-       document.getElementById('book'+i).innerHTML = (data[i].title.length > titleLength) ? data[i].title.substring(0,titleLength) + ' [...]' : data[i].title;
+      for (var i = 0; i < data.length;  i++) {
        document.getElementById('desc'+i).innerHTML = (data[i].description.length > descLength) ? data[i].description.substring(0,descLength) + ' [...]' : data[i].description;
        document.getElementById('img'+i).src = (data[i].image != "" && exists(data[i].image)) ? data[i].image : "https://ibf.org/site_assets/img/placeholder-book-cover-default.png";
        document.getElementById('auth'+i).innerHTML = (data[i].author.length > authorLength) ? data[i].author.substring(0, authorLength) + ' [...]' : data[i].author;
-       document.getElementById('p'+i).innerHTML = data[i].price +'€';
-       document.getElementById('book'+i).href = 'single_book.html?id='+data[i].id;
+       document.getElementById('link'+i).href = 'single_author.html?id='+data[i].id;
      }
     }
   });
@@ -168,20 +165,12 @@ function reloadauthorsFilter(){
   var urla = "";
   //console.log(document.querySelector('input[name="filters"]:checked').value);
   switch (document.querySelector('input[name="filters"]:checked').value) {
-    case 'Available':
-      urla = 'http://localhost:1337/books/available';
-      break;
-    case 'Author':
-      urla = 'http://localhost:1337/books/author';
+    case 'Nationality':
+      urla = 'http://localhost:1337/authors/Nationality';
       break;
     case 'Genre':
-      urla = 'http://localhost:1337/books/genre';
+      urla = 'http://localhost:1337/authors/Genre';
       break;
-    case 'Theme':
-      urla = 'http://localhost:1337/books/theme';
-      break;
-    default:
-    urla = 'http://localhost:1337/books';
   }
   $.ajax({
     type: 'GET',
@@ -189,11 +178,11 @@ function reloadauthorsFilter(){
     success: function(data){
       //console.log(data);
       for (var i = 0; i < data.length; i++) {
-        document.getElementById('book'+i).innerHTML = (data[i].title.length > titleLength) ? data[i].title.substring(0,titleLength) + ' [...]' : data[i].title;
         document.getElementById('desc'+i).innerHTML = (data[i].description.length > descLength) ? data[i].description.substring(0,descLength) + ' [...]' : data[i].description;
         document.getElementById('img'+i).src = (data[i].image != "" && exists(data[i].image)) ? data[i].image : "https://ibf.org/site_assets/img/placeholder-book-cover-default.png";
         document.getElementById('auth'+i).innerHTML = (data[i].author.length > authorLength) ? data[i].author.substring(0, authorLength) + ' [...]' : data[i].author;
-        document.getElementById('p'+i).innerHTML = data[i].price +'€';     }
+        document.getElementById('link'+i).href = 'single_author.html?id='+data[i].id;
+           }
     }
   });
 
@@ -203,11 +192,11 @@ function single_event(){
 }
 
 
-//BOOKS.html
+//EVENTS.html
 
 var descLength = 80;
-var titleLength = 20;
-var authorLength = 20;
+var eventLength = 20;
+var dateLength = 10;
 
 
 
@@ -215,17 +204,15 @@ var authorLength = 20;
 function events(){
   $.ajax({
     type: 'GET',
-    url: 'http://localhost:1337/books',
+    url: 'http://localhost:1337/events',
     success: function(data){
       //console.log(data);
       for (var i = 0; i < data.length; i++) {
-       document.getElementById('book'+i).innerHTML = (data[i].title.length > titleLength) ? data[i].title.substring(0,titleLength) + ' [...]' : data[i].title;
+       document.getElementById('date'+i).innerHTML = (data[i].date.length > dateLength) ? data[i].date.substring(0,dateLength) + ' [...]' : data[i].date;
+       document.getElementById('event'+i).innerHTML = (data[i].title.length > eventLength) ? data[i].title.substring(0,eventLength) + ' [...]' : data[i].event;
        document.getElementById('desc'+i).innerHTML = (data[i].description.length > descLength) ? data[i].description.substring(0,descLength) + ' [...]' : data[i].description;
        document.getElementById('img'+i).src = (data[i].image != "") ? path + data[i].image : "https://ibf.org/site_assets/img/placeholder-book-cover-default.png";
-       document.getElementById('auth'+i).innerHTML = (data[i].author.length > authorLength) ? data[i].author.substring(0, authorLength) + ' [...]' : data[i].author;
-       document.getElementById('p'+i).innerHTML = data[i].price +'€';
-       document.getElementById('book'+i).href = 'single_book.html?id='+data[i].id;
-       document.getElementById('aimg'+i).href = 'single_book.html?id='+data[i].id;
+       document.getElementById('link'+i).href = 'single_event.html?id='+data[i].id;
      }
     }
   });
@@ -235,20 +222,44 @@ function reloadBooksFilter(){
   var urla = "";
   //console.log(document.querySelector('input[name="filters"]:checked').value);
   switch (document.querySelector('input[name="filters"]:checked').value) {
-    case 'Available':
-      urla = 'http://localhost:1337/books/available';
+    case 'JENUARY':
+      urla = 'http://localhost:1337/events/jenuary';
       break;
-    case 'Author':
-      urla = 'http://localhost:1337/books/author';
+    case 'FEBRUARY':
+      urla = 'http://localhost:1337/events/february';
       break;
-    case 'Genre':
-      urla = 'http://localhost:1337/books/genre';
+    case 'MARCH':
+      urla = 'http://localhost:1337/events/march';
       break;
-    case 'Theme':
-      urla = 'http://localhost:1337/books/theme';
+    case 'APRIL':
+      urla = 'http://localhost:1337/events/april';
       break;
+      case 'MAY':
+        urla = 'http://localhost:1337/events/may';
+        break;
+      case 'JUNE':
+        urla = 'http://localhost:1337/events/june';
+        break;
+      case 'JULY':
+        urla = 'http://localhost:1337/events/july';
+        break;
+      case 'AUGUST':
+        urla = 'http://localhost:1337/events/august';
+        break;
+        case 'SEPTEMBER':
+          urla = 'http://localhost:1337/events/september';
+          break;
+        case 'OCTOBER':
+          urla = 'http://localhost:1337/events/october';
+          break;
+        case 'NOVEMBER':
+          urla = 'http://localhost:1337/events/november';
+          break;
+        case 'DECEMBER':
+          urla = 'http://localhost:1337/events/december';
+          break;
     default:
-    urla = 'http://localhost:1337/books';
+    urla = 'http://localhost:1337/events';
   }
   $.ajax({
     type: 'GET',
@@ -256,13 +267,11 @@ function reloadBooksFilter(){
     success: function(data){
       //console.log(data);
       for (var i = 0; i < data.length; i++) {
-        document.getElementById('book'+i).innerHTML = (data[i].title.length > titleLength) ? data[i].title.substring(0,titleLength) + ' [...]' : data[i].title;
+        document.getElementById('date'+i).innerHTML = (data[i].date.length > dateLength) ? data[i].date.substring(0,dateLength) + ' [...]' : data[i].date;
+        document.getElementById('event'+i).innerHTML = (data[i].title.length > eventLength) ? data[i].title.substring(0,eventLength) + ' [...]' : data[i].event;
         document.getElementById('desc'+i).innerHTML = (data[i].description.length > descLength) ? data[i].description.substring(0,descLength) + ' [...]' : data[i].description;
         document.getElementById('img'+i).src = (data[i].image != "") ? path + data[i].image : "https://ibf.org/site_assets/img/placeholder-book-cover-default.png";
-        document.getElementById('auth'+i).innerHTML = (data[i].author.length > authorLength) ? data[i].author.substring(0, authorLength) + ' [...]' : data[i].author;
-        document.getElementById('p'+i).innerHTML = data[i].price +'€';
-        document.getElementById('book'+i).href = 'single_book.html?id='+data[i].id;
-        document.getElementById('aimg'+i).href = 'single_book.html?id='+data[i].id;
+        document.getElementById('link'+i).href = 'single_event.html?id='+data[i].id;
       }
     }
   });
