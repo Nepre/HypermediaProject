@@ -27,8 +27,17 @@
         <div class="col">
           <h6 class="text-center"><a class="text-dark" href="events.html">EVENTS</a></h6>
         </div>
-        <div class="col">
+        <div id="logreg" class="col" style="">
           <h6 class="text-center"><a class="text-dark" href="login.html">LOGIN</a>/<a class="text-dark" href="register.html">REGISTER</a></h6>
+        </div>
+        <div id="prof" class="col" style="white-space: nowrap; display:none"> <!-- This prevents the icon from going down -->
+          <h6 class="text-center" ><a class="text-dark" href="login.html">PROFILE <i class="material-icons">person</i></a></h6>
+        </div>
+        <div id="cart" class="col" style="white-space: nowrap; display:none;">
+          <h6 class="text-center" style=""><a class="text-dark" href="register.html">CART <i class="material-icons">shopping_cart</i></a></h6>
+        </div>
+        <div id="logout" class="col" style="white-space: nowrap; display:none;">
+          <h6 class="text-center" style=""><a class="text-dark" href="index.html?LO">LOGOUT</a></h6>
         </div>
       </div>
     </div>
@@ -96,7 +105,7 @@
           </div>
           <br>
           <p class="text-right">
-            <button type="submit" value="submit" name="button" class="btn-buy ">Buy Tickets</button>
+            <button type="submit" value="submit" name="button" class="btn-buy" id="butBuy" style="display:none;" >Buy Tickets</button>
           </p>
           <ul class="list-unstyled">
             <li>Date</li>
@@ -108,6 +117,7 @@
     </div>
     <script type="text/javascript">
       single_event(); //execute on load
+      buttonBuy();
     </script>
     </main>
     <footer>
@@ -137,7 +147,6 @@
         </div>
       </div>
     </footer>
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+
   </body>
 </html>

@@ -31,7 +31,39 @@ connection.connect(function(error){
 
 // GET Events
 
-app.get('/events', function(req, res){ //localhost:3000/books
+app.get('/Bestsellers', function(req, res){
+  connection.query("SELECT * FROM `books` where `best-seller` = 1 limit 3", function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+})
+
+app.get('/NextEvents', function(req, res){
+  connection.query("SELECT * FROM `events` order by Starting_Date limit 2", function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+})
+
+app.get('/events', function(req, res){
   //about mysql
 
   connection.query("SELECT id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events`", function(error, rows, fields){
@@ -401,6 +433,26 @@ app.get('/single_book/:id/comments', function(req, res){
 
 })
 
+app.post('/single_book/PostComent/:id', function(req, res){ // TODO: Fix post books
+  //console.log(req);
+  var userId = req.body.id;
+  var bookId = req.params.id;
+  var comment = req.body.comment;
+  var query = "INSERT INTO comments(id, userID, bookID, comment) VALUES (null, '" + userId + "'," + bookId + ",'" + comment + "');"
+  console.log(query);
+  connection.query(query, function (error, result) {
+    if(!!error){
+      console.log('Error: ' + error.message);
+    }else{
+      console.log(query + " inserted correctly.");
+
+    }
+    res.redirect('/single_book.html?id='+bookId);
+    res.end();
+  })
+});
+
+
 
 // POST BOOKS
 
@@ -537,6 +589,19 @@ app.post('/login', function(req, res){
     res.end();
   })
 });
+
+app.get('/id/:email', function(req, res){
+
+  connection.query("select id, email from users where email = '" + req.params.email + "'", function (error, rows, result) {
+    if(!!error){
+      console.log('Error: ' + error.message);
+    }else{
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+    res.end();
+  })
+})
 
 app.post('/register', async function(req, res) { //We need to put a query within the query
   var name = req.body.name;

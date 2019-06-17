@@ -124,7 +124,15 @@
           <p id="descAuth"></p>
           <br>
           <hr>
+
           <h5>Comments</h5>
+          <form id="formID" class="" action="" method="post" style="display: none;">
+            <label for="exampleFormControlTextarea1">Have you read this book?</label>
+            <textarea class="form-control" id="comment" name="comment" rows="3" placeholder="Tell us what you think!"></textarea>
+            <input type="hidden" name="id" id="id" value="" />
+            <button type="submit" value="submit" name="button" class="btn btn-default">Submit your comment</button></p>
+          </form>
+
           <div class="container" id="comments">
           <h6></h6>
           <p></p>
@@ -138,6 +146,7 @@
     </div>
     <script type="text/javascript">
       single_book(); //execute on load
+      submitCommentButton();
     </script>
     </main>
     <footer>

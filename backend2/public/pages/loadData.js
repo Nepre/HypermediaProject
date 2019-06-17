@@ -71,6 +71,63 @@ window.onload = function loginChecker() {
 
 }
 
+function buttonBuy() {
+  var cookie, c;
+  var name = 'login';
+  var login = false;
+  var usu;
+
+  cookies = document.cookie.split(';');
+
+  for (var i=0; i < cookies.length; i++) {
+      c = cookies[i].split('=');
+      if (c[0] == name) {
+
+          usu = c[1];
+          login = true;
+          break;
+      }
+  }
+  if(login){
+    document.getElementById('butBuy').style = "";
+  }
+}
+
+function submitCommentButton() {
+  var cookie, c;
+  var name = 'login';
+  var login = false;
+  var usu;
+
+  cookies = document.cookie.split(';');
+
+  for (var i=0; i < cookies.length; i++) {
+      c = cookies[i].split('=');
+      if (c[0] == name) {
+
+          usu = c[1];
+          login = true;
+          break;
+      }
+  }
+  if(login){
+    document.getElementById('formID').style = "";
+
+    $.ajax({
+      type: 'GET',
+      url: 'http://localhost:1337/id/'+usu,
+      success: function(data){
+        console.log(data);
+        document.getElementById('id').value = data[0].id;
+
+      }
+    });
+
+  }
+}
+
+
+
 
 //SINGLE_BOOK.HTML
 // TODO: do the petition with the url id to http://localhost:1337/single_book/id
@@ -98,6 +155,8 @@ function single_book(){
 
     }
   });
+
+
 
   $.ajax({
     type: 'GET',
@@ -131,6 +190,7 @@ function loadComments() {
         document.getElementById("comments").innerHTML += "<p>" + data[i].comment + "</p><br>";
 
       }
+      document.getElementById('formID').action = "/single_book/postComent/"+window.location.href.split("?")[1].split("=")[1];
 
     }
   });
@@ -272,6 +332,32 @@ function reloadauthorsFilter(){
   });
 
 }
+
+//INDEX.HTML
+function index(){
+  $.ajax({
+    type: 'GET',
+    url: 'http://localhost:1337/Bestsellers',
+    success: function(data){
+      console.log(data);
+      for (var i = 0; i < 3; i++) {
+        console.log(i);
+        if(i >= data.length){
+          document.getElementById('stb'+i).style = "display: none;"
+        }
+        else{
+          document.getElementById('bi'+i).src = path+data[i].image;
+          document.getElementById('b'+i).innerHTML = data[i].title;
+          document.getElementById('lb'+i).href = 'single_book.html?id='+data[i].id;
+          document.getElementById('lbi'+i).href = 'single_book.html?id='+data[i].id;
+          document.getElementById('desc'+i).innerHTML = (data[i].description.length > descLength) ? data[i].description.substring(0,descLength) + ' [...]' : data[i].description;
+        }
+      }
+    }
+  });
+}
+
+
 function single_event(){
 
 }
