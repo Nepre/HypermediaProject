@@ -100,7 +100,7 @@ function books(){
 
 function reloadBooksFilter(){
   var urla = "";
-  //console.log(document.querySelector('input[name="filters"]:checked').value);
+  console.log(document.querySelector('input[name="filters"]:checked').value);
   switch (document.querySelector('input[name="filters"]:checked').value) {
     case 'Available':
       urla = 'http://localhost:1337/books/available';
@@ -150,13 +150,21 @@ function authors(){
     type: 'GET',
     url: 'http://localhost:1337/authors',
     success: function(data){
-      //console.log(data);
-      for (var i = 0; i < data.length;  i++) {
-       document.getElementById('desc'+i).innerHTML = (data[i].description.length > descLength) ? data[i].description.substring(0,descLength) + ' [...]' : data[i].description;
-       document.getElementById('img'+i).src = (data[i].image != "" && exists(data[i].image)) ? data[i].image : "https://ibf.org/site_assets/img/placeholder-book-cover-default.png";
-       document.getElementById('auth'+i).innerHTML = (data[i].author.length > authorLength) ? data[i].author.substring(0, authorLength) + ' [...]' : data[i].author;
-       document.getElementById('link'+i).href = 'single_author.html?id='+data[i].id;
-     }
+      console.log(data);
+      for (var i = 0; i < 9; i++) {
+        console.log(i);
+        if(i >= data.length){
+          document.getElementById('st'+i).style = "display: none;"
+        }
+        else{
+          document.getElementById('desc'+i).innerHTML = (data[i].Biography.length > descLength) ? data[i].Biography.substring(0,descLength) + ' [...]' : data[i].Biography;
+          //document.getElementById('img'+i).src = (data[i].image != "" && exists(data[i].image)) ? data[i].image : "https://ibf.org/site_assets/img/placeholder-book-cover-default.png";
+          document.getElementById('auth'+i).innerHTML = (data[i].Name.length > authorLength) ? data[i].Name.substring(0, authorLength) + ' [...]' : data[i].Name;
+          document.getElementById('link'+i).href = 'single_author.html?id='+data[i].id;
+          document.getElementById('linka'+i).href = 'single_author.html?id='+data[i].id;
+
+        }
+      }
     }
   });
 }
@@ -168,21 +176,31 @@ function reloadauthorsFilter(){
     case 'Nationality':
       urla = 'http://localhost:1337/authors/Nationality';
       break;
-    case 'Genre':
-      urla = 'http://localhost:1337/authors/Genre';
+    case 'Birthday':
+      urla = 'http://localhost:1337/authors/Birthday';
       break;
+    default:
+    urla = 'http://localhost:1337/authors';
   }
   $.ajax({
     type: 'GET',
     url: urla,
     success: function(data){
       //console.log(data);
-      for (var i = 0; i < data.length; i++) {
-        document.getElementById('desc'+i).innerHTML = (data[i].description.length > descLength) ? data[i].description.substring(0,descLength) + ' [...]' : data[i].description;
-        document.getElementById('img'+i).src = (data[i].image != "" && exists(data[i].image)) ? data[i].image : "https://ibf.org/site_assets/img/placeholder-book-cover-default.png";
-        document.getElementById('auth'+i).innerHTML = (data[i].author.length > authorLength) ? data[i].author.substring(0, authorLength) + ' [...]' : data[i].author;
-        document.getElementById('link'+i).href = 'single_author.html?id='+data[i].id;
-           }
+      for (var i = 0; i < 9; i++) {
+        //console.log(data);
+        if(i >= data.length){
+          document.getElementById('st'+i).style = "display: none;"
+        }
+        else{
+          document.getElementById('desc'+i).innerHTML = (data[i].Biography.length > descLength) ? data[i].Biography.substring(0,descLength) + ' [...]' : data[i].Biography;
+          //document.getElementById('img'+i).src = (data[i].image != "" && exists(data[i].image)) ? data[i].image : "https://ibf.org/site_assets/img/placeholder-book-cover-default.png";
+          document.getElementById('auth'+i).innerHTML = (data[i].Name.length > authorLength) ? data[i].Name.substring(0, authorLength) + ' [...]' : data[i].Name;
+          document.getElementById('link'+i).href = 'single_author.html?id='+data[i].id;
+          document.getElementById('linka'+i).href = 'single_author.html?id='+data[i].id;
+
+        }
+      }
     }
   });
 
@@ -199,31 +217,36 @@ var eventLength = 20;
 var dateLength = 10;
 
 
-
+var path2 = "../images/events/";
 
 function events(){
   $.ajax({
     type: 'GET',
     url: 'http://localhost:1337/events',
     success: function(data){
-      //console.log(data);
-      for (var i = 0; i < data.length; i++) {
-       document.getElementById('date'+i).innerHTML = (data[i].date.length > dateLength) ? data[i].date.substring(0,dateLength) + ' [...]' : data[i].date;
-       document.getElementById('event'+i).innerHTML = (data[i].title.length > eventLength) ? data[i].title.substring(0,eventLength) + ' [...]' : data[i].event;
-       document.getElementById('desc'+i).innerHTML = (data[i].description.length > descLength) ? data[i].description.substring(0,descLength) + ' [...]' : data[i].description;
-       document.getElementById('img'+i).src = (data[i].image != "") ? path + data[i].image : "https://ibf.org/site_assets/img/placeholder-book-cover-default.png";
-       document.getElementById('link'+i).href = 'single_event.html?id='+data[i].id;
+      console.log(data);
+      for (var i = 0; i < 9; i++) {
+        if (i >= data.length) {
+          document.getElementById('st'+i).style = 'display: none;';
+        }
+        else{
+           document.getElementById('date'+i).innerHTML = (data[i].Date.length > dateLength) ? data[i].Date.substring(0,dateLength): data[i].Date;
+           document.getElementById('tit'+i).innerHTML = (data[i].Name.length > eventLength) ? data[i].Name.substring(0,eventLength) + ' [...]' : data[i].Name;
+           document.getElementById('desc'+i).innerHTML = (data[i].Place.length > descLength) ? data[i].Place.substring(0,descLength) + ' [...]' : data[i].Place;
+           document.getElementById('aimg'+i).src = (data[i].Picture != "") ? path2 + data[i].Picture : "http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png";
+           document.getElementById('tit'+i).href = 'single_event.html?id='+data[i].id;
+       }
      }
     }
   });
 }
 
-function reloadBooksFilter(){
+function reloadEventsFilter(){
   var urla = "";
   //console.log(document.querySelector('input[name="filters"]:checked').value);
   switch (document.querySelector('input[name="filters"]:checked').value) {
-    case 'JENUARY':
-      urla = 'http://localhost:1337/events/jenuary';
+    case 'JANUARY':
+      urla = 'http://localhost:1337/events/january';
       break;
     case 'FEBRUARY':
       urla = 'http://localhost:1337/events/february';
@@ -246,18 +269,18 @@ function reloadBooksFilter(){
       case 'AUGUST':
         urla = 'http://localhost:1337/events/august';
         break;
-        case 'SEPTEMBER':
-          urla = 'http://localhost:1337/events/september';
-          break;
-        case 'OCTOBER':
-          urla = 'http://localhost:1337/events/october';
-          break;
-        case 'NOVEMBER':
-          urla = 'http://localhost:1337/events/november';
-          break;
-        case 'DECEMBER':
-          urla = 'http://localhost:1337/events/december';
-          break;
+      case 'SEPTEMBER':
+        urla = 'http://localhost:1337/events/september';
+        break;
+      case 'OCTOBER':
+        urla = 'http://localhost:1337/events/october';
+        break;
+      case 'NOVEMBER':
+        urla = 'http://localhost:1337/events/november';
+        break;
+      case 'DECEMBER':
+        urla = 'http://localhost:1337/events/december';
+        break;
     default:
     urla = 'http://localhost:1337/events';
   }
@@ -265,14 +288,26 @@ function reloadBooksFilter(){
     type: 'GET',
     url: urla,
     success: function(data){
-      //console.log(data);
-      for (var i = 0; i < data.length; i++) {
-        document.getElementById('date'+i).innerHTML = (data[i].date.length > dateLength) ? data[i].date.substring(0,dateLength) + ' [...]' : data[i].date;
-        document.getElementById('event'+i).innerHTML = (data[i].title.length > eventLength) ? data[i].title.substring(0,eventLength) + ' [...]' : data[i].event;
-        document.getElementById('desc'+i).innerHTML = (data[i].description.length > descLength) ? data[i].description.substring(0,descLength) + ' [...]' : data[i].description;
-        document.getElementById('img'+i).src = (data[i].image != "") ? path + data[i].image : "https://ibf.org/site_assets/img/placeholder-book-cover-default.png";
-        document.getElementById('link'+i).href = 'single_event.html?id='+data[i].id;
+      console.log(data);
+      if (data.length == 0) {
+        document.getElementById('noEvents').style = '';
       }
+      else {
+        document.getElementById('noEvents').style = 'display: none';
+      }
+      for (var i = 0; i < 9; i++) {
+        if (i >= data.length) {
+          document.getElementById('st'+i).style = 'display: none;';
+        }
+        else{
+           document.getElementById('st'+i).style = '';
+           document.getElementById('date'+i).innerHTML = (data[i].Date.length > dateLength) ? data[i].Date.substring(0,dateLength): data[i].Date;
+           document.getElementById('tit'+i).innerHTML = (data[i].Name.length > eventLength) ? data[i].Name.substring(0,eventLength) + ' [...]' : data[i].Name;
+           document.getElementById('desc'+i).innerHTML = (data[i].Place.length > descLength) ? data[i].Place.substring(0,descLength) + ' [...]' : data[i].Place;
+           document.getElementById('aimg'+i).src = (data[i].Picture != "") ? path2 + data[i].Picture : "http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png";
+           document.getElementById('tit'+i).href = 'single_event.html?id='+data[i].Id;
+       }
+     }
     }
   });
 

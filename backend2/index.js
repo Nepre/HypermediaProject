@@ -28,6 +28,245 @@ connection.connect(function(error){
   }
 });
 
+
+// GET Events
+
+app.get('/events', function(req, res){ //localhost:3000/books
+  //about mysql
+
+  connection.query("select * from events", function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+});
+
+app.get('/events/january', function(req, res){
+  //about mysql
+
+  connection.query("select month(date), Name, Id, Place, Date, Price, Picture  from events where month(date) = 1", function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+});
+
+app.get('/events/february', function(req, res){
+  //about mysql
+
+  connection.query("select month(date), Name, Id, Place, Date, Price, Picture  from events where month(date) = 2 ", function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+});
+
+app.get('/events/march', function(req, res){
+  //about mysql
+
+  connection.query("select month(date), Name, Id, Place, Date, Price, Picture  from events where month(date) = 3 ", function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+});
+
+app.get('/events/april', function(req, res){ //localhost:3000/books
+  //about mysql
+
+  connection.query("select month(date), Name, Id, Place, Date, Price, Picture  from events where month(date) = 4 ", function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+});
+
+app.get('/events/may', function(req, res){ //localhost:3000/books
+  //about mysql
+
+  connection.query("select month(date), Name, Id, Place, Date, Price, Picture  from events where month(date) = 5 ", function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+});
+
+app.get('/events/june', function(req, res){ //localhost:3000/books
+  //about mysql
+
+  connection.query("select month(date), Name, Id, Place, Date, Price, Picture  from events where month(date) = 6 ", function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+});
+
+app.get('/events/july', function(req, res){ //localhost:3000/books
+  //about mysql
+
+  connection.query("select month(date), Name, Id, Place, Date, Price, Picture  from events where month(date) = 7 ", function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+});
+
+app.get('/events/august', function(req, res){ //localhost:3000/books
+  //about mysql
+
+  connection.query("select month(date), Name, Id, Place, Date, Price, Picture  from events where month(date) = 8 ", function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+});
+
+app.get('/events/september', function(req, res){ //localhost:3000/books
+  //about mysql
+
+  connection.query("select month(date), Name, Id, Place, Date, Price, Picture  from events where month(date) = 9 ", function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+});
+
+app.get('/events/october', function(req, res){ //localhost:3000/books
+  //about mysql
+
+  connection.query("select month(date), Name, Name, Id, Place, Date, Price, Picture  from events where month(date) = 10 ", function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+});
+
+app.get('/events/november', function(req, res){ //localhost:3000/books
+  //about mysql
+
+  connection.query("select month(date), Name, Id, Place, Date, Price, Picture  from events where month(date) = 11 ", function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+});
+
+app.get('/events/december', function(req, res){ //localhost:3000/books
+  //about mysql
+
+  connection.query("select month(date), Name, Id, Place, Date, Price, Picture  from events where month(date) = 12 ", function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+});
+
+
+
 //GET BOOKS
 
 app.get('/books', function(req, res){ //localhost:3000/books
@@ -182,6 +421,24 @@ app.get('/authors/nationality', function(req, res){ //localhost:1337/books/theme
 //about mysql
 
   connection.query("select * from `authors` order by nationality", function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+});
+
+app.get('/authors/Birthday', function(req, res){ //localhost:1337/books/theme
+//about mysql
+
+  connection.query("select * from `authors` order by Birthday", function(error, rows, fields){
     if(!!error){
       console.log('Error: '+error.message);
     }else{

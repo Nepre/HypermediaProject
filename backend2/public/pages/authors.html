@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>POLIBOOKS Bookstore</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <!-- Optional Bootstrap theme -->
-    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="loadData.js"> </script>
+
 </head>
 <body>
     <!-- HEADER -->
@@ -22,18 +23,28 @@
             <h6 class="text-center"><a class="text-dark" href="books.html">BOOKS</a></h6>
           </div>
           <div class="col">
-            <h6 class="text-center"><a class="text-dark-selected" href="authors.html">AUTHORS</a></h6>
+            <h6 class="text-center"><a class="text-dark" href="authors.html">AUTHORS</a></h6>
           </div>
           <div class="col">
             <h6 class="text-center"><a class="text-dark" href="events.html">EVENTS</a></h6>
           </div>
-          <div class="col">
+          <div id="logreg" class="col" style="">
             <h6 class="text-center"><a class="text-dark" href="login.html">LOGIN</a>/<a class="text-dark" href="register.html">REGISTER</a></h6>
+          </div>
+          <div id="prof" class="col" style="white-space: nowrap; display:none"> <!-- This prevents the icon from going down -->
+            <h6 class="text-center" ><a class="text-dark" href="login.html">PROFILE <i class="material-icons">person</i></a></h6>
+          </div>
+          <div id="cart" class="col" style="white-space: nowrap; display:none;">
+            <h6 class="text-center" style=""><a class="text-dark" href="register.html">CART <i class="material-icons">shopping_cart</i></a></h6>
+          </div>
+          <div id="logout" class="col" style="white-space: nowrap; display:none;">
+            <h6 class="text-center" style=""><a class="text-dark" href="index.html?LO">LOGOUT</a></h6>
           </div>
         </div>
       </div>
     </div>
-  </header>
+    </header>
+
     <!-- HEADER -->
     <hr>
     <main>
@@ -44,51 +55,49 @@
           <div class="col-md-10">
             <div class="container"> <!-- Row 1 conatiner -->
               <div class="row"> <!-- Row 1 -->
-                <div class="col-md-4 bg-white py-3"> <!-- book -->
+                <div id="st0" class="col-md-4 bg-white py-3" style=""> <!-- book -->
                   <div class="row">
                     <div class="col">
                       <a id="link0" href="single_author.html"><img id="img0" src="https://afcm.ca/wp-content/uploads/2018/06/no-photo.png" style="width:10em;" alt="No book yet"></a>
                     </div>
                     <div class="col">
                       <div class="row">
-                        <h5><a id="link0" class="text-products" href="single_author.html"><small id="auth0" >Author 1</small></a></h5>
+                        <h5><a id="linka0" class="text-products" href="single_author.html"><small id="auth0" >Author 1</small></a></h5>
                       </div>
                       <div class="row pr-3">
-                        <p><small id="desc0">This is a author who wrote X. Worldwide famous for its Y's style.</small> <a id="link0" class="text-products" href="single_author.html">[...]</a></p>
+                        <p><small id="desc0">This is a author who wrote X. Worldwide famous for its Y's style.</small></a></p>
                       </div>
 
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4 bg-white py-3"> <!-- book -->
+                <div id="st1" style="" class="col-md-4 bg-white py-3"> <!-- book -->
                   <div class="row">
                     <div class="col">
                       <a id="link1" href="single_author.html"><img id="img1" src="https://afcm.ca/wp-content/uploads/2018/06/no-photo.png" style="width:10em;" alt="No book yet"></a>
                     </div>
                     <div class="col">
                       <div class="row">
-                        <h5><a id="link1" class="text-products" href="single_author.html"><small id="auth1" >Author 1</small></a></h5>
+                        <h5><a id="linka1" class="text-products" href="single_author.html"><small id="auth1" >Author 1</small></a></h5>
                       </div>
                       <div class="row pr-3">
-                        <p><small id="desc1">This is a author who wrote X. Worldwide famous for its Y's style.</small>
-                          <a id="link1" class="text-products" href="single_author.html">[...]</a></p>
+                        <p><small id="desc1">This is a author who wrote X. Worldwide famous for its Y's style.</small></p>
                       </div>
 
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4 bg-white py-3"> <!-- book -->
+                <div id="st2" style="" class="col-md-4 bg-white py-3"> <!-- book -->
                   <div class="row">
                     <div class="col">
                       <a id="link2" href="single_author.html"><img id="img2" src="https://afcm.ca/wp-content/uploads/2018/06/no-photo.png" style="width:10em;" alt="No book yet"></a>
                     </div>
                     <div class="col">
                       <div class="row">
-                        <h5><a id="link2" class="text-products" href="single_author.html"><small id="auth2" >Author 2</small></a></h5>
+                        <h5><a id="linka2" class="text-products" href="single_author.html"><small id="auth2" >Author 2</small></a></h5>
                       </div>
                       <div class="row pr-3">
-                        <p><small id="desc2">This is a author who wrote X. Worldwide famous for its Y's style.</small>
-                          <a id="link2" class="text-products" href="single_author.html">[...]</a></p>
+                        <p><small id="desc2">This is a author who wrote X. Worldwide famous for its Y's style.</small></p>
                       </div>
 
                     </div>
@@ -98,52 +107,49 @@
             </div>
             <div class="container"> <!-- Row 1 conatiner -->
               <div class="row"> <!-- Row 1 -->
-                <div class="col-md-4 bg-white py-3"> <!-- book -->
+                <div id="st3" style="" class="col-md-4 bg-white py-3"> <!-- book -->
                   <div class="row">
                     <div class="col">
                       <a id="link3" href="single_author.html"><img id="img3" src="https://afcm.ca/wp-content/uploads/2018/06/no-photo.png" style="width:10em;" alt="No book yet"></a>
                     </div>
                     <div class="col">
                       <div class="row">
-                        <h5><a id="link3" class="text-products" href="single_author.html"><small id="auth3" >Author 3</small></a></h5>
+                        <h5><a id="linka3" class="text-products" href="single_author.html"><small id="auth3" >Author 3</small></a></h5>
                       </div>
                       <div class="row pr-3">
-                        <p><small id="desc3">This is a author who wrote X. Worldwide famous for its Y's style.</small>
-                          <a id="link3" class="text-products" href="single_author.html">[...]</a></p>
+                        <p><small id="desc3">This is a author who wrote X. Worldwide famous for its Y's style.</small></p>
                       </div>
 
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4 bg-white py-3"> <!-- book -->
+                <div id="st4" style="" class="col-md-4 bg-white py-3"> <!-- book -->
                   <div class="row">
                     <div class="col">
                       <a id="link4" href="single_author.html"><img id="img4" src="https://afcm.ca/wp-content/uploads/2018/06/no-photo.png" style="width:10em;" alt="No book yet"></a>
                     </div>
                     <div class="col">
                       <div class="row">
-                        <h5><a id="link4" class="text-products" href="single_author.html"><small id="auth4" >Author 4</small></a></h5>
+                        <h5><a id="linka4" class="text-products" href="single_author.html"><small id="auth4" >Author 4</small></a></h5>
                       </div>
                       <div class="row pr-3">
-                        <p><small id="desc4">This is a author who wrote X. Worldwide famous for its Y's style.</small>
-                          <a id="link4" class="text-products" href="single_author.html">[...]</a></p>
+                        <p><small id="desc4">This is a author who wrote X. Worldwide famous for its Y's style.</small></p>
                       </div>
 
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4 bg-white py-3"> <!-- book -->
+                <div id="st5" style="" class="col-md-4 bg-white py-3"> <!-- book -->
                   <div class="row">
                     <div class="col">
                       <a id="link5" href="single_author.html"><img id="img5" src="https://afcm.ca/wp-content/uploads/2018/06/no-photo.png" style="width:10em;" alt="No book yet"></a>
                     </div>
                     <div class="col">
                       <div class="row">
-                        <h5><a id="link5" class="text-products" href="single_author.html"><small id="auth5" >Author 5</small></a></h5>
+                        <h5><a id="linka5" class="text-products" href="single_author.html"><small id="auth5" >Author 5</small></a></h5>
                       </div>
                       <div class="row pr-3">
-                        <p><small id="desc5">This is a author who wrote X. Worldwide famous for its Y's style.</small>
-                          <a id="link5" class="text-products" href="single_author.html">[...]</a></p>
+                        <p><small id="desc5">This is a author who wrote X. Worldwide famous for its Y's style.</small></p>
                       </div>
 
                     </div>
@@ -153,52 +159,49 @@
             </div>
             <div class="container"> <!-- Row 1 conatiner -->
               <div class="row"> <!-- Row 1 -->
-                <div class="col-md-4 bg-white py-3"> <!-- book -->
+                <div id="st6" style="" class="col-md-4 bg-white py-3"> <!-- book -->
                   <div class="row">
                     <div class="col">
                       <a id="link6" href="single_author.html"><img id="img6" src="https://afcm.ca/wp-content/uploads/2018/06/no-photo.png" style="width:10em;" alt="No book yet"></a>
                     </div>
                     <div class="col">
                       <div class="row">
-                        <h5><a id="link6" class="text-products" href="single_author.html"><small id="auth6" >Author 6</small></a></h5>
+                        <h5><a id="linka6" class="text-products" href="single_author.html"><small id="auth6" >Author 6</small></a></h5>
                       </div>
                       <div class="row pr-3">
-                        <p><small id="desc6">This is a author who wrote X. Worldwide famous for its Y's style.</small>
-                          <a id="link6" class="text-products" href="single_author.html">[...]</a></p>
+                        <p><small id="desc6">This is a author who wrote X. Worldwide famous for its Y's style.</small></p>
                       </div>
 
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4 bg-white py-3"> <!-- book -->
+                <div id="st7" style="" class="col-md-4 bg-white py-3"> <!-- book -->
                   <div class="row">
                     <div class="col">
                       <a id="link7" href="single_author.html"><img id="img7" src="https://afcm.ca/wp-content/uploads/2018/06/no-photo.png" style="width:10em;" alt="No book yet"></a>
                     </div>
                     <div class="col">
                       <div class="row">
-                        <h5><a id="link7" class="text-products" href="single_author.html"><small id="auth7" >Author 7</small></a></h5>
+                        <h5><a id="linka7" class="text-products" href="single_author.html"><small id="auth7" >Author 7</small></a></h5>
                       </div>
                       <div class="row pr-3">
-                        <p><small id="desc7">This is a author who wrote X. Worldwide famous for its Y's style.</small>
-                          <a id="link7" class="text-products" href="single_author.html">[...]</a></p>
+                        <p><small id="desc7">This is a author who wrote X. Worldwide famous for its Y's style.</small></p>
                       </div>
 
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4 bg-white py-3"> <!-- book -->
+                <div id="st8" style="" class="col-md-4 bg-white py-3"> <!-- book -->
                   <div class="row">
                     <div class="col">
                       <a id="link8" href="single_author.html"><img id="img8" src="https://afcm.ca/wp-content/uploads/2018/06/no-photo.png" style="width:10em;" alt="No book yet"></a>
                     </div>
                     <div class="col">
                       <div class="row">
-                        <h5><a id="link8" class="text-products" href="single_author.html"><small id="auth8" >Author 8</small></a></h5>
+                        <h5><a id="linka8" class="text-products" href="single_author.html"><small id="auth8" >Author 8</small></a></h5>
                       </div>
                       <div class="row pr-3">
-                        <p><small id="desc8">This is a author who wrote X. Worldwide famous for its Y's style.</small>
-                          <a id="link8" class="text-products" href="single_author.html">[...]</a></p>
+                        <p><small id="desc8">This is a author who wrote X. Worldwide famous for its Y's style.</small></p>
                       </div>
 
                     </div>
@@ -211,14 +214,14 @@
           <div class="col-md-2" id="filtros">
             <div class="row mt-3 ml-3">
               <div class="custom-control custom-radio">
-                <input type="radio" name="filters" class="custom-control-input" value="NATIONALITY" id="NATIONALITY">
-                <label class="custom-control-label" for="Nationality"> <h6>NATIONALITY</h6> </label>
+                <input type="radio" name="filters" class="custom-control-input" value="Nationality" id="Nationality">
+                <label class="custom-control-label" for="Nationality"> <h6>Nationality</h6> </label>
               </div>
             </div>
             <div class="row mt-5 ml-3">
               <div class="custom-control custom-radio">
-                <input type="radio" name="filters" class="custom-control-input" value="GENRE" id="GENRE">
-                <label class="custom-control-label" for="Genre"> <h6>GENRE</h6> </label>
+                <input type="radio" name="filters" class="custom-control-input" value="Birthday" id="Birthday">
+                <label class="custom-control-label" for="Birthday"> <h6>Birthday</h6> </label>
               </div>
             </div>
           </div>
@@ -252,10 +255,15 @@
             <!--<p>We should do something with this lower bar, as it is this low it is eclipsed by the other information above, and it seems that the website ends before the FAQ. This makes the placement anti-intuitive.</p>
             -->
           </div>
+          <script type="text/javascript">
+          authors(); //Start load books
+
+          $('input[type=radio][name=filters]').change(function() {
+              reloadauthorsFilter(); //If a filter is applied
+          });
+          </script>
         </div>
       </div>
     </footer>
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
