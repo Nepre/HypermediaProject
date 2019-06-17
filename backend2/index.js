@@ -34,7 +34,7 @@ connection.connect(function(error){
 app.get('/events', function(req, res){ //localhost:3000/books
   //about mysql
 
-  connection.query("select * from events", function(error, rows, fields){
+  connection.query("SELECT id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events`", function(error, rows, fields){
     if(!!error){
       console.log('Error: '+error.message);
     }else{
@@ -52,7 +52,7 @@ app.get('/events', function(req, res){ //localhost:3000/books
 app.get('/events/january', function(req, res){
   //about mysql
 
-  connection.query("select month(date), Name, Id, Place, Date, Price, Picture  from events where month(date) = 1", function(error, rows, fields){
+  connection.query("SELECT  month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) = 1 or month(End_Date) = 1", function(error, rows, fields){
     if(!!error){
       console.log('Error: '+error.message);
     }else{
@@ -70,7 +70,7 @@ app.get('/events/january', function(req, res){
 app.get('/events/february', function(req, res){
   //about mysql
 
-  connection.query("select month(date), Name, Id, Place, Date, Price, Picture  from events where month(date) = 2 ", function(error, rows, fields){
+  connection.query("SELECT  month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) = 2 or month(End_Date) = 2 ", function(error, rows, fields){
     if(!!error){
       console.log('Error: '+error.message);
     }else{
@@ -88,7 +88,7 @@ app.get('/events/february', function(req, res){
 app.get('/events/march', function(req, res){
   //about mysql
 
-  connection.query("select month(date), Name, Id, Place, Date, Price, Picture  from events where month(date) = 3 ", function(error, rows, fields){
+  connection.query("SELECT  month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) =3  or month(End_Date) =3 ", function(error, rows, fields){
     if(!!error){
       console.log('Error: '+error.message);
     }else{
@@ -106,7 +106,7 @@ app.get('/events/march', function(req, res){
 app.get('/events/april', function(req, res){ //localhost:3000/books
   //about mysql
 
-  connection.query("select month(date), Name, Id, Place, Date, Price, Picture  from events where month(date) = 4 ", function(error, rows, fields){
+  connection.query("SELECT  month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) = 4 or month(End_Date) = 4 ", function(error, rows, fields){
     if(!!error){
       console.log('Error: '+error.message);
     }else{
@@ -124,7 +124,7 @@ app.get('/events/april', function(req, res){ //localhost:3000/books
 app.get('/events/may', function(req, res){ //localhost:3000/books
   //about mysql
 
-  connection.query("select month(date), Name, Id, Place, Date, Price, Picture  from events where month(date) = 5 ", function(error, rows, fields){
+  connection.query("SELECT  month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) = 5 or month(End_Date) = 5 ", function(error, rows, fields){
     if(!!error){
       console.log('Error: '+error.message);
     }else{
@@ -142,7 +142,7 @@ app.get('/events/may', function(req, res){ //localhost:3000/books
 app.get('/events/june', function(req, res){ //localhost:3000/books
   //about mysql
 
-  connection.query("select month(date), Name, Id, Place, Date, Price, Picture  from events where month(date) = 6 ", function(error, rows, fields){
+  connection.query("SELECT  month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) = 6 or month(End_Date) = 6 ", function(error, rows, fields){
     if(!!error){
       console.log('Error: '+error.message);
     }else{
@@ -160,7 +160,7 @@ app.get('/events/june', function(req, res){ //localhost:3000/books
 app.get('/events/july', function(req, res){ //localhost:3000/books
   //about mysql
 
-  connection.query("select month(date), Name, Id, Place, Date, Price, Picture  from events where month(date) = 7 ", function(error, rows, fields){
+  connection.query("SELECT  month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) = 7 or month(End_Date) = 7 ", function(error, rows, fields){
     if(!!error){
       console.log('Error: '+error.message);
     }else{
@@ -178,7 +178,7 @@ app.get('/events/july', function(req, res){ //localhost:3000/books
 app.get('/events/august', function(req, res){ //localhost:3000/books
   //about mysql
 
-  connection.query("select month(date), Name, Id, Place, Date, Price, Picture  from events where month(date) = 8 ", function(error, rows, fields){
+  connection.query("SELECT  month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) = 8 or month(End_Date) =8 ", function(error, rows, fields){
     if(!!error){
       console.log('Error: '+error.message);
     }else{
@@ -196,7 +196,7 @@ app.get('/events/august', function(req, res){ //localhost:3000/books
 app.get('/events/september', function(req, res){ //localhost:3000/books
   //about mysql
 
-  connection.query("select month(date), Name, Id, Place, Date, Price, Picture  from events where month(date) = 9 ", function(error, rows, fields){
+  connection.query("SELECT  month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) = 9 or month(End_Date) = 9 ", function(error, rows, fields){
     if(!!error){
       console.log('Error: '+error.message);
     }else{
@@ -214,7 +214,7 @@ app.get('/events/september', function(req, res){ //localhost:3000/books
 app.get('/events/october', function(req, res){ //localhost:3000/books
   //about mysql
 
-  connection.query("select month(date), Name, Name, Id, Place, Date, Price, Picture  from events where month(date) = 10 ", function(error, rows, fields){
+  connection.query("SELECT  month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) = 10 or month(End_Date) = 10 ", function(error, rows, fields){
     if(!!error){
       console.log('Error: '+error.message);
     }else{
@@ -232,7 +232,7 @@ app.get('/events/october', function(req, res){ //localhost:3000/books
 app.get('/events/november', function(req, res){ //localhost:3000/books
   //about mysql
 
-  connection.query("select month(date), Name, Id, Place, Date, Price, Picture  from events where month(date) = 11 ", function(error, rows, fields){
+  connection.query("SELECT  month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) = 11 or month(End_Date) = 11 ", function(error, rows, fields){
     if(!!error){
       console.log('Error: '+error.message);
     }else{
@@ -250,7 +250,7 @@ app.get('/events/november', function(req, res){ //localhost:3000/books
 app.get('/events/december', function(req, res){ //localhost:3000/books
   //about mysql
 
-  connection.query("select month(date), Name, Id, Place, Date, Price, Picture  from events where month(date) = 12 ", function(error, rows, fields){
+  connection.query("SELECT  month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) = 12 or month(End_Date) =12 ", function(error, rows, fields){
     if(!!error){
       console.log('Error: '+error.message);
     }else{
@@ -380,6 +380,18 @@ app.get('/single_book/:id', function(req, res){
 app.get('/single_book/:id/related', function(req, res){
 
   var qr = "SELECT b.id id1, b.authorID ath1, b.genre gen1, b2.id id2, b2.image, b2.authorID auth2, b2.genre gen2 FROM `books` b join `books` b2 WHERE (b.authorID = b2.authorID or b.genre = b2.genre) and b.id = " + req.params.id + " and b.id != b2.id";
+
+  connection.query(qr , function(error, rows, fields){
+    //console.log(rows);
+    res.writeHead(200, { 'Content-Type': 'application/json'});
+    res.end(JSON.stringify(rows));
+  });
+
+})
+
+app.get('/single_book/:id/comments', function(req, res){
+
+  var qr = "SELECT c.userID, u.id, c.bookID, u.Name, c.comment FROM `comments` c join `users` u WHERE c.userID = u.id and c.bookID = "+ req.params.id;
 
   connection.query(qr , function(error, rows, fields){
     //console.log(rows);

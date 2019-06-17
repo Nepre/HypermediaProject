@@ -23,6 +23,18 @@ function exists(img){ //This checks if the image exists, but it gives errors so 
   }
 }
 
+function existsAuth(img){ //This checks if the image exists, but it gives errors so well
+  var request = new XMLHttpRequest();
+  var status;
+  var statusText;
+  request.open("GET", path3 + img, true);
+  request.send();
+  request.onload = function(){
+  	status = request.status;
+  	statusText = request.statusText;
+  }
+}
+
 //LOGIN CHECKER
 window.onload = function loginChecker() {
   var cookie, c;
@@ -104,8 +116,25 @@ function single_book(){
 
     }
   });
+
+  loadComments();
 }
 
+function loadComments() {
+  $.ajax({
+    type: 'GET',
+    url: 'http://localhost:1337/single_book/'+window.location.href.split("?")[1].split("=")[1]+"/comments",
+    success: function(data){
+
+      for (var i = 0; i < data.length || data.length == 10; i++) {
+        document.getElementById("comments").innerHTML += "<h6>" + data[i].Name + "</h6>";
+        document.getElementById("comments").innerHTML += "<p>" + data[i].comment + "</p><br>";
+
+      }
+
+    }
+  });
+}
 
 //BOOKS.html
 
@@ -181,6 +210,7 @@ function single_author(){
 
 var descLength = 80;
 var authorLength = 20;
+var path3 = "../images/authors/";
 
 function authors(){
   $.ajax({
@@ -195,7 +225,7 @@ function authors(){
         }
         else{
           document.getElementById('desc'+i).innerHTML = (data[i].Biography.length > descLength) ? data[i].Biography.substring(0,descLength) + ' [...]' : data[i].Biography;
-          //document.getElementById('img'+i).src = (data[i].image != "" && exists(data[i].image)) ? data[i].image : "https://ibf.org/site_assets/img/placeholder-book-cover-default.png";
+          document.getElementById('img'+i).src = (data[i].image != "") ? path3 + data[i].image : "https://ibf.org/site_assets/img/placeholder-book-cover-default.png";
           document.getElementById('auth'+i).innerHTML = (data[i].Name.length > authorLength) ? data[i].Name.substring(0, authorLength) + ' [...]' : data[i].Name;
           document.getElementById('link'+i).href = 'single_author.html?id='+data[i].id;
           document.getElementById('linka'+i).href = 'single_author.html?id='+data[i].id;
@@ -231,7 +261,7 @@ function reloadauthorsFilter(){
         }
         else{
           document.getElementById('desc'+i).innerHTML = (data[i].Biography.length > descLength) ? data[i].Biography.substring(0,descLength) + ' [...]' : data[i].Biography;
-          //document.getElementById('img'+i).src = (data[i].image != "" && exists(data[i].image)) ? data[i].image : "https://ibf.org/site_assets/img/placeholder-book-cover-default.png";
+          document.getElementById('img'+i).src = (data[i].image != "") ? path3 + data[i].image : "https://ibf.org/site_assets/img/placeholder-book-cover-default.png";
           document.getElementById('auth'+i).innerHTML = (data[i].Name.length > authorLength) ? data[i].Name.substring(0, authorLength) + ' [...]' : data[i].Name;
           document.getElementById('link'+i).href = 'single_author.html?id='+data[i].id;
           document.getElementById('linka'+i).href = 'single_author.html?id='+data[i].id;
@@ -267,7 +297,7 @@ function events(){
           document.getElementById('st'+i).style = 'display: none;';
         }
         else{
-           document.getElementById('date'+i).innerHTML = (data[i].Date.length > dateLength) ? data[i].Date.substring(0,dateLength): data[i].Date;
+           document.getElementById('date'+i).innerHTML = data[i].Starting_Date.substring(0, 10) + "/" + data[i].End_Date.substring(0,10);
            document.getElementById('tit'+i).innerHTML = (data[i].Name.length > eventLength) ? data[i].Name.substring(0,eventLength) + ' [...]' : data[i].Name;
            document.getElementById('desc'+i).innerHTML = (data[i].Place.length > descLength) ? data[i].Place.substring(0,descLength) + ' [...]' : data[i].Place;
            document.getElementById('aimg'+i).src = (data[i].Picture != "") ? path2 + data[i].Picture : "http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png";
@@ -337,12 +367,12 @@ function reloadEventsFilter(){
           document.getElementById('st'+i).style = 'display: none;';
         }
         else{
-           document.getElementById('st'+i).style = '';
-           document.getElementById('date'+i).innerHTML = (data[i].Date.length > dateLength) ? data[i].Date.substring(0,dateLength): data[i].Date;
+           document.getElementById('date'+i).innerHTML = data[i].Starting_Date.substring(0, 10) + "/" + data[i].End_Date.substring(0,10);
            document.getElementById('tit'+i).innerHTML = (data[i].Name.length > eventLength) ? data[i].Name.substring(0,eventLength) + ' [...]' : data[i].Name;
            document.getElementById('desc'+i).innerHTML = (data[i].Place.length > descLength) ? data[i].Place.substring(0,descLength) + ' [...]' : data[i].Place;
            document.getElementById('aimg'+i).src = (data[i].Picture != "") ? path2 + data[i].Picture : "http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png";
-           document.getElementById('tit'+i).href = 'single_event.html?id='+data[i].Id;
+           document.getElementById('tit'+i).href = 'single_event.html?id='+data[i].id;
+           document.getElementById('st'+i).style = '';
        }
      }
     }
