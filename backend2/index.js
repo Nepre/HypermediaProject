@@ -359,7 +359,7 @@ app.get('/books/theme', function(req, res){ //localhost:1337/books/theme
   });
 });
 
-app.get('/single_book/:id', function(req, res){ //localhost:1337/books/id
+app.get('/single_book/:id', function(req, res){
 
   connection.query("SELECT b.title, b.genre, a.Name, b.date, b.description, a.Biography, b.price, b.image FROM `books` b join `authors` a where b.authorID = a.id and b.id = " + req.params.id, function(error, rows, fields){
     if(!!error){
@@ -376,6 +376,18 @@ app.get('/single_book/:id', function(req, res){ //localhost:1337/books/id
   });
 
 });
+
+app.get('/single_book/:id/related', function(req, res){
+
+  var qr = "SELECT b.id id1, b.authorID ath1, b.genre gen1, b2.id id2, b2.image, b2.authorID auth2, b2.genre gen2 FROM `books` b join `books` b2 WHERE (b.authorID = b2.authorID or b.genre = b2.genre) and b.id = " + req.params.id + " and b.id != b2.id";
+
+  connection.query(qr , function(error, rows, fields){
+    //console.log(rows);
+    res.writeHead(200, { 'Content-Type': 'application/json'});
+    res.end(JSON.stringify(rows));
+  });
+
+})
 
 
 // POST BOOKS

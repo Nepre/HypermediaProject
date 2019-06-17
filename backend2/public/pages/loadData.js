@@ -87,6 +87,23 @@ function single_book(){
     }
   });
 
+  $.ajax({
+    type: 'GET',
+    url: 'http://localhost:1337/single_book/'+window.location.href.split("?")[1].split("=")[1]+"/related",
+    success: function(data){
+
+      for (var i = 0; i < 3; i++) {
+        if(i >= data.length){
+          document.getElementById('st'+i).style = "display: none;";
+        }
+        else{
+          document.getElementById('rel'+i).src = path+data[i].image;
+          document.getElementById('l'+i).href = 'single_book.html?id='+data[i].id2;
+        }
+      }
+
+    }
+  });
 }
 
 
