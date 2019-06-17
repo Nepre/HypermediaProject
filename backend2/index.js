@@ -361,7 +361,7 @@ app.get('/books/theme', function(req, res){ //localhost:1337/books/theme
 
 app.get('/single_book/:id', function(req, res){ //localhost:1337/books/id
 
-  connection.query("select * from `books` where id =" + req.params.id, function(error, rows, fields){
+  connection.query("SELECT b.title, b.genre, a.Name, b.date, b.description, a.Biography, b.price, b.image FROM `books` b join `authors` a where b.authorID = a.id and b.id = " + req.params.id, function(error, rows, fields){
     if(!!error){
       console.log('Error: '+error.message);
     }else{
@@ -523,6 +523,8 @@ app.post('/register', async function(req, res) { //We need to put a query within
 
   if(pwd != pwd2){
     res.redirect('register.html?WP');
+    res.end();
+    return;
   }
 
   connection.query("select count(id) as cn from users where Email ='" + email + "'", function (error, rows, result) {
@@ -535,20 +537,25 @@ app.post('/register', async function(req, res) { //We need to put a query within
           if(!!error){
             console.log('Error: ' + error.message);
             res.redirect('/');
+            res.end();
+            return;
           }else{
             console.log(email  + " inserted correctly.");
             res.redirect('login.html?SC=' + email);
-
+            res.end();
+            return;
           }
 
         });
       }
       else{ //We would create a token but as it is now we will mantain it with a simple cookie with the username. This would indeed be easily hackable.
         res.redirect('register.html?UT');
+        res.end();
+        return;
       }
 
     }
-    res.end();
+
   })
 });
 

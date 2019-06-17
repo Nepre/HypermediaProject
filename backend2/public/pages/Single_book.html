@@ -7,32 +7,43 @@
     <title>POLIBOOKS Bookstore</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> <!-- THIS IS NEEDED FOR THE ICONS -->
     <script type="text/javascript"src="loadData.js"></script>
 </head>
 <body>
-  <header>
-  <div class="bg-white">
-    <div class="container">
-      <div class="row pt-3 pb-3">
-        <div class="col">
-          <a href="index.html"><img src="images/LOGOTEXT.png" alt="Our cool logo"  width="100%"></a>
-                </div>
-        <div class="col">
-          <h6 class="text-center"><a class="text-dark" href="books.html">BOOKS</a></h6>
-        </div>
-        <div class="col">
-          <h6 class="text-center"><a class="text-dark" href="authors.html">AUTHORS</a></h6>
-        </div>
-        <div class="col">
-          <h6 class="text-center"><a class="text-dark" href="events.html">EVENTS</a></h6>
-        </div>
-        <div class="col">
-          <h6 class="text-center"><a class="text-dark" href="login.html">LOGIN</a>/<a class="text-dark" href="register.html">REGISTER</a></h6>
+
+    <header>
+    <div class="bg-white">
+      <div class="container">
+        <div class="row pt-3 pb-3">
+          <div class="col">
+            <a href="index.html"><img src="images/LOGOTEXT.png" alt="Our cool logo"  width="100%"></a>
+                  </div>
+          <div class="col">
+            <h6 class="text-center"><a class="text-dark" href="books.html">BOOKS</a></h6>
+          </div>
+          <div class="col">
+            <h6 class="text-center"><a class="text-dark" href="authors.html">AUTHORS</a></h6>
+          </div>
+          <div class="col">
+            <h6 class="text-center"><a class="text-dark" href="events.html">EVENTS</a></h6>
+          </div>
+          <div id="logreg" class="col" style="">
+            <h6 class="text-center"><a class="text-dark" href="login.html">LOGIN</a>/<a class="text-dark" href="register.html">REGISTER</a></h6>
+          </div>
+          <div id="prof" class="col" style="white-space: nowrap; display:none"> <!-- This prevents the icon from going down -->
+            <h6 class="text-center" ><a class="text-dark" href="login.html">PROFILE <i class="material-icons">person</i></a></h6>
+          </div>
+          <div id="cart" class="col" style="white-space: nowrap; display:none;">
+            <h6 class="text-center" style=""><a class="text-dark" href="register.html">CART <i class="material-icons">shopping_cart</i></a></h6>
+          </div>
+          <div id="logout" class="col" style="white-space: nowrap; display:none;">
+            <h6 class="text-center" style=""><a class="text-dark" href="index.html?LO">LOGOUT</a></h6>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  </header>
+    </header>
     <hr>
     <main>
 
@@ -41,11 +52,12 @@
         <div class="row">
 
         <div class="col-lg-4">
+          <br><br>
           <div class="row">
             <aside class="col-lg-12">
               <section class="col-sm-12">
                 <div class="text-center">
-                  <img src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" width="50%" alt="No book yet">
+                  <img id="img" src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" width="50%" alt="No book yet">
                   <br><br><br><br>
                 </div>
               </section>
@@ -60,7 +72,7 @@
             <div class="col-md-4 bg-white py-3"> <!-- book -->
               <div class="row">
                 <div class="col">
-                  <img src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" width="70%" alt="No book yet">
+                  <img id="rel0" src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" width="70%" alt="No book yet">
                 </div>
 
               </div>
@@ -68,7 +80,7 @@
             <div class="col-md-4 bg-white py-3"> <!-- book -->
               <div class="row">
                 <div class="col">
-                  <img src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" width="70%" alt="No book yet">
+                  <img id="rel1" src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" width="70%" alt="No book yet">
                 </div>
 
               </div>
@@ -76,7 +88,7 @@
             <div class="col-md-4 bg-white py-3"> <!-- book -->
               <div class="row">
                 <div class="col">
-                  <img src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" width="70%" alt="No book yet">
+                  <img id="rel2" src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" width="70%" alt="No book yet">
                 </div>
               </div>
             </div>
@@ -90,23 +102,24 @@
 
         <section class="col-lg-8">
 
-          <div class="text-center">
-          <h5 class="text-dark">Title</h5>
-          </div>
-          <br>
+          <h5 class="text-dark" id="title">Title</h5>
           <ul class="list-unstyled">
-            <li>Genre</li>
-            <li>Author</li>
-            <li>Release Date</li>
-            <li>Price</li>
+
+            <li><h6>Genre:</h6> <span id="genre"></span> </li><br>
+            <li><h6>Author:</h6> <span id="author"></span> </li><br>
+            <li><h6>Release Date:</h6> <span id="date"></span> </li><br>
+            <li><h6>Price:</h6> <span id="price"></span> </li><br>
+
           </ul>
-          <div class="text-center">
-          <h6 class="text-dark">Description</h6>
+          <ul class="list-unstyled"><li><h6><p>Description of the book</p></h6></li></ul>
+
+          <p id="desc">Description</p>
           <br>
-          </div>
-          <ul class="list-unstyled"><li><p>Description of the author</p></li></ul>
+          <ul class="list-unstyled"><li><h6><p>Description of the author</p></h6></li></ul>
+
+          <p id="descAuth"></p>
           <div class="text-center">
-          <h6 class="text-dark">Reviews</h6>
+          <h6 class="text-dark">Comments</h6>
           </div>
 
 
@@ -144,7 +157,5 @@
         </div>
       </div>
     </footer>
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>

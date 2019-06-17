@@ -67,6 +67,26 @@ window.onload = function loginChecker() {
 
 function single_book(){
 
+  $.ajax({
+    type: 'GET',
+    url: 'http://localhost:1337/single_book/'+window.location.href.split("?")[1].split("=")[1],
+    success: function(data){
+      console.log(data);
+      let dat = data[0];
+
+      document.getElementById('title').innerHTML = dat.title;
+      document.getElementById('genre').innerHTML = dat.genre;
+      document.getElementById('author').innerHTML = dat.Name;
+      document.getElementById('date').innerHTML = dat.date;
+      document.getElementById('desc').innerHTML = dat.description;
+      document.getElementById('descAuth').innerHTML = dat.Biography;
+      document.getElementById('price').innerHTML = dat.price+"€";
+      document.getElementById('img').src = path + dat.image;
+
+
+    }
+  });
+
 }
 
 
