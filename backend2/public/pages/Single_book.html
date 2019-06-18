@@ -122,6 +122,11 @@
           <ul class="list-unstyled"><li><h6><p>Description of the author</p></h6></li></ul>
 
           <p id="descAuth"></p>
+          <form id="butBuy" style="display:none;" action="cart.html" method="get">
+            <p class="text-right">
+              <button id="sub" type="submit" value="submit" name="b" class="btn-buy" >Buy Tickets</button>
+            </p>
+          </form>
           <br>
           <hr>
 
@@ -147,6 +152,7 @@
     <script type="text/javascript">
       single_book(); //execute on load
       submitCommentButton();
+      buttonBuy();
     </script>
     </main>
     <footer>

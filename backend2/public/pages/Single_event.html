@@ -56,46 +56,12 @@
           <div class="row">
             <aside class="col-lg-12">
               <section class="col-sm-12">
+                <br><br><br>
                 <div class="text-center">
                   <img id="img" src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" alt="No image yet" width="100%" >
                   <br><br><br><br>
                 </div>
               </section>
-            </aside>
-            <aside class="col-lg-12">
-              <div class="text-center">
-              <h5>Related Events</h5>
-            </div>
-              <div class="bg-white"> <!-- Books -->
-        <div class="container">
-          <div class="row mx-2">
-            <div class="col-md-4 bg-white py-3"> <!-- book -->
-              <div class="row">
-                <div class="col">
-                  <img src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" alt="No image yet" width="100%">
-                </div>
-
-              </div>
-            </div>
-            <div class="col-md-4 bg-white py-3"> <!-- book -->
-              <div class="row">
-                <div class="col">
-                  <img src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" alt="No image yet" width="100%">
-                </div>
-
-              </div>
-            </div>
-            <div class="col-md-4 bg-white py-3"> <!-- book -->
-              <div class="row">
-                <div class="col">
-                  <img src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" alt="No image yet" width="100%">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
             </aside>
           </div>
         </div>
@@ -111,9 +77,13 @@
             <li><h6>Place:</h6> <span id="place"></span> </li><br>
             <li><h6>Price:</h6> <span id="price"></span> </li><br>
           </ul>
-          <p class="text-right">
-            <button type="submit" value="submit" name="button" class="btn-buy" id="butBuy" style="display:none;" >Buy Tickets</button>
-          </p>
+
+            <form id="butBuy" style="display:none;" action="cart.html" method="get">
+              <p class="text-right">
+                <button id="sub" type="submit" value="submit" name="e" class="btn-buy" >Buy Tickets</button>
+              </p>
+            </form>
+
         </section>
       </div>
     </div>

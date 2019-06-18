@@ -99,10 +99,10 @@ app.get('/events/:id', function(req, res){
   });
 });
 
-app.get('/events/january', function(req, res){
+app.get('/events/month/january/', function(req, res){
   //about mysql
 
-  connection.query("SELECT  month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) = 1 or month(End_Date) = 1", function(error, rows, fields){
+  connection.query("SELECT month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) = 1 or month(End_Date) = 1", function(error, rows, fields){
     if(!!error){
       console.log('Error: '+error.message);
     }else{
@@ -117,10 +117,10 @@ app.get('/events/january', function(req, res){
   });
 });
 
-app.get('/events/february', function(req, res){
+app.get('/events/month/february', function(req, res){
   //about mysql
 
-  connection.query("SELECT  month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) = 2 or month(End_Date) = 2 ", function(error, rows, fields){
+  connection.query("SELECT month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) = 2 or month(End_Date) = 2 ", function(error, rows, fields){
     if(!!error){
       console.log('Error: '+error.message);
     }else{
@@ -135,7 +135,7 @@ app.get('/events/february', function(req, res){
   });
 });
 
-app.get('/events/march', function(req, res){
+app.get('/events/month/march', function(req, res){
   //about mysql
 
   connection.query("SELECT  month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) =3  or month(End_Date) =3 ", function(error, rows, fields){
@@ -153,7 +153,7 @@ app.get('/events/march', function(req, res){
   });
 });
 
-app.get('/events/april', function(req, res){ //localhost:3000/books
+app.get('/events/month/april', function(req, res){ //localhost:3000/books
   //about mysql
 
   connection.query("SELECT  month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) = 4 or month(End_Date) = 4 ", function(error, rows, fields){
@@ -171,7 +171,7 @@ app.get('/events/april', function(req, res){ //localhost:3000/books
   });
 });
 
-app.get('/events/may', function(req, res){ //localhost:3000/books
+app.get('/events/month/may', function(req, res){ //localhost:3000/books
   //about mysql
 
   connection.query("SELECT  month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) = 5 or month(End_Date) = 5 ", function(error, rows, fields){
@@ -189,7 +189,7 @@ app.get('/events/may', function(req, res){ //localhost:3000/books
   });
 });
 
-app.get('/events/june', function(req, res){ //localhost:3000/books
+app.get('/events/month/june', function(req, res){ //localhost:3000/books
   //about mysql
 
   connection.query("SELECT  month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) = 6 or month(End_Date) = 6 ", function(error, rows, fields){
@@ -207,7 +207,7 @@ app.get('/events/june', function(req, res){ //localhost:3000/books
   });
 });
 
-app.get('/events/july', function(req, res){ //localhost:3000/books
+app.get('/events/month/july', function(req, res){ //localhost:3000/books
   //about mysql
 
   connection.query("SELECT  month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) = 7 or month(End_Date) = 7 ", function(error, rows, fields){
@@ -225,7 +225,7 @@ app.get('/events/july', function(req, res){ //localhost:3000/books
   });
 });
 
-app.get('/events/august', function(req, res){ //localhost:3000/books
+app.get('/events/month/august', function(req, res){ //localhost:3000/books
   //about mysql
 
   connection.query("SELECT  month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) = 8 or month(End_Date) =8 ", function(error, rows, fields){
@@ -243,7 +243,7 @@ app.get('/events/august', function(req, res){ //localhost:3000/books
   });
 });
 
-app.get('/events/september', function(req, res){ //localhost:3000/books
+app.get('/events/month/september', function(req, res){ //localhost:3000/books
   //about mysql
 
   connection.query("SELECT  month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) = 9 or month(End_Date) = 9 ", function(error, rows, fields){
@@ -261,7 +261,7 @@ app.get('/events/september', function(req, res){ //localhost:3000/books
   });
 });
 
-app.get('/events/october', function(req, res){ //localhost:3000/books
+app.get('/events/month/october', function(req, res){ //localhost:3000/books
   //about mysql
 
   connection.query("SELECT  month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) = 10 or month(End_Date) = 10 ", function(error, rows, fields){
@@ -279,7 +279,7 @@ app.get('/events/october', function(req, res){ //localhost:3000/books
   });
 });
 
-app.get('/events/november', function(req, res){ //localhost:3000/books
+app.get('/events/month/november', function(req, res){ //localhost:3000/books
   //about mysql
 
   connection.query("SELECT  month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) = 11 or month(End_Date) = 11 ", function(error, rows, fields){
@@ -297,7 +297,7 @@ app.get('/events/november', function(req, res){ //localhost:3000/books
   });
 });
 
-app.get('/events/december', function(req, res){ //localhost:3000/books
+app.get('/events/month/december', function(req, res){ //localhost:3000/books
   //about mysql
 
   connection.query("SELECT  month(Starting_Date), month(End_Date) id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where month(Starting_Date) = 12 or month(End_Date) =12 ", function(error, rows, fields){

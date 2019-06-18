@@ -47,106 +47,19 @@
     <hr>
     <main>
 
+    <div class="container">
+      <h1>Cart</h1>
+      <hr>
+      <br>
+      <span id="objs" >
 
-      <div class="container">
-        <div class="row">
+      </span>
 
-        <div class="col-lg-4">
-          <br><br>
-          <div class="row">
-            <aside class="col-lg-12">
-              <section class="col-sm-12">
-                <div class="text-center">
-                  <img id="img" src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" width="50%" alt="No book yet">
-                  <br><br><br><br>
-                </div>
-              </section>
-            </aside>
-            <aside class="col-lg-12">
-              <div class="text-center">
-              <h5>Related Books</h5>
-            </div>
-              <div class="bg-white"> <!-- Books -->
-        <div class="container">
-          <div class="row mx-2">
-            <div class="col-md-4 bg-white py-3"> <!-- book -->
-              <div class="row">
-                <div id="st0" class="col" style="">
-                  <a id="l0" href="#"><img id="rel0" src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" width="70%" alt="No book yet"></a>
-                </div>
-
-              </div>
-            </div>
-            <div class="col-md-4 bg-white py-3"> <!-- book -->
-              <div class="row">
-                <div id="st1" style="" class="col">
-                  <a id="l1" href="#">
-                  <img id="rel1" src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" width="70%" alt="No book yet">
-                </a>
-                </div>
-
-              </div>
-            </div>
-            <div class="col-md-4 bg-white py-3"> <!-- book -->
-              <div class="row">
-                <div id="st2" style="" class="col">
-                  <a id="l2" href="#">
-                    <img id="rel2" src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" width="70%" alt="No book yet">
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-            </aside>
-          </div>
-        </div>
-
-        <section class="col-lg-8">
-
-          <h5 class="text-dark" id="title">Title</h5>
-          <ul class="list-unstyled">
-
-            <li><h6>Genre:</h6> <span id="genre"></span> </li><br>
-            <li><h6>Author:</h6> <span id="author"></span> </li><br>
-            <li><h6>Release Date:</h6> <span id="date"></span> </li><br>
-            <li><h6>Price:</h6> <span id="price"></span> </li><br>
-
-          </ul>
-          <ul class="list-unstyled"><li><h6><p>Description of the book</p></h6></li></ul>
-
-          <p id="desc">Description</p>
-          <br>
-          <ul class="list-unstyled"><li><h6><p>Description of the author</p></h6></li></ul>
-
-          <p id="descAuth"></p>
-          <br>
-          <hr>
-
-          <h5>Comments</h5>
-          <form id="formID" class="" action="" method="post" style="display: none;">
-            <label for="exampleFormControlTextarea1">Have you read this book?</label>
-            <textarea class="form-control" id="comment" name="comment" rows="3" placeholder="Tell us what you think!"></textarea>
-            <input type="hidden" name="id" id="id" value="" />
-            <button type="submit" value="submit" name="button" class="btn btn-default">Submit your comment</button></p>
-          </form>
-
-          <div class="container" id="comments">
-          <h6></h6>
-          <p></p>
-          <br>
-          </div>
-
-
-        </section>
-
-      </div>
+      <br><br><br>
     </div>
+
     <script type="text/javascript">
-      single_book(); //execute on load
-      submitCommentButton();
+      cart();
     </script>
     </main>
     <footer>

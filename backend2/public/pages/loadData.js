@@ -90,6 +90,7 @@ function buttonBuy() {
   }
   if(login){
     document.getElementById('butBuy').style = "";
+    document.getElementById('sub').value = window.location.href.split("?")[1].split("=")[1];
   }
 }
 
@@ -431,40 +432,40 @@ function reloadEventsFilter(){
   //console.log(document.querySelector('input[name="filters"]:checked').value);
   switch (document.querySelector('input[name="filters"]:checked').value) {
     case 'JANUARY':
-      urla = 'http://localhost:1337/events/january';
+      urla = 'http://localhost:1337/events/month/january';
       break;
     case 'FEBRUARY':
-      urla = 'http://localhost:1337/events/february';
+      urla = 'http://localhost:1337/events/month/february';
       break;
     case 'MARCH':
-      urla = 'http://localhost:1337/events/march';
+      urla = 'http://localhost:1337/events/month/march';
       break;
     case 'APRIL':
-      urla = 'http://localhost:1337/events/april';
+      urla = 'http://localhost:1337/events/month/april';
       break;
       case 'MAY':
-        urla = 'http://localhost:1337/events/may';
+        urla = 'http://localhost:1337/events/month/may';
         break;
       case 'JUNE':
-        urla = 'http://localhost:1337/events/june';
+        urla = 'http://localhost:1337/events/month/june';
         break;
       case 'JULY':
-        urla = 'http://localhost:1337/events/july';
+        urla = 'http://localhost:1337/events/month/july';
         break;
       case 'AUGUST':
-        urla = 'http://localhost:1337/events/august';
+        urla = 'http://localhost:1337/events/month/august';
         break;
       case 'SEPTEMBER':
-        urla = 'http://localhost:1337/events/september';
+        urla = 'http://localhost:1337/events/month/september';
         break;
       case 'OCTOBER':
-        urla = 'http://localhost:1337/events/october';
+        urla = 'http://localhost:1337/events/month/october';
         break;
       case 'NOVEMBER':
-        urla = 'http://localhost:1337/events/november';
+        urla = 'http://localhost:1337/events/month/november';
         break;
       case 'DECEMBER':
-        urla = 'http://localhost:1337/events/december';
+        urla = 'http://localhost:1337/events/month/december';
         break;
     default:
     urla = 'http://localhost:1337/events';
@@ -474,6 +475,7 @@ function reloadEventsFilter(){
     url: urla,
     success: function(data){
       console.log(data);
+      console.log(urla);
       if (data.length == 0) {
         document.getElementById('noEvents').style = '';
       }
@@ -495,5 +497,127 @@ function reloadEventsFilter(){
      }
     }
   });
+
+}
+
+
+//CART.HTML
+
+function cart() {
+
+  var cookie, c;
+  var b = 0;
+  var e = 0;
+  var books = [];
+  var events = [];
+  var insert = false;
+
+  cookies = document.cookie.split(';');
+
+  for (var i=0; i < cookies.length; i++) {
+    c = cookies[i].split('=');
+
+    if(window.location.href.split("?")[1] != undefined && (window.location.href.split("?")[1].split("=")[0] == "b" || window.location.href.split("?")[1].split("=")[0] == "e")  && c[1] == window.location.href.split("?")[1].split("=")[1]){
+      insert = true;
+    }
+
+    if(window.location.href.split("?")[1] != undefined && window.location.href.split("?")[1].split("=")[0] == "dele" && c[1] == window.location.href.split("?")[1].split("=")[1]){
+      setCookie( c[0], '', -1);
+      window.location.replace("http://localhost:1337/cart.html");
+    }
+
+    if(window.location.href.split("?")[1] != undefined && window.location.href.split("?")[1].split("=")[0] == "delb" && c[1] == window.location.href.split("?")[1].split("=")[1]){
+      setCookie( c[0], '', -1);
+      window.location.replace("http://localhost:1337/cart.html");
+    }
+
+    if (c[0][1] == 'b') {
+      books.push(c[1]);
+      document.getElementById('objs').innerHTML += `
+      <span id="b` + b + `">
+        <h3 id="titb` + b + `">Object 1</h3>
+        <div class="row">
+          <div class="col-md-4">
+            <a id="aimgb`+ b +`" href="single_book.html">
+              <img id="imgb`+ b +`" src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" style="width:5em; height:6xem;" alt="No book yet">
+            </a>
+          </div>
+          <div class="col-md-2">
+            <h6>Price: <span id="priceb`+ b +`">6€</span> </h6>
+            <h6>Quantity: <input id="cuantb`+ b +`" type="number" name="quantity" min="1" max="51" value="1"></h6>
+            <h6><a id="delb`+ b +`" href="#"><i class="material-icons">delete</i></a></h6>
+
+          </div>
+          <div class="col-md-6">
+          </div>
+        </div>
+      </span>`;
+      b++;
+    }
+    if (c[0][1] == 'e') {
+      events.push(c[1]);
+      document.getElementById('objs').innerHTML += `
+      <span id="e` + e + `">
+        <h3 id="tite` + e + `">Object 1</h3>
+        <div class="row">
+          <div class="col-md-4">
+            <a id="aimge`+ e +`" href="single_event.html">
+              <img id="imge`+ e +`" src="https://ibf.org/site_assets/img/placeholder-book-cover-default.png" style="width:5em; height:6xem;" alt="No book yet">
+            </a>
+          </div>
+          <div class="col-md-2">
+            <h6>Price: <span id="pricee`+ e +`">6€</span> </h6>
+            <h6>Quantity: <input id="cuante`+ e +`" type="number" name="quantity" min="1" max="51" value="1"></h6>
+            <h6><a id="dele`+ e +`" href="#"><i class="material-icons">delete</i></a></h6>
+          </div>
+          <div class="col-md-6">
+          </div>
+        </div>
+      </span>`;
+      e++;
+    }
+  }
+
+  if(window.location.href.split("?")[1] != undefined && window.location.href.split("?")[1].split("=")[0] == 'e' && !insert){
+    setCookie("e"+e, window.location.href.split("?")[1].split("=")[1], 1);
+    window.location.replace("http://localhost:1337/cart.html");
+  }
+
+  if(window.location.href.split("?")[1] != undefined && window.location.href.split("?")[1].split("=")[0] == 'b' && !insert){
+    setCookie("b"+b, window.location.href.split("?")[1].split("=")[1], 1);
+    window.location.replace("http://localhost:1337/cart.html");
+
+  }
+
+  for (var i = 0; i < e; i++) {
+    let num = i;
+    $.ajax({
+      type: 'GET',
+      url: 'http://localhost:1337/events/'+events[i],
+      success: function(data){
+        document.getElementById('tite'+num).innerHTML = data[0].Name;
+        document.getElementById('aimge'+num).href = 'single_event.html?id='+events[num];
+        document.getElementById('imge'+num).src = path2 + data[0].Picture;
+        document.getElementById('pricee'+num).innerHTML = data[0].Price+"€";
+        document.getElementById('dele'+num).href = "http://localhost:1337/cart.html?dele=" + events[num];
+      }
+    });
+  }
+
+  for (var i = 0; i < b; i++) {
+    let num = i;
+    $.ajax({
+      type: 'GET',
+      url: 'http://localhost:1337/single_book/'+books[i],
+      success: function(data){
+        console.log(data);
+        document.getElementById('titb'+num).innerHTML = data[0].title;
+        document.getElementById('aimgb'+num).href = 'single_event.html?id='+books[num];
+        document.getElementById('imgb'+num).src = path + data[0].image;
+        document.getElementById('priceb'+num).innerHTML = data[0].price+"€";
+        document.getElementById('delb'+num).href = "http://localhost:1337/cart.html?delb=" + books[num];
+      }
+    });
+  }
 
 }
