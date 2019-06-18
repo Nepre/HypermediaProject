@@ -51,15 +51,24 @@
       <h1>Cart</h1>
       <hr>
       <br>
+
+      <h4 id="cartEmpty" style="">The cart is empty!</h4>
+
       <span id="objs" >
 
       </span>
+      <br><br>
+      <h5 class="text-right">Total: <span id="total">0</span>€ </h5>
+      <p class="text-right">
+        <button type="submit" value="submit" name="b" class="btn-buy" ><h3>Buy</h3></button>
+      </p>
 
       <br><br><br>
     </div>
 
     <script type="text/javascript">
       cart();
+      price();
     </script>
     </main>
     <footer>

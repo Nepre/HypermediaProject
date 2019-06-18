@@ -568,7 +568,7 @@ app.get('/authors/:id', function(req, res){ //localhost:1337/books/theme
 
 
 //GET BOOKS FROM AUTHOR
-app.get('/authors/books/:id', function(req, res){ //localhost:1337/books/theme
+app.get('/authors/books/:id', function(req, res){
 //about mysql
 
   connection.query("select * from `authors`, `books` where authors.id = books.authorID and authors.id =" + req.params.id, function(error, rows, fields){
@@ -611,6 +611,19 @@ app.post('/login', function(req, res){
 app.get('/id/:email', function(req, res){
 
   connection.query("select id, email from users where email = '" + req.params.email + "'", function (error, rows, result) {
+    if(!!error){
+      console.log('Error: ' + error.message);
+    }else{
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+    res.end();
+  })
+})
+
+app.get('/user/:email', function(req, res){
+
+  connection.query("select id, email, name, surname from users where email = '" + req.params.email + "'", function (error, rows, result) {
     if(!!error){
       console.log('Error: ' + error.message);
     }else{

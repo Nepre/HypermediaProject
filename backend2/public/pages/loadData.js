@@ -62,6 +62,9 @@ window.onload = function loginChecker() {
 
   }
   else {
+    if(window.location.pathname == '/cart.html' || window.location.pathname == '/profile.html'){
+      window.location.href = "http://localhost:1337/index.html";
+    }
     document.getElementById('logreg').style = "";
     document.getElementById('prof').style = "white-space: nowrap; display:none;";
     document.getElementById('cart').style = "white-space: nowrap; display:none;";
@@ -263,7 +266,35 @@ function reloadBooksFilter(){
 
 }
 function single_author(){
+  $.ajax({
+    type: 'GET',
+    url: 'http://localhost:1337/authors/'+window.location.href.split("?")[1].split("=")[1],
+    success: function(data){
+      console.log(data);
+      let dat = data[0];
 
+      document.getElementById('Birth').innerHTML = dat.Birthday.substring(0,10);
+      document.getElementById('Nat').innerHTML = dat.Nationailty;
+      document.getElementById('bio').innerHTML = dat.Biography;
+      document.getElementById('img').src = path3 + dat.image;
+
+
+    }
+  });
+
+  $.ajax({
+    type: 'GET',
+    url: 'http://localhost:1337/authors/books/'+window.location.href.split("?")[1].split("=")[1],
+    success: function(data){
+      console.log(data);
+      for (var i = 0; i < data.length; i++) {
+        document.getElementById('books').innerHTML += `
+        <a href="http://localhost:1337/single_book.html?id=`+data[i].id+`">- `+data[i].title+`</a><br><br>
+      `;
+      }
+
+    }
+  });
 }
 
 
@@ -511,11 +542,13 @@ function cart() {
   var books = [];
   var events = [];
   var insert = false;
+  var full = false;
 
   cookies = document.cookie.split(';');
 
   for (var i=0; i < cookies.length; i++) {
     c = cookies[i].split('=');
+    console.log(c);
 
     if(window.location.href.split("?")[1] != undefined && (window.location.href.split("?")[1].split("=")[0] == "b" || window.location.href.split("?")[1].split("=")[0] == "e")  && c[1] == window.location.href.split("?")[1].split("=")[1]){
       insert = true;
@@ -533,6 +566,9 @@ function cart() {
 
     if (c[0][1] == 'b') {
       books.push(c[1]);
+      full = true;
+      document.getElementById('cartEmpty').style = "display:none;";
+
       document.getElementById('objs').innerHTML += `
       <span id="b` + b + `">
         <h3 id="titb` + b + `">Object 1</h3>
@@ -543,8 +579,8 @@ function cart() {
             </a>
           </div>
           <div class="col-md-2">
-            <h6>Price: <span id="priceb`+ b +`">6€</span> </h6>
-            <h6>Quantity: <input id="cuantb`+ b +`" type="number" name="quantity" min="1" max="51" value="1"></h6>
+            <h6>Price: <span id="priceb`+ b +`">6</span>€ </h6>
+            <h6>Quantity: <input id="cuantb`+ b +`" type="number" name="quantity" min="1" max="51" value="1" onchange="price();"></h6>
             <h6><a id="delb`+ b +`" href="#"><i class="material-icons">delete</i></a></h6>
 
           </div>
@@ -556,6 +592,9 @@ function cart() {
     }
     if (c[0][1] == 'e') {
       events.push(c[1]);
+      full = true;
+      document.getElementById('cartEmpty').style = "display:none;";
+
       document.getElementById('objs').innerHTML += `
       <span id="e` + e + `">
         <h3 id="tite` + e + `">Object 1</h3>
@@ -566,8 +605,8 @@ function cart() {
             </a>
           </div>
           <div class="col-md-2">
-            <h6>Price: <span id="pricee`+ e +`">6€</span> </h6>
-            <h6>Quantity: <input id="cuante`+ e +`" type="number" name="quantity" min="1" max="51" value="1"></h6>
+            <h6>Price: <span id="pricee`+ e +`">6</span>€ </h6>
+            <h6>Quantity: <input id="cuante`+ e +`" type="number" name="quantity" min="1" max="51" value="1" onchange="price();"></h6>
             <h6><a id="dele`+ e +`" href="#"><i class="material-icons">delete</i></a></h6>
           </div>
           <div class="col-md-6">
@@ -577,6 +616,8 @@ function cart() {
       e++;
     }
   }
+  console.log(full);
+
 
   if(window.location.href.split("?")[1] != undefined && window.location.href.split("?")[1].split("=")[0] == 'e' && !insert){
     setCookie("e"+e, window.location.href.split("?")[1].split("=")[1], 1);
@@ -598,7 +639,7 @@ function cart() {
         document.getElementById('tite'+num).innerHTML = data[0].Name;
         document.getElementById('aimge'+num).href = 'single_event.html?id='+events[num];
         document.getElementById('imge'+num).src = path2 + data[0].Picture;
-        document.getElementById('pricee'+num).innerHTML = data[0].Price+"€";
+        document.getElementById('pricee'+num).innerHTML = data[0].Price;
         document.getElementById('dele'+num).href = "http://localhost:1337/cart.html?dele=" + events[num];
       }
     });
@@ -614,10 +655,63 @@ function cart() {
         document.getElementById('titb'+num).innerHTML = data[0].title;
         document.getElementById('aimgb'+num).href = 'single_event.html?id='+books[num];
         document.getElementById('imgb'+num).src = path + data[0].image;
-        document.getElementById('priceb'+num).innerHTML = data[0].price+"€";
+        document.getElementById('priceb'+num).innerHTML = data[0].price;
         document.getElementById('delb'+num).href = "http://localhost:1337/cart.html?delb=" + books[num];
       }
     });
   }
 
+}
+
+function profile(){
+  var cookie, c;
+  var name = 'login';
+  var usu;
+
+  cookies = document.cookie.split(';');
+
+  for (var i=0; i < cookies.length; i++) {
+      c = cookies[i].split('=');
+      if (c[0] == name) {
+
+          usu = c[1];
+          break;
+      }
+  }
+
+  $.ajax({
+    type: 'GET',
+    url: 'http://localhost:1337/user/'+usu,
+    success: function(data){
+      console.log(data);
+      document.getElementById('name').innerHTML = data[0].name;
+      document.getElementById('surname').innerHTML = data[0].surname;
+      document.getElementById('email').innerHTML = data[0].email;
+    }
+  });
+}
+
+function price() {
+  var objs = document.getElementById('objs');
+  var total = 0;
+  var b, e;
+  b = e = 0;
+  for (var i=0; i < cookies.length; i++) {
+    c = cookies[i].split('=');
+
+    if (c[0][1] == 'b') {
+      b++;
+    }
+    if (c[0][1] == 'e') {
+      e++;
+    }
+  }
+  for (var i = 0; i < b; i++) {
+    total += parseInt(document.getElementById('priceb'+i).innerHTML) * parseInt(document.getElementById('cuantb'+i).value);
+  }
+  for (var i = 0; i < e; i++) {
+    total += parseInt(document.getElementById('pricee'+i).innerHTML) * parseInt(document.getElementById('cuante'+i).value);
+  }
+
+  document.getElementById('total').innerHTML = total;
 }
