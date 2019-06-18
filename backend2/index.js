@@ -81,6 +81,24 @@ app.get('/events', function(req, res){
   });
 });
 
+app.get('/events/:id', function(req, res){
+  //about mysql
+
+  connection.query("SELECT id, Name, Place, Starting_Date, End_Date, Price, Picture FROM `events` where id =" + req.params.id, function(error, rows, fields){
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+  });
+});
+
 app.get('/events/january', function(req, res){
   //about mysql
 

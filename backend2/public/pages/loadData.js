@@ -355,10 +355,42 @@ function index(){
       }
     }
   });
+
+  $.ajax({
+    type: 'GET',
+    url: 'http://localhost:1337/NextEvents',
+    success: function(data){
+      console.log(data);
+      for (var i = 0; i < 2; i++) {
+        console.log(i);
+        document.getElementById('ei'+i).src = path2 + data[i].Picture;
+        document.getElementById('e'+i).innerHTML = data[i].Name;
+        document.getElementById('desce'+i).innerHTML = data[i].Place;
+        document.getElementById('li'+i).href = 'http://localhost:1337/single_event.html?id='+data[i].id;
+        document.getElementById('lit'+i).href = 'http://localhost:1337/single_event.html?id='+data[i].id;
+
+
+      }
+    }
+  });
 }
 
 
 function single_event(){
+
+  $.ajax({
+    type: 'GET',
+    url: 'http://localhost:1337/events/'+window.location.href.split("?")[1].split("=")[1],
+    success: function(data){
+      console.log(data);
+      let dat = data[0];
+      document.getElementById('title').innerHTML = dat.Name;
+      document.getElementById('date').innerHTML = dat.Starting_Date.substring(0,10) + " / " + dat.End_Date.substring(0, 10);
+      document.getElementById('place').innerHTML = dat.Place;
+      document.getElementById('price').innerHTML = dat.Price + "€";
+      document.getElementById('img').src = path2 + dat.Picture;
+    }
+  });
 
 }
 
