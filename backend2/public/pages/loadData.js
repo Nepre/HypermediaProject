@@ -270,11 +270,11 @@ function single_author(){
     type: 'GET',
     url: 'http://localhost:1337/authors/'+window.location.href.split("?")[1].split("=")[1],
     success: function(data){
-      console.log(data);
+      //console.log('lapin malin',data[0]);
       let dat = data[0];
 
       document.getElementById('Birth').innerHTML = dat.Birthday.substring(0,10);
-      document.getElementById('Nat').innerHTML = dat.Nationailty;
+      document.getElementById('Nat').innerHTML = dat.Nationality;
       document.getElementById('bio').innerHTML = dat.Biography;
       document.getElementById('img').src = path3 + dat.image;
 
