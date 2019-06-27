@@ -272,7 +272,8 @@ function single_author(){
     success: function(data){
       //console.log('lapin malin',data[0]);
       let dat = data[0];
-
+      console.log(dat, dat.Name);
+      document.getElementById('Auth').innerHTML = dat.Name;
       document.getElementById('Birth').innerHTML = dat.Birthday.substring(0,10);
       document.getElementById('Nat').innerHTML = dat.Nationality;
       document.getElementById('bio').innerHTML = dat.Biography;
