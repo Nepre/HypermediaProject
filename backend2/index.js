@@ -472,23 +472,6 @@ app.post('/single_book/PostComent/:id', function(req, res){ // TODO: Fix post bo
 
 
 
-// POST BOOKS
-
-app.post('/books', function(req, res){ // TODO: Fix post books
-  console.log(req);
-  var country = req.body.country;
-
-  connection.query("INSERT INTO paises(id, NomPais) VALUES (null, '" + country + "')", function (error, result) {
-    if(!!error){
-      console.log('Error: ' + error.message);
-    }else{
-      console.log(country + " inserted correctly.");
-
-    }
-    res.redirect('/');
-    res.end();
-  })
-});
 
 
 // GET AUTHORS
