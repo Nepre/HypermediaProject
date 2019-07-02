@@ -1,0 +1,869 @@
+swagger: "2.0"
+info:
+  description: "This is a bookstore"
+  version: "1.0.0"
+  title: "PoliBooks"
+  license:
+    name: "Polibooks"
+host: "localhost:1337"
+tags:
+- name: "events"
+  description: "When the next events happen."
+- name: "books"
+  description: "Books in polibooks"
+- name: "single_book"
+  description: "Operations with individual books"
+- name: "authors"
+  description: "Operations with authors"
+- name: "user"
+  description: "Operations with users"
+
+schemes:
+- "https"
+- "http"
+paths:
+  /events:
+    get:
+      operationId: "Events"
+      tags:
+      - "events"
+      summary: "Get all the events"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: integer
+                description: The event's ID.
+              Name:
+                type: string
+                description: The event's name.
+              Place:
+                type: string
+                description: Place of the event
+              Starting_Date:
+                type: string
+                description: Date of start
+              End_Date:
+                type: string
+                description: Date of end
+              Price:
+                type: integer
+              Picture:
+                type: string
+                description: Path
+  /events/{id}:
+    
+    get:
+      operationId: "EventsID" 
+      tags:
+      - "events"
+      summary: "Get event with ID"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of event to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: integer
+                description: The event's ID.
+              Name:
+                type: string
+                description: The event's name.
+              Place:
+                type: string
+                description: Place of the event
+              Starting_Date:
+                type: string
+                description: Date of start
+              End_Date:
+                type: string
+                description: Date of end
+              Price:
+                type: integer
+              Picture:
+                type: string
+                description: Path
+  /events/month/{month}:
+    get:
+      operationId: "EventsByMonth"
+      tags:
+      - "events"
+      summary: "Get event with ID"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "month"
+        in: "path"
+        description: "ID of event to return"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              month(Starting_Date):
+                type: integer
+                description: The event's month.
+              id:
+                type: integer
+                description: The event's ID.
+              Name:
+                type: string
+                description: The event's name.
+              Place:
+                type: string
+                description: Place of the event
+              Starting_Date:
+                type: string
+                description: Date of start
+              End_Date:
+                type: string
+                description: Date of end
+              Price:
+                type: integer
+              Picture:
+                type: string
+                description: Path
+  
+  /books:
+    get:
+      operationId: "Books"
+      tags:
+      - "books"
+      summary: "Get all the books"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: integer
+                description: The books's ID.
+              title:
+                type: string
+                description: The books's title.
+              author:
+                type: string
+                description: Author's name
+              authorID:
+                type: string
+                description: author's ID
+              genre:
+                type: string
+                description: Fantasy
+              theme:
+                type: string
+              date:
+                type: string
+                description: Book's year
+              price:
+                type: integer
+                description: Book's price
+              description:
+                type: string
+                description: Book's description
+              image:
+                type: string
+                description: Book's path
+              available:
+                type: boolean
+                description: Is it available?
+              best-seller:
+                type: boolean
+                description: Is it a best seller?
+            
+  /books/available:
+    get:
+      operationId: "BooksByAvailability"
+      tags:
+      - "books"
+      summary: "Get all the books ordered by availability"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: integer
+                description: The books's ID.
+              title:
+                type: string
+                description: The books's title.
+              author:
+                type: string
+                description: Author's name
+              authorID:
+                type: string
+                description: author's ID
+              genre:
+                type: string
+                description: Fantasy
+              theme:
+                type: string
+              date:
+                type: string
+                description: Book's year
+              price:
+                type: integer
+                description: Book's price
+              description:
+                type: string
+                description: Book's description
+              image:
+                type: string
+                description: Book's path
+              available:
+                type: boolean
+                description: Is it available?
+              best-seller:
+                type: boolean
+                description: Is it a best seller?
+                
+  /books/author:
+    get:
+      operationId: "BooksByAuthor"
+      tags:
+      - "books"
+      summary: "Get all the books ordered by author"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: integer
+                description: The books's ID.
+              title:
+                type: string
+                description: The books's title.
+              author:
+                type: string
+                description: Author's name
+              authorID:
+                type: string
+                description: author's ID
+              genre:
+                type: string
+                description: Fantasy
+              theme:
+                type: string
+              date:
+                type: string
+                description: Book's year
+              price:
+                type: integer
+                description: Book's price
+              description:
+                type: string
+                description: Book's description
+              image:
+                type: string
+                description: Book's path
+              available:
+                type: boolean
+                description: Is it available?
+              best-seller:
+                type: boolean
+                description: Is it a best seller?
+  /books/genre:
+    get:
+      operationId: "BooksByGenre"
+      tags:
+      - "books"
+      summary: "Get all the books ordered by genre"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: integer
+                description: The books's ID.
+              title:
+                type: string
+                description: The books's title.
+              author:
+                type: string
+                description: Author's name
+              authorID:
+                type: string
+                description: author's ID
+              genre:
+                type: string
+                description: Fantasy
+              theme:
+                type: string
+              date:
+                type: string
+                description: Book's year
+              price:
+                type: integer
+                description: Book's price
+              description:
+                type: string
+                description: Book's description
+              image:
+                type: string
+                description: Book's path
+              available:
+                type: boolean
+                description: Is it available?
+              best-seller:
+                type: boolean
+                description: Is it a best seller?
+  /books/theme:
+    get:
+      operationId: "BooksByTheme"
+      tags:
+      - "books"
+      summary: "Get all the books ordered by theme"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: integer
+                description: The books's ID.
+              title:
+                type: string
+                description: The books's title.
+              author:
+                type: string
+                description: Author's name
+              authorID:
+                type: string
+                description: author's ID
+              genre:
+                type: string
+                description: Fantasy
+              theme:
+                type: string
+              date:
+                type: string
+                description: Book's year
+              price:
+                type: integer
+                description: Book's price
+              description:
+                type: string
+                description: Book's description
+              image:
+                type: string
+                description: Book's path
+              available:
+                type: boolean
+                description: Is it available?
+              best-seller:
+                type: boolean
+                description: Is it a best seller?
+  /single_book/{id}:
+    get:
+      operationId: "ShowBookById"
+      tags:
+      - "single_book"
+      summary: "Get event with ID"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of event to return"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              title:
+                type: string
+                description: The book's title.
+              genre:
+                type: string
+                description: The books's genre.
+              Name:
+                type: string
+                description: The author's name.
+              date:
+                type: string
+                description: Date of publishing
+              description:
+                type: string
+                description: The book's description
+              Biography:
+                type: string
+                description: The author's biography.
+              Price:
+                type: integer
+              image:
+                type: string
+                description: Path
+  /single_book/{id}/related:
+    get:
+      operationId: "RelatedBooks"
+      tags:
+      - "single_book"
+      summary: "Get event with ID"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of event to return"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              id1:
+                type: integer
+                description: The original book id.
+              ath1:
+                type: integer
+                description: The original author id.
+              gen1:
+                type: string
+                description: The original books genre
+              id2:
+                type: integer
+                description: The similar book id.
+              image:
+                type: string
+                description: The image's path
+              ath2:
+                type: integer
+                description: The similar author id.
+              gen2:
+                type: string
+                description: The similar books genre 
+  /single_book/{id}/comments:
+    get:
+      operationId: "ShowBooksComment"
+      tags:
+      - "single_book"
+      summary: "Get event with ID"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of event to return"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              userID:
+                type: integer
+                description: The user's id.
+              id:
+                type: integer
+                description: The comment's id
+              bookID:
+                type: integer
+                description: The book's id
+              Name:
+                type: string
+                description: The user's name
+              comment:
+                type: string
+                description: The comment's text
+   
+  /single_book/PostComent/{id}:             
+    post:
+        tags:
+        - "single_book"
+        summary: "Needs to upload in form user id, book id and comment"
+        operationId: "PostComment"
+        consumes:
+        - "application/x-www-form-urlencoded"
+        produces:
+        - "application/json"
+        parameters:
+        - name: "id"
+          in: "path"
+          description: "Book Id"
+          required: true
+          type: "integer"
+          format: "int64"
+        - name: "id"
+          in: "formData"
+          description: "Id of user"
+          required: true
+          type: "integer"
+          format: "int64"
+        - name: "comment"
+          in: "formData"
+          description: "Comment's text"
+          required: true
+          type: "string"
+        responses:
+          405:
+            description: "Invalid input"
+
+  /authors:
+    get:
+      operationId: "Authors"
+      tags:
+      - "authors"
+      summary: "Authors"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: integer
+                description: The author's id.
+              Name:
+                type: string
+                description: Author's nationality
+              Biography:
+                type: string
+                description: Author's bihography
+              Birthday:
+                type: string
+                description: Author's birthday
+              image:
+                type: string
+                description: Author's image path
+                
+  /authors/nationality:
+    get:
+      operationId: "AuthorsNationality"
+      tags:
+      - "authors"
+      summary: "Authors sorted by nationailty"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: integer
+                description: The author's id.
+              Name:
+                type: string
+                description: Author's nationality
+              Biography:
+                type: string
+                description: Author's bihography
+              Birthday:
+                type: string
+                description: Author's birthday
+              image:
+                type: string
+                description: Author's image path
+                
+  /authors/birthday:
+    get:
+      operationId: "AuthorsBirthday"
+      tags:
+      - "authors"
+      summary: "Authors sorted by birthday"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: integer
+                description: The author's id.
+              Name:
+                type: string
+                description: Author's nationality
+              Biography:
+                type: string
+                description: Author's bihography
+              Birthday:
+                type: string
+                description: Author's birthday
+              image:
+                type: string
+                description: Author's image path
+                
+  /authors/{id}:
+    get:
+      operationId: "AuthorsWithId"
+      tags:
+      - "authors"
+      summary: "Author with specific Id"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of author to return"
+        required: true
+        type: "integer"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: integer
+                description: The author's id.
+              Name:
+                type: string
+                description: Author's nationality
+              Biography:
+                type: string
+                description: Author's bihography
+              Birthday:
+                type: string
+                description: Author's birthday
+              image:
+                type: string
+                description: Author's image path
+                
+  /authors/books/{id}:
+    get:
+      operationId: "AuthorsBooksWithId"
+      tags:
+      - "authors"
+      summary: "Author's books with specific Id"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of author to return"
+        required: true
+        type: "integer"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: integer
+                description: The author's id.
+              Name:
+                type: string
+                description: Author's name
+              Biography:
+                type: string
+                description: Author's bihography
+              Nationality:
+                type: string
+                description: Author's nationality
+              Birthday:
+                type: string
+                description: Author's birthday
+              image:
+                type: string
+                description: book's image path
+              title:
+                type: string
+                description: book's title
+              author:
+                type: string
+                description: author's name
+              authorID:
+                type: integer
+                description: author's ID
+              genre:
+                type: string
+                description: Fantasy
+              theme:
+                type: string
+              date:
+                type: string
+                description: Book's year
+              price:
+                type: integer
+                description: Book's price
+              description:
+                type: string
+                description: Book's description
+              available:
+                type: boolean
+                description: Is it available?
+              best-seller:
+                type: boolean
+                description: Is it a best seller?
+                
+  /login:             
+    post:
+        tags:
+        - "user"
+        summary: "Needs to upload in form user id, book id and comment"
+        operationId: "Login"
+        consumes:
+        - "application/x-www-form-urlencoded"
+        produces:
+        - "application/json"
+        parameters:
+        - name: "usu"
+          in: "formData"
+          description: "Name of user"
+          required: true
+          type: "string"
+        - name: "pwd"
+          in: "formData"
+          description: "Password"
+          required: true
+          type: "string"
+        responses:
+          405:
+            description: "Invalid input"
+            
+  /id/{email}:
+    get:
+      operationId: "SelectByEmail"
+      tags:
+      - "user"
+      summary: "Select users with id"
+      parameters:
+      - name: "email"
+        in: "path"
+        description: "ID of author to return"
+        required: true
+        type: "string"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: integer
+                description: User Id
+              email:
+                type: string
+                description: Email
+  /user/{email}:
+    get:
+      operationId: "SelectUserByEmail"
+      tags:
+      - "user"
+      summary: "Select users with id"
+      parameters:
+      - name: "email"
+        in: "path"
+        description: "ID of author to return"
+        required: true
+        type: "string"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: integer
+                description: User Id
+              email:
+                type: string
+                description: Email
+              name:
+                type: string
+                description: Name
+              surname:
+                type: string
+                description: surname
+  
+  /register:             
+    post:
+        tags:
+        - "user"
+        summary: "Register user"
+        operationId: "Register"
+        consumes:
+        - "application/x-www-form-urlencoded"
+        produces:
+        - "application/json"
+        parameters:
+        - name: "name"
+          in: "formData"
+          description: "Name of user"
+          required: true
+          type: "string"
+        - name: "surname"
+          in: "formData"
+          description: "Surname"
+          required: true
+          type: "string"
+        - name: "email"
+          in: "formData"
+          description: "Email"
+          required: true
+          type: "string"
+        - name: "pwd"
+          in: "formData"
+          description: "Password1"
+          required: true
+          type: "string"
+        - name: "pwd2"
+          in: "formData"
+          description: "Password2"
+          required: true
+          type: "string"
+        responses:
+          405:
+            description: "Invalid input"
+
+                
+
+securityDefinitions:
+
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"

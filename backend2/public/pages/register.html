@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>POLIBOOKS Bookstore</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> <!-- THIS IS NEEDED FOR THE ICONS -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Optional Bootstrap theme -->
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+</head>
+<body>
+    <!-- HEADER -->
+
+      <header>
+      <div class="bg-white">
+        <div class="container">
+          <div class="row pt-3 pb-3">
+            <div class="col">
+              <a href="index.html"><img src="images/LOGOTEXT.png" alt="Our cool logo"  width="100%"></a>
+                    </div>
+            <div class="col">
+              <h6 class="text-center"><a class="text-dark" href="books.html">BOOKS</a></h6>
+            </div>
+            <div class="col">
+              <h6 class="text-center"><a class="text-dark" href="authors.html">AUTHORS</a></h6>
+            </div>
+            <div class="col">
+              <h6 class="text-center"><a class="text-dark" href="events.html">EVENTS</a></h6>
+            </div>
+            <div id="logreg" class="col" style="">
+              <h6 class="text-center"><a class="text-dark" href="login.html">LOGIN</a>/<a class="text-dark" href="register.html">REGISTER</a></h6>
+            </div>
+            <div id="prof" class="col" style="white-space: nowrap; display:none"> <!-- This prevents the icon from going down -->
+              <h6 class="text-center" ><a class="text-dark" href="profile.html">PROFILE <i class="material-icons">person</i></a></h6>
+            </div>
+            <div id="cart" class="col" style="white-space: nowrap; display:none;">
+              <h6 class="text-center" style=""><a class="text-dark" href="cart.html">CART <i class="material-icons">shopping_cart</i></a></h6>
+            </div>
+            <div id="logout" class="col" style="white-space: nowrap; display:none;">
+              <h6 class="text-center" style=""><a class="text-dark" href="index.html?LO">LOGOUT</a></h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      </header>
+    <!-- HEADER -->
+    <hr>
+    <main>
+      <div class="container">
+        <div class="row pt-3 pb-1">
+          <div class="col-md-2">
+              </div>
+            <div class="col-md-8">
+            <h2 class="text-login-b"><p class="text-center">CREATE AN ACCOUNT</p></h2><br>
+            <h4 class="text-center">Fill the form and become a part of PoliBooks!</h4>
+            <h4 class="text-dark">
+              <form class="" action="/register" method="post">
+                Name: <input class="form-control" type="name" name="name" value="">
+                Surname: <input class="form-control" type="name" name="surname" value="">
+                Email: <input class="form-control" type="email" name="email" value="">
+                Password: <input type="password" class="form-control" name="pwd" value="">
+                Confirm the Password: <input type="password" class="form-control" name="pwd2" value="">
+                <small id = "WP" style="color:red; text-align: right;"></small>
+                <p class="text-center"><button type="submit" value="submit" name="button" class="btn btn-default btn-lg">Create an account</button></p>
+                </form>
+                <p class="text-center">Do you already have an account? Then <a class="text-login-b" href="login.html">Login</a></p>
+            </h4>
+          </div>
+          <div class="col-md-2">
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+
+    <footer>
+      <hr>
+
+      <div class="bg-white">
+        <div class="container">
+          <div class="row pt-3 pb-1">
+
+            <div class="col-md-4">
+              <h5 class="text-center"><a class="text-muted " href="#">FAQ</a></h4>
+            </div>
+
+            <div class="col-md-4">
+              <h5 class="text-center"><a class="text-muted" href="shipping.html">Shipping</a></h4>
+            </div>
+
+            <div class="col-md-4">
+              <h5 class="text-center"><a class="text-muted" href="contact_us.html">Contact us</a></h4>
+            </div>
+
+          </div>
+          <div class="row">
+            <!--<p>We should do something with this lower bar, as it is this low it is eclipsed by the other information above, and it seems that the website ends before the FAQ. This makes the placement anti-intuitive.</p>
+            -->
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script type="text/javascript">
+    if(window.location.href.split("?")[1] == "WP"){
+       document.getElementById("WP").innerHTML = "Passwords don't match. Please try again.";
+    }
+    console.log(window.location.href.split("?")[1].split("=")[0]);
+    if(window.location.href.split("?")[1] == "UT"){
+       document.getElementById("WP").innerHTML = "This email already exists. Please try again.";
+    }
+    </script>
+  </body>
+</html>

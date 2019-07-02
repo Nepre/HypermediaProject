@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>POLIBOOKS Bookstore</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> <!-- THIS IS NEEDED FOR THE ICONS -->
+
+    <script type="text/javascript"src="loadData.js"></script>
+
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+    <div class="bg-white">
+      <div class="container">
+        <div class="row pt-3 pb-3">
+          <div class="col">
+            <a href="index.html"><img src="images/LOGOTEXT.png" alt="Our cool logo"  width="100%"></a>
+                  </div>
+          <div class="col">
+            <h6 class="text-center"><a class="text-dark" href="books.html">BOOKS</a></h6>
+          </div>
+          <div class="col">
+            <h6 class="text-center"><a class="text-dark" href="authors.html">AUTHORS</a></h6>
+          </div>
+          <div class="col">
+            <h6 class="text-center"><a class="text-dark" href="events.html">EVENTS</a></h6>
+          </div>
+          <div id="logreg" class="col" style="">
+            <h6 class="text-center"><a class="text-dark" href="login.html">LOGIN</a>/<a class="text-dark" href="register.html">REGISTER</a></h6>
+          </div>
+          <div id="prof" class="col" style="white-space: nowrap; display:none"> <!-- This prevents the icon from going down -->
+            <h6 class="text-center" ><a class="text-dark" href="profile.html">PROFILE <i class="material-icons">person</i></a></h6>
+          </div>
+          <div id="cart" class="col" style="white-space: nowrap; display:none;">
+            <h6 class="text-center" style=""><a class="text-dark" href="cart.html">CART <i class="material-icons">shopping_cart</i></a></h6>
+          </div>
+          <div id="logout" class="col" style="white-space: nowrap; display:none;">
+            <h6 class="text-center" style=""><a class="text-dark" href="index.html?LO">LOGOUT</a></h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    </header>
+
+
+    <!-- HEADER -->
+    <hr>
+    <main>
+      <div class="container">
+        <h1>Next Events</h1>
+        <h4><p id="noEvents" style="display:none;">There aren't any events on this month. </p></h4>
+        <div class="row">
+          <div class="col-md-10">
+            <div class="container"> <!-- Row 1 conatiner -->
+              <div class="row"> <!-- Row 1 -->
+                <div id="st0" style="" class="col-md-4 bg-white py-3"> <!-- book -->
+                  <div class="row">
+                    <div class="col">
+                      <img id="aimg0" src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;  height: 6em;" alt="No book yet">
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <h5><a id="tit0" class="text-products" href="single_event.html">Event 1</a> <br> <span id="date0"></span> </h5>
+                      </div>
+                      <div class="row pr-3">
+                        <p id="desc0">Once in a lifetime event in X. You wouldn't want to miss it!</p>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div id="st1" style="" class="col-md-4 bg-white py-3"> <!-- book -->
+                  <div class="row">
+                    <div class="col">
+                      <img id="aimg1" src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;  height: 6em;" alt="No book yet">
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <h5><a id="tit1" class="text-products" href="single_event.html">Event 2</a> <br> <span id="date1"></span> </h5>
+                      </div>
+                      <div class="row pr-3">
+                        <p id="desc1">Once in a lifetime event in X. You wouldn't want to miss it!</p>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div id="st2" style="" class="col-md-4 bg-white py-3"> <!-- book -->
+                  <div class="row">
+                    <div class="col">
+                      <img id="aimg2" src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;  height: 6em;" alt="No book yet">
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <h5><a id="tit2" class="text-products" href="single_event.html">Event 3</a> <br> <span id="date2"></span> </h5>
+                      </div>
+                      <div class="row pr-3">
+                        <p id="desc2">Once in a lifetime event in X. You wouldn't want to miss it!</p>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="container"> <!-- Row 1 conatiner -->
+              <div class="row"> <!-- Row 1 -->
+                <div id="st3" style="" class="col-md-4 bg-white py-3"> <!-- book -->
+                  <div class="row">
+                    <div class="col">
+                      <img id="aimg3" src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;  height: 6em;" alt="No book yet">
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <h5><a id="tit3" class="text-products" href="single_event.html">Event 4</a> <br> <span id="date3"></span> </h5>
+                      </div>
+                      <div class="row pr-3">
+                        <p id="desc3">Once in a lifetime event in X. You wouldn't want to miss it!</p>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div id="st4" style="" class="col-md-4 bg-white py-3"> <!-- book -->
+                  <div class="row">
+                    <div class="col">
+                      <img id="aimg4" src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em; height: 6em;" alt="No book yet">
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <h5><a id="tit4" class="text-products" href="single_event.html">Event 5</a> <br> <span id="date4"></span> </h5>
+                      </div>
+                      <div class="row pr-3">
+                        <p id="desc4">Once in a lifetime event in X. You wouldn't want to miss it!</p>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div id="st5" style="" class="col-md-4 bg-white py-3"> <!-- book -->
+                  <div class="row">
+                    <div class="col">
+                      <img id="aimg5" src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;  height: 6em;" alt="No book yet">
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <h5><a id="tit5" class="text-products" href="single_event.html">Event 6</a> <br> <span id="date5"></span> </h5>
+                      </div>
+                      <div class="row pr-3">
+                        <p id="desc5">Once in a lifetime event in X. You wouldn't want to miss it!</p>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="container"> <!-- Row 1 conatiner -->
+              <div class="row"> <!-- Row 1 -->
+                <div id="st6" style="" class="col-md-4 bg-white py-3"> <!-- book -->
+                  <div class="row">
+                    <div class="col">
+                      <img id="aimg6" src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;  height: 6em;" alt="No book yet">
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <h5><a id="tit6" class="text-products" href="single_event.html">Event 7</a> <br> <span id="date6"></span> </h5>
+                      </div>
+                      <div class="row pr-3">
+                        <p id="desc6">Once in a lifetime event in X. You wouldn't want to miss it!</p>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div id="st7" style="" class="col-md-4 bg-white py-3"> <!-- book -->
+                  <div class="row">
+                    <div class="col">
+                      <img id="aimg7" src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;  height: 6em;" alt="No book yet">
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <h5><a id="tit7" class="text-products" href="single_event.html">Event 8</a><br> <span id="date7"></span> </h5>
+                      </div>
+                      <div class="row pr-3">
+                        <p id="desc7">Once in a lifetime event in X. You wouldn't want to miss it!</p>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div id="st8" style="" class="col-md-4 bg-white py-3"> <!-- book -->
+                  <div class="row">
+                    <div class="col">
+                      <img id="aimg8" src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png" style="width:10em;  height: 6em;" alt="No book yet">
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <h5><a id="tit8" class="text-products" href="single_event.html">Event 9</a> <br> <span id="date8"></span> </h5>
+                      </div>
+                      <div class="row pr-3">
+                        <p id="desc8">Once in a lifetime event in X. You wouldn't want to miss it!</p>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-2" id="filtros">
+            <div class="row mt-3 ml-3">
+              <div class="custom-control custom-radio">
+                <input type="radio" name="filters" class="custom-control-input" value="ALL" id="ALL">
+                <label class="custom-control-label" for="ALL"> <h6>ALL</h6> </label>
+              </div>
+            </div>
+
+            <div class="row mt-3 ml-3">
+              <div class="custom-control custom-radio">
+                <input type="radio" name="filters" class="custom-control-input" value="JANUARY" id="JANUARY">
+                <label class="custom-control-label" for="JANUARY"> <h6>JANUARY</h6> </label>
+              </div>
+            </div>
+
+            <div class="row mt-3 ml-3">
+              <div class="custom-control custom-radio">
+                <input type="radio" name="filters" class="custom-control-input" value="FEBRUARY" id="FEBRUARY">
+                <label class="custom-control-label" for="FEBRUARY"> <h6>FEBRUARY</h6> </label>
+              </div>
+            </div>
+
+            <div class="row mt-3 ml-3">
+              <div class="custom-control custom-radio">
+                <input type="radio" name="filters" class="custom-control-input" value="MARCH" id="MARCH">
+                <label class="custom-control-label" for="MARCH"> <h6>MARCH</h6> </label>
+              </div>
+            </div>
+
+            <div class="row mt-3 ml-3">
+              <div class="custom-control custom-radio">
+                <input type="radio" name="filters" class="custom-control-input" value="APRIL" id="APRIL">
+                <label class="custom-control-label" for="APRIL"> <h6>APRIL</h6> </label>
+              </div>
+            </div>
+
+            <div class="row mt-3 ml-3">
+              <div class="custom-control custom-radio">
+                <input type="radio" name="filters" class="custom-control-input" value="MAY" id="MAY">
+                <label class="custom-control-label" for="MAY"> <h6>MAY</h6> </label>
+              </div>
+            </div>
+
+            <div class="row mt-3 ml-3">
+              <div class="custom-control custom-radio">
+                <input type="radio" name="filters" class="custom-control-input" value="JUNE" id="JUNE">
+                <label class="custom-control-label" for="JUNE"> <h6>JUNE</h6> </label>
+              </div>
+            </div>
+
+            <div class="row mt-3 ml-3">
+              <div class="custom-control custom-radio">
+                <input type="radio" name="filters" class="custom-control-input" value="JULY" id="JULY">
+                <label class="custom-control-label" for="JULY"> <h6>JULY</h6> </label>
+              </div>
+            </div>
+
+            <div class="row mt-3 ml-3">
+              <div class="custom-control custom-radio">
+                <input type="radio" name="filters" class="custom-control-input" value="AUGUST" id="AUGUST">
+                <label class="custom-control-label" for="AUGUST"> <h6>AUGUST</h6> </label>
+              </div>
+            </div>
+
+            <div class="row mt-3 ml-3">
+              <div class="custom-control custom-radio">
+                <input type="radio" name="filters" class="custom-control-input" value="SEPTEMBER" id="SEPTEMBER">
+                <label class="custom-control-label" for="SEPTEMBER"> <h6>SEPTEMBER</h6> </label>
+              </div>
+            </div>
+
+            <div class="row mt-3 ml-3">
+              <div class="custom-control custom-radio">
+                <input type="radio" name="filters" class="custom-control-input" value="OCTOBER" id="OCTOBER">
+                <label class="custom-control-label" for="OCTOBER"> <h6>OCTOBER</h6> </label>
+              </div>
+            </div>
+
+            <div class="row mt-3 ml-3">
+              <div class="custom-control custom-radio">
+                <input type="radio" name="filters" class="custom-control-input" value="NOVEMBER" id="NOVEMBER">
+                <label class="custom-control-label" for="NOVEMBER"> <h6>NOVEMBER</h6> </label>
+              </div>
+            </div>
+
+            <div class="row mt-3 ml-3">
+              <div class="custom-control custom-radio">
+                <input type="radio" name="filters" class="custom-control-input" value="DECEMBER" id="DECEMBER">
+                <label class="custom-control-label" for="DECEMBER"> <h6>DECEMBER</h6> </label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+
+    <footer>
+      <hr>
+      <script type="text/javascript">
+      events(); //Start load books
+
+      $('input[type=radio][name=filters]').change(function() {
+          reloadEventsFilter(); //If a filter is applied
+      });
+      </script>
+
+      <div class="bg-white">
+        <div class="container">
+          <div class="row pt-3 pb-1">
+
+            <div class="col-md-4">
+              <h5 class="text-center"><a class="text-muted " href="#">FAQ</a></h4>
+            </div>
+
+            <div class="col-md-4">
+              <h5 class="text-center"><a class="text-muted" href="shipping.html">Shipping</a></h4>
+            </div>
+
+            <div class="col-md-4">
+              <h5 class="text-center"><a class="text-muted" href="contact_us.html">Contact us</a></h4>
+            </div>
+
+          </div>
+          <div class="row">
+            <!--<p>We should do something with this lower bar, as it is this low it is eclipsed by the other information above, and it seems that the website ends before the FAQ. This makes the placement anti-intuitive.</p>
+            -->
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
