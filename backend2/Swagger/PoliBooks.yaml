@@ -5,7 +5,7 @@ info:
   title: "PoliBooks"
   license:
     name: "Polibooks"
-host: "localhost"
+host: "localhost:1337"
 tags:
 - name: "events"
   description: "When the next events happen."
@@ -788,7 +788,7 @@ paths:
                 description: Email
   /user/{email}:
     get:
-      operationId: "SelectByEmail"
+      operationId: "SelectUserByEmail"
       tags:
       - "user"
       summary: "Select users with id"
