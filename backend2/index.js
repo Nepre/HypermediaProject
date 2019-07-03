@@ -1,4 +1,4 @@
-  //Requires
+//ok  //Requires
 var express = require('express');
 var mysql = require('mysql');
 var cors = require('cors');
@@ -16,7 +16,7 @@ var connection = mysql.createConnection({
 
 //Configuration and packages
 app.use(cors());
-app.use(express.urlencoded())
+app.use(express.urlencoded({extended:true}));
 
 //Connection to database
 connection.connect(function(error){

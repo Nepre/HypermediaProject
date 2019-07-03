@@ -9950,7 +9950,9 @@ a.text-secondary:hover, a.text-secondary:focus {
 a.text-success:hover, a.text-success:focus {
   color: #19692c !important;
 }
-
+.img-logo {
+  max-width: 100%;
+}
 
 .text-info {
   color: #17a2b8 !important;
@@ -9986,10 +9988,12 @@ a.text-light:hover, a.text-light:focus {
 .text-LOGO{
   color: #000  !important;
 }
-
+.vertical-align{
+  display: flex;
+  align-items: center;
+}
 .text-dark {
   color: #2E282A !important;
-  line-height: 105px;
 }
 
 a.text-dark:hover, a.text-dark:focus {
@@ -10011,6 +10015,15 @@ a.text-dark-selected:hover, a.text-dark:focus {
 
 a.text-products:hover, a.text-products:focus {
   color: rgba( 90, 229, 233, 1) !important;
+  text-decoration: none;
+}
+.text-mainpage {
+  font-weight: 900;
+  color: #23DAE1 !important;
+}
+
+a.text-mainpage:hover, a.text-products:focus {
+  color: #fcd73f !important;
   text-decoration: none;
 }
 
@@ -10099,6 +10112,7 @@ a.text-muted:hover, a.text-muted:focus {
   tr,
   img {
     page-break-inside: avoid;
+    max-width: 100%;
   }
   p,
   h2,
