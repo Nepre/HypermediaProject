@@ -8,7 +8,7 @@
       "name": "Polibooks"
     }
   },
-  "host": "https://polibooks.herokuapp.com",
+  "host": "polibooks.herokuapp.com",
   "tags": [
     {
       "name": "events",

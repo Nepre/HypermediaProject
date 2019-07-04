@@ -5,7 +5,7 @@ info:
   title: "PoliBooks"
   license:
     name: "Polibooks"
-host: "https://polibooks.herokuapp.com"
+host: "polibooks.herokuapp.com"
 tags:
 - name: "events"
   description: "When the next events happen."
