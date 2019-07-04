@@ -6,12 +6,12 @@ var path = require('path');
 
 //Variables
 var app = express();
-var db_config = mysql.createConnection({
+var db_config = {
   host: 'eu-cdbr-west-02.cleardb.net',
   user: 'bb096374065c94',
   password: '50567a71',
   database: 'heroku_d1fcacc2cfe3487'
-});
+};
 
 //Configuration and packages
 app.use(cors());
