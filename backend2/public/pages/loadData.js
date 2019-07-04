@@ -180,6 +180,20 @@ function single_book(){
     }
   });
 
+  $.ajax({
+    type: 'GET',
+    url: 'http://localhost:1337/single_book/'+window.location.href.split("?")[1].split("=")[1]+"/events",
+    success: function(data){
+      console.log(data);
+      if(data.length == 0){
+        document.getElementById('eventsList').innerHTML = "<h6>There are no events where this book is<h6>";
+      }
+      for (var i = 0; i < data.length; i++) {
+        document.getElementById('eventsList').innerHTML += "<li><a href='single_event.html?id="+ data[i].id_event +"'>"+ data[i].Name +"</a></li>"
+      }
+    }
+  });
+
   loadComments();
 }
 
@@ -422,6 +436,20 @@ function single_event(){
       document.getElementById('place').innerHTML = dat.Place;
       document.getElementById('price').innerHTML = dat.Price + "€";
       document.getElementById('img').src = path2 + dat.Picture;
+    }
+  });
+
+  $.ajax({
+    type: 'GET',
+    url: 'http://localhost:1337/events/'+window.location.href.split("?")[1].split("=")[1]+"/books",
+    success: function(data){
+      console.log(data);
+      if(data.length == 0){
+        document.getElementById('bookList').innerHTML = "<h6>There are no books in this event<h6>";
+      }
+      for (var i = 0; i < data.length; i++) {
+        document.getElementById('bookList').innerHTML += "<li><a href='single_book.html?id="+ data[i].id_book +"'>"+ data[i].title +"</a></li>"
+      }
     }
   });
 

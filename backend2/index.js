@@ -99,6 +99,29 @@ app.get('/events/:id', function(req, res){
   });
 });
 
+app.get("/events/:id/books", function(req, res){
+
+  connection.query("select id_book, id_event, b.id, b.title from booksnevents, books b where id_book = b.id and id_event = " + req.params.id, function(error, rows, fields){
+
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+
+  });
+
+});
+
+
+
+
 app.get('/events/month/january/', function(req, res){
   //about mysql
 
@@ -317,6 +340,7 @@ app.get('/events/month/december', function(req, res){ //localhost:3000/books
 
 
 
+
 //GET BOOKS
 
 app.get('/books', function(req, res){ //localhost:3000/books
@@ -468,6 +492,26 @@ app.post('/single_book/PostComent/:id', function(req, res){ // TODO: Fix post bo
     res.redirect('/single_book.html?id='+bookId);
     res.end();
   })
+});
+
+app.get("/single_book/:id/events", function(req, res){
+
+  connection.query("select id_book, id_event, e.id, e.Name from booksnevents, events e where id_event = e.id and id_book = " + req.params.id, function(error, rows, fields){
+
+    if(!!error){
+      console.log('Error: '+error.message);
+    }else{
+      console.log('correct');
+      console.log(rows);
+
+      console.log('no of records is '+rows.length);
+
+      res.writeHead(200, { 'Content-Type': 'application/json'});
+      res.end(JSON.stringify(rows));
+    }
+
+  });
+
 });
 
 
