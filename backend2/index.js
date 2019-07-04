@@ -711,4 +711,4 @@ app.use('/', express.static(path.join(__dirname, 'public/pages')))
 
 app.use(express.static('public'))
 
-app.listen(1337);
+app.listen(process.env.PORT || 1337);
