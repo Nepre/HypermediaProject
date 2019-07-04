@@ -98,6 +98,40 @@ paths:
               Picture:
                 type: string
                 description: Path
+  /events/{id}/books:
+    get:
+      operationId: "EventsBooksID" 
+      tags:
+      - "events"
+      summary: "Get event's books with ID"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of event to which books we want to get"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              id_book:
+                type: integer
+                description: The books's ID.
+              id_event:
+                type: integer
+                description: The event's ID.
+              id:
+                type: integer
+                description: The event's ID again.
+              Name:
+                type: string
+                description: The name of the event.
+              
   /events/month/{month}:
     get:
       operationId: "EventsByMonth"
@@ -432,6 +466,41 @@ paths:
               image:
                 type: string
                 description: Path
+                
+  /single_book/{id}/events:
+    get:
+      operationId: "Single_BookEvents" 
+      tags:
+      - "single_book"
+      summary: "Get book's events with ID"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of the book which events we want to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              id_book:
+                type: integer
+                description: The books's ID.
+              id_event:
+                type: integer
+                description: The event's ID.
+              id:
+                type: integer
+                description: The event's ID again.
+              title:
+                type: string
+                description: The name of the event.
+  
   /single_book/{id}/related:
     get:
       operationId: "RelatedBooks"
