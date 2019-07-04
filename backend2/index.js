@@ -7,11 +7,10 @@ var path = require('path');
 //Variables
 var app = express();
 var connection = mysql.createConnection({
-  host: 'localhost',
-  port: '3306',
-  user: 'root',
-  password: '',
-  database: 'polibooks'
+  host: 'eu-cdbr-west-02.cleardb.net',
+  user: 'bb096374065c94',
+  password: '50567a71',
+  database: 'heroku_d1fcacc2cfe3487'
 });
 
 //Configuration and packages
