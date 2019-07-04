@@ -306,7 +306,7 @@ function single_author(){
       console.log(data);
       for (var i = 0; i < data.length; i++) {
         document.getElementById('books').innerHTML += `
-        <a href="http://localhost:1337/single_book.html?id=`+data[i].id+`">- `+data[i].title+`</a><br><br>
+        <a href="` +weburl+  `/single_book.html?id=`+data[i].id+`">- `+data[i].title+`</a><br><br>
       `;
       }
 
@@ -587,12 +587,12 @@ function cart() {
 
     if(window.location.href.split("?")[1] != undefined && window.location.href.split("?")[1].split("=")[0] == "dele" && c[1] == window.location.href.split("?")[1].split("=")[1]){
       setCookie( c[0], '', -1);
-      window.location.replace("http://localhost:1337/cart.html");
+      window.location.replace(weburl + "/cart.html");
     }
 
     if(window.location.href.split("?")[1] != undefined && window.location.href.split("?")[1].split("=")[0] == "delb" && c[1] == window.location.href.split("?")[1].split("=")[1]){
       setCookie( c[0], '', -1);
-      window.location.replace("http://localhost:1337/cart.html");
+      window.location.replace(weburl + "/cart.html");
     }
 
     if (c[0][1] == 'b') {
@@ -652,12 +652,12 @@ function cart() {
 
   if(window.location.href.split("?")[1] != undefined && window.location.href.split("?")[1].split("=")[0] == 'e' && !insert){
     setCookie("e"+e, window.location.href.split("?")[1].split("=")[1], 1);
-    window.location.replace("http://localhost:1337/cart.html");
+    window.location.replace(weburl +"/cart.html");
   }
 
   if(window.location.href.split("?")[1] != undefined && window.location.href.split("?")[1].split("=")[0] == 'b' && !insert){
     setCookie("b"+b, window.location.href.split("?")[1].split("=")[1], 1);
-    window.location.replace("http://localhost:1337/cart.html");
+    window.location.replace(weburl + "/cart.html");
 
   }
 
@@ -671,7 +671,7 @@ function cart() {
         document.getElementById('aimge'+num).href = 'single_event.html?id='+events[num];
         document.getElementById('imge'+num).src = path2 + data[0].Picture;
         document.getElementById('pricee'+num).innerHTML = data[0].Price;
-        document.getElementById('dele'+num).href = "http://localhost:1337/cart.html?dele=" + events[num];
+        document.getElementById('dele'+num).href = weburl + "cart.html?dele=" + events[num];
       }
     });
   }
@@ -687,7 +687,7 @@ function cart() {
         document.getElementById('aimgb'+num).href = 'single_event.html?id='+books[num];
         document.getElementById('imgb'+num).src = path + data[0].image;
         document.getElementById('priceb'+num).innerHTML = data[0].price;
-        document.getElementById('delb'+num).href = "http://localhost:1337/cart.html?delb=" + books[num];
+        document.getElementById('delb'+num).href = weburl + "cart.html?delb=" + books[num];
       }
     });
   }
