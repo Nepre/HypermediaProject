@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 18, 2019 at 04:35 PM
+-- Generation Time: Jul 04, 2019 at 12:57 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -88,6 +88,30 @@ INSERT INTO `books` (`id`, `title`, `author`, `authorID`, `genre`, `theme`, `dat
 (7, 'Gomorra. Viaggio nell\'impero economico e nel sogno di dominio della camorra', 'Roberto Saviano', 4, 'Inquiry', '', '2006', '20', 'A groundbreaking, unprecedented bestseller in Italy, Roberto Saviano\'s insider account traces the decline of the city of Naples under the rule of the Camorra, an organized crime network more powerful and violent than the Mafia. The Camorra is an elaborate, international system dealing in drugs, high fashion, construction, and toxic waste, and its influence has entirely transformed life in Campania, the province surrounding Naples.\r\n\r\nSince seeing his first murder victim, at thirteen, Roberto Saviano has watched the changes in his home city. For Gomorrah, he disappeared into the Camorra and witnessed up close the drug cartel\'s audacious, sophisticated, and far-reaching corruption that has paralyzed his home city and introduced the world to a new breed of organized crime.', 'Gomorra.jpg', 1, 0),
 (8, 'Don Quixote', 'Miguel de Cervantes', 5, 'Novel', '', '1605', '9', 'Widely regarded as one of the funniest and most tragic books ever written, Don Quixote chronicles the adventures of the self-created knight-errant Don Quixote of La Mancha and his faithful squire, Sancho Panza, as they travel through sixteenth-century Spain.', 'Don_Quixote.jpg', 1, 0),
 (9, 'A Game of Thrones', 'George R. R. Martin ', 6, 'Fantasy', '', '1996', '8', 'Winter is coming. Such is the stern motto of House Stark, the northernmost of the fiefdoms that owe allegiance to King Robert Baratheon in far-off King’s Landing. There Eddard Stark of Winterfell rules in Robert’s name. There his family dwells in peace and comfort: his proud wife, Catelyn; his sons Robb, Brandon, and Rickon; his daughters Sansa and Arya; and his bastard son, Jon Snow. Far to the north, behind the towering Wall, lie savage Wildings and worse—unnatural things relegated to myth during the centuries-long summer, but proving all too real and all too deadly in the turning of the season.', 'A_Game_Of_Thrones.jpg', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booksnevents`
+--
+
+DROP TABLE IF EXISTS `booksnevents`;
+CREATE TABLE IF NOT EXISTS `booksnevents` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_book` int(11) NOT NULL,
+  `id_event` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+--
+-- Dumping data for table `booksnevents`
+--
+
+INSERT INTO `booksnevents` (`id`, `id_book`, `id_event`) VALUES
+(1, 6, 2),
+(2, 1, 1),
+(3, 8, 3),
+(4, 9, 5);
 
 -- --------------------------------------------------------
 

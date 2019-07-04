@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
     <title>POLIBOOKS Bookstore</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -107,7 +109,7 @@
       }
       if (window.location.href.split("?")[1] != undefined && window.location.href.split("?")[1].split("=")[0] == "SC") {
         setCookie("login", window.location.href.split("?")[1].split("=")[1], 1); //This set a cookie named login with the username that lasts one day
-        window.location.replace("http://localhost:1337/index.html");
+        window.location.replace("https://polibooks.herokuapp.com/index.html");
       }
     </script>
   </body>

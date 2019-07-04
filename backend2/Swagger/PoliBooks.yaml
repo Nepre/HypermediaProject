@@ -5,7 +5,7 @@ info:
   title: "PoliBooks"
   license:
     name: "Polibooks"
-host: "localhost:1337"
+host: "polibooks.herokuapp.com"
 tags:
 - name: "events"
   description: "When the next events happen."
@@ -57,9 +57,9 @@ paths:
                 type: string
                 description: Path
   /events/{id}:
-    
+
     get:
-      operationId: "EventsID" 
+      operationId: "EventsID"
       tags:
       - "events"
       summary: "Get event with ID"
@@ -98,6 +98,40 @@ paths:
               Picture:
                 type: string
                 description: Path
+  /events/{id}/books:
+    get:
+      operationId: "EventsBooksID"
+      tags:
+      - "events"
+      summary: "Get event's books with ID"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of event to which books we want to get"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              id_book:
+                type: integer
+                description: The books's ID.
+              id_event:
+                type: integer
+                description: The event's ID.
+              id:
+                type: integer
+                description: The event's ID again.
+              Name:
+                type: string
+                description: The name of the event.
+
   /events/month/{month}:
     get:
       operationId: "EventsByMonth"
@@ -109,7 +143,7 @@ paths:
       parameters:
       - name: "month"
         in: "path"
-        description: "ID of event to return"
+        description: "Name of the month"
         required: true
         type: "string"
       responses:
@@ -141,7 +175,7 @@ paths:
               Picture:
                 type: string
                 description: Path
-  
+
   /books:
     get:
       operationId: "Books"
@@ -191,7 +225,7 @@ paths:
               best-seller:
                 type: boolean
                 description: Is it a best seller?
-            
+
   /books/available:
     get:
       operationId: "BooksByAvailability"
@@ -241,7 +275,7 @@ paths:
               best-seller:
                 type: boolean
                 description: Is it a best seller?
-                
+
   /books/author:
     get:
       operationId: "BooksByAuthor"
@@ -432,6 +466,41 @@ paths:
               image:
                 type: string
                 description: Path
+
+  /single_book/{id}/events:
+    get:
+      operationId: "Single_BookEvents"
+      tags:
+      - "single_book"
+      summary: "Get book's events with ID"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of the book which events we want to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              id_book:
+                type: integer
+                description: The books's ID.
+              id_event:
+                type: integer
+                description: The event's ID.
+              id:
+                type: integer
+                description: The event's ID again.
+              title:
+                type: string
+                description: The name of the event.
+
   /single_book/{id}/related:
     get:
       operationId: "RelatedBooks"
@@ -472,7 +541,7 @@ paths:
                 description: The similar author id.
               gen2:
                 type: string
-                description: The similar books genre 
+                description: The similar books genre
   /single_book/{id}/comments:
     get:
       operationId: "ShowBooksComment"
@@ -508,8 +577,8 @@ paths:
               comment:
                 type: string
                 description: The comment's text
-   
-  /single_book/PostComent/{id}:             
+
+  /single_book/PostComent/{id}:
     post:
         tags:
         - "single_book"
@@ -570,7 +639,7 @@ paths:
               image:
                 type: string
                 description: Author's image path
-                
+
   /authors/nationality:
     get:
       operationId: "AuthorsNationality"
@@ -600,7 +669,7 @@ paths:
               image:
                 type: string
                 description: Author's image path
-                
+
   /authors/birthday:
     get:
       operationId: "AuthorsBirthday"
@@ -630,7 +699,7 @@ paths:
               image:
                 type: string
                 description: Author's image path
-                
+
   /authors/{id}:
     get:
       operationId: "AuthorsWithId"
@@ -666,7 +735,7 @@ paths:
               image:
                 type: string
                 description: Author's image path
-                
+
   /authors/books/{id}:
     get:
       operationId: "AuthorsBooksWithId"
@@ -734,8 +803,8 @@ paths:
               best-seller:
                 type: boolean
                 description: Is it a best seller?
-                
-  /login:             
+
+  /login:
     post:
         tags:
         - "user"
@@ -759,7 +828,7 @@ paths:
         responses:
           405:
             description: "Invalid input"
-            
+
   /id/{email}:
     get:
       operationId: "SelectByEmail"
@@ -818,8 +887,8 @@ paths:
               surname:
                 type: string
                 description: surname
-  
-  /register:             
+
+  /register:
     post:
         tags:
         - "user"
@@ -859,7 +928,7 @@ paths:
           405:
             description: "Invalid input"
 
-                
+
 
 securityDefinitions:
 

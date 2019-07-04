@@ -1,0 +1,159 @@
+<h1 id="documentation-of-the-backend-part">Documentation of the Backend part</h1>
+<blockquote>
+<h2 id="general-group-information">General group information</h2>
+<table>
+<thead>
+<tr>
+<th>Member n.</th>
+<th>Role</th>
+<th>First name</th>
+<th>Last Name</th>
+<th>Matricola</th>
+<th>Email address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>administrator</td>
+<td>Eduardo</td>
+<td>Gomez</td>
+<td>927389</td>
+<td>eduardo.gomez@mail.polimi.it     </td>
+</tr>
+<tr>
+<td>2</td>
+<td>member</td>
+<td>Francesco</td>
+<td>Lo Muzio</td>
+<td>868449</td>
+<td>francesco.lomuzio@mail.polimi.it</td>
+</tr>
+<tr>
+<td>3</td>
+<td>member</td>
+<td>Mathieu</td>
+<td>Verdun-Roscini</td>
+<td>926936</td>
+<td>mathieugael.verdunroscini@mail.polimi.it</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h2 id="links-to-other-deliverables">Links to other deliverables</h2>
+<ul>
+<li>Deliverable D0: the web application is accessible at
+<a href="https://polibooks.herokuapp.com/">this address</a>.</li>
+<li>Deliverable D2: the YAML or JSON file containing the specification of the app
+API can be found at <a href="https://polibooks.herokuapp.com/backend/PoliBooks.yaml">this address</a>.</li>
+<li>Deliverable D3: the SwaggerUI page of the same API is available at
+<a href="https://polibooks.herokuapp.com/backend/dist/index.html#/">this address</a>.</li>
+<li>Deliverable D4: the source code of D0 is available as a zip file at
+<a href="https://polibooks.herokuapp.com/backend/backend.zip">this address</a>.</li>
+<li>Deliverable D5: the address of the online source control repository is
+available <a href="https://github.com/Nepre/HypermediaProject">this address</a>.
+We hereby declare that this is a private repository and, upon request, we will give access to the
+instructors. Right now it is impossible to access it as it is private, and will give a 404 error.</li>
+</ul>
+<p></p>
+<h2 id="specification">Specification</h2>
+<h3 id="web-architecture">Web Architecture</h3>
+<p>The components of our web application are MySQL for the Data Layer.
+Swagger and Node-JS for the Application Layer.
+Bootstrap for the presentation Layer.</p>
+<p>How did you ensure that HTML is not rendered server side?
+Our application works by having two servers running in the background, the MySql Database and the NodeJS server. Those form part of the application layer. In these, the server is listening for a petition from the client. When it does, it will send the required information: either an HTML file which will ask for data or a JSON with from the open API, this is the information that will be asked by the HTML.
+In order to provide a client-side rendering of the web application we used AJAX-JQuery, as a substitution of the typical Javascript Frameworks.
+Using $.get() and $.post()  functions it is possible to fetch data from the servers via HTTP GET/POST requests and post them as HTML in the already client-rendered application.</p>
+<p><img src="https://polibooks.herokuapp.com/images/doc/Diagram.png" alt=""></p>
+<p></p>
+<h3 id="api">API</h3>
+<h4 id="rest-compliance">REST compliance</h4>
+<p>Describe here to what extent did you follow REST principles and what are the
+reasons for which you might have decided to diverge. Note, you must not describe
+the whole API here, just the design decisions.</p>
+<p>To follow the REST compliance the very first thing that has to be done is separating the client from the server. This is done by having the NodeJS server listening and the client being just the front-end which asks for information.</p>
+<p>For this we structured the server following the openAPI specification so that we have the server listening for requests. The API will be further explained in the OpenAPI resource models.</p>
+<p>In the Client side part of the application we did use of JQuery for the management of the connections to the server while maintaining plain Javascript and using the DOM for other non-connectivity issues.</p>
+<p>Furthermore we did it so the architecture is stateless, meaning that there were no handshakes nor open connections between the client and the server, but just requests-responses. When needing authentication, the process was done client-sided. This would need security improvement, but just by checking every time an authorization was needed, and encrypting this data. We did use of the cache for User management.</p>
+<p>Every layer cannot see further from the direct neighbour. This is one requirement too for the REST compliance. The client cannot connect to the database directly. It needs the Server as an intermediary.</p>
+<p>The main fields that had resulted in the server are very well shown in the Swagger, but they will be listed here too:</p>
+<p>Events
+Books
+Authors
+Users</p>
+<h4 id="openapi-resource-models">OpenAPI Resource models</h4>
+<p>Describe here synthetically, which models you have introduced for resources.</p>
+<p>The resources we used for our project are mainly JSONs, as they’re the most complete and easy to use way of sending and receiving data. The alternatives where mainly the XML files, but they are more complicated to smoothly integrate with the web application because of the fact that XML has to be parsed with an XML parser while JSON can be parsed by a standard JavaScript function.</p>
+<h3 id="data-model">Data model</h3>
+<p>Describe with an ER diagram the model used in the data layer of your web
+application.
+How these map to the OpenAPI data model?</p>
+<p><p><img src="https://polibooks.herokuapp.com/images/doc/ER.png" alt=""></p></p>
+<p>This is similar to the OpenAPI data model as the main tables each have their own counterparts. The middle tables are part of both, such as booksnevents can be found in Events and in Books. Comments are located within books, as you cannot find the comments by users. But you could code that part too.</p>
+<h2 id="implementation">Implementation</h2>
+<h3 id="tools-used">Tools used</h3>
+<p>Describe here which tools, languages and frameworks did you use for the backend
+of the application.</p>
+<h4>This is the list of tools that have been used from higher end to lower end are:</h4>
+<h5>BootStrap:</h5>
+<a href="https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework">https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework</a>)
+This is the very front end, what is seen by the user. Bootstrap is a very useful tool mainly for the ease that it provides while structuring the website. </p>
+<p>CSS is complicated when you want to do applications that won’t be just lists. And you have to work on the reactive part of the application. Setting everything by hand as for the resolutions and aspect ratios. With bootstrap this is solved to. Thanks to its structure and CSS pre-done, we will find ourselves just placing the blocks wherever we need.</p>
+<p>The downside is a very dirty code, with layers and layers of useful information for our browser, but not so useful for those who want to read it. You get used to it quickly though.</p>
+<h5>HTML</h5>
+<a href="https://en.wikipedia.org/wiki/HTML">https://en.wikipedia.org/wiki/HTML</a>
+We won’t get much into html as it is well known. The DOM is very useful for locating information afterwards with javascript. The structure is easy to read too.</p>
+<h5>Javascript/JQuery</h5>
+Javascript - and JQuery which is almost an evolution of Javascript - is code that is used in the background of your web application. It’s uses are unlimited. It can be used for scientific applications, web servers, clients… </p>
+<p>Without HTML it isn’t that good, as the option of operating the DOM, applying properties and deleting / inserting HTML as it pleases works wonders.</p>
+<h5>Javascript/NodeJS/Express</h5>
+<a href="https://en.wikipedia.org/wiki/Node.js">https://en.wikipedia.org/wiki/Node.js</a>
+<a href="https://en.wikipedia.org/wiki/Express.js">https://en.wikipedia.org/wiki/Express.js</a>
+These are two libraries from Javascript as well. Node Js helps us creating a project that will be executed in a machine. While Express aids in the creation of functions that will listen, and therefore be a client.</p>
+<p>Very intuitive, as it is based in the CRUD model.</p>
+<h5>MySql</h5>
+<a href="https://en.wikipedia.org/wiki/MySQL">https://en.wikipedia.org/wiki/MySQL</a>
+Relational model for the creation of Databases. This is done via tables that are interconnected with keys, and where queries can be done. With this we can filter the information so that we get only the data that we want.</p>
+<h5>Other mentions</h5>
+GitHub
+Path
+Cors
+Heroku</p>
+<h3 id="discussion">Discussion</h3>
+<p>Describe here:</p>
+<ul>
+<li>How did you make sure your web application adheres to the provided OpenAPI
+specification? Via having a NodeJS server with Swagger which will be listening to any requests and petitions.</li>
+<li>Why do you think your web application adheres to common practices to partition
+the web application (static assets vs. application data) The static assets are empty, a layout for the information that will be put. We planned to use pagination, but we did not have the time to. The static part then asks the application data for all the information needed, and then fills it.</li>
+<li>Describe synthetically why and how did you manage session state, what are the
+state change triggering actions (e.g., POST to login etc..) We used a post to do the login and register. Cookies to maintain the session itself and javascript to check for permission to certain pages.</li>
+<li>Which technology did you use (relational or a no-SQL database) for managing
+the data model? We used MySQL for managing the data model.<h2 id="other-information">Other information</h2>
+<h3 id="task-assignment">Task assignment</h3>
+Describe here how development tasks have been subdivided among members of the
+group, e.g.:</li>
+<li>Francesco worked on front end (90%) and OpenAPI Spec (10% of the time)</li>
+<li>Mathieu worked on Mysql(40%) and documentation (60%)</li>
+<li>Edu worked on NodeJS - Express (50%), MySql (10%) and Front End - JQuery (40%)</li>
+<li>Eduardo and Francesco worked on the back-end documentation.</li>
+</ul>
+<h3 id="analysis-of-existing-api">Analysis of existing API</h3>
+<p>Describe here if you have found relevant APIs that have inspired the OpenAPI
+specification and why (at least two).</p>
+<p><a href="https://docs.magicthegathering.io/">https://docs.magicthegathering.io/</a>
+In this API we can see how APIs are usually organized, how their parameters work and we can get information about how the petitions are handled.
+It is interesting to see how the same information can be shown in different ways depending on which request you do.</p>
+<p> <a href="https://petstore.swagger.io/">https://petstore.swagger.io/</a>
+Another API that we have found very useful is the petstore from swagger. Not only for it's use when understanding swagger, but also to know how the applications
+should be created and formed. An important thing that taught us was the use of dataforms as parameters.</p>
+<h3 id="learning-outcome">Learning outcome</h3>
+<p>What was the most important thing all the members have learned while developing
+this part of the project, what questions remained unanswered, how you will use
+what you&#39;ve learned in your everyday life?</p>
+<ul>
+<li>Francesco learned how to deploy on a cloud platform, improved his frontend capacities and started working on the backend.</li>
+<li>Mathieu improved his frontend and database knowledge , he learned how to conduct a usability test.</li>
+<li>Eduardo learnt how to connect the front-end to the back-end of an application. Improved his team working skills. Eduardo also learnt how to set up an online server with their application.</li>
+</ul>
