@@ -261,7 +261,7 @@ function reloadBooksFilter(){
       urla = weburl+'/books/theme';
       break;
     default:
-    urla = weburl'+/books';
+    urla = weburl + '/books';
   }
   $.ajax({
     type: 'GET',
@@ -284,7 +284,7 @@ function reloadBooksFilter(){
 function single_author(){
   $.ajax({
     type: 'GET',
-    url: weburl'+/authors/'+window.location.href.split("?")[1].split("=")[1],
+    url: weburl + '/authors/'+window.location.href.split("?")[1].split("=")[1],
     success: function(data){
       //console.log('lapin malin',data[0]);
       let dat = data[0];
@@ -301,7 +301,7 @@ function single_author(){
 
   $.ajax({
     type: 'GET',
-    url: weburl'+/authors/books/'+window.location.href.split("?")[1].split("=")[1],
+    url: weburl+'/authors/books/'+window.location.href.split("?")[1].split("=")[1],
     success: function(data){
       console.log(data);
       for (var i = 0; i < data.length; i++) {
@@ -324,7 +324,7 @@ var path3 = "../images/authors/";
 function authors(){
   $.ajax({
     type: 'GET',
-    url: weburl'+/authors',
+    url: weburl+'/authors',
     success: function(data){
       console.log(data);
       for (var i = 0; i < 9; i++) {
@@ -350,13 +350,13 @@ function reloadauthorsFilter(){
   //console.log(document.querySelector('input[name="filters"]:checked').value);
   switch (document.querySelector('input[name="filters"]:checked').value) {
     case 'Nationality':
-      urla = weburl'+/authors/Nationality';
+      urla = weburl+'/authors/Nationality';
       break;
     case 'Birthday':
-      urla = weburl'+/authors/Birthday';
+      urla = weburl+'/authors/Birthday';
       break;
     default:
-    urla = weburl'+/authors';
+    urla = weburl+'/authors';
   }
   $.ajax({
     type: 'GET',
@@ -386,7 +386,7 @@ function reloadauthorsFilter(){
 function index(){
   $.ajax({
     type: 'GET',
-    url: weburl'+/Bestsellers',
+    url: weburl+'/Bestsellers',
     success: function(data){
       console.log(data);
       for (var i = 0; i < 3; i++) {
@@ -407,7 +407,7 @@ function index(){
 
   $.ajax({
     type: 'GET',
-    url: weburl'+/NextEvents',
+    url: weburl+'/NextEvents',
     success: function(data){
       console.log(data);
       for (var i = 0; i < 2; i++) {
@@ -415,8 +415,8 @@ function index(){
         document.getElementById('ei'+i).src = path2 + data[i].Picture;
         document.getElementById('e'+i).innerHTML = data[i].Name;
         document.getElementById('desce'+i).innerHTML = data[i].Place;
-        document.getElementById('li'+i).href = weburl'+/single_event.html?id='+data[i].id;
-        document.getElementById('lit'+i).href = weburl'+/single_event.html?id='+data[i].id;
+        document.getElementById('li'+i).href = weburl+'/single_event.html?id='+data[i].id;
+        document.getElementById('lit'+i).href = weburl+'/single_event.html?id='+data[i].id;
 
 
       }
@@ -429,7 +429,7 @@ function single_event(){
 
   $.ajax({
     type: 'GET',
-    url: weburl'+/events/'+window.location.href.split("?")[1].split("=")[1],
+    url: weburl+'/events/'+window.location.href.split("?")[1].split("=")[1],
     success: function(data){
       console.log(data);
       let dat = data[0];
@@ -443,7 +443,7 @@ function single_event(){
 
   $.ajax({
     type: 'GET',
-    url: weburl'+/events/'+window.location.href.split("?")[1].split("=")[1]+"/books",
+    url: weburl+'/events/'+window.location.href.split("?")[1].split("=")[1]+"/books",
     success: function(data){
       console.log(data);
       if(data.length == 0){
@@ -470,7 +470,7 @@ var path2 = "../images/events/";
 function events(){
   $.ajax({
     type: 'GET',
-    url: weburl'+/events',
+    url: weburl+'/events',
     success: function(data){
       console.log(data);
       for (var i = 0; i < 9; i++) {
@@ -494,43 +494,43 @@ function reloadEventsFilter(){
   //console.log(document.querySelector('input[name="filters"]:checked').value);
   switch (document.querySelector('input[name="filters"]:checked').value) {
     case 'JANUARY':
-      urla = weburl'+/events/month/january';
+      urla = weburl+'/events/month/january';
       break;
     case 'FEBRUARY':
-      urla = weburl'+/events/month/february';
+      urla = weburl+'/events/month/february';
       break;
     case 'MARCH':
-      urla = weburl'+/events/month/march';
+      urla = weburl+'/events/month/march';
       break;
     case 'APRIL':
-      urla = weburl'+/events/month/april';
+      urla = weburl+'/events/month/april';
       break;
       case 'MAY':
-        urla = weburl'+/events/month/may';
+        urla = weburl+'/events/month/may';
         break;
       case 'JUNE':
-        urla = weburl'+/events/month/june';
+        urla = weburl+'/events/month/june';
         break;
       case 'JULY':
-        urla = weburl'+/events/month/july';
+        urla = weburl+'/events/month/july';
         break;
       case 'AUGUST':
-        urla = weburl'+/events/month/august';
+        urla = weburl+'/events/month/august';
         break;
       case 'SEPTEMBER':
-        urla = weburl'+/events/month/september';
+        urla = weburl+'/events/month/september';
         break;
       case 'OCTOBER':
-        urla = weburl'+/events/month/october';
+        urla = weburl+'/events/month/october';
         break;
       case 'NOVEMBER':
-        urla = weburl'+/events/month/november';
+        urla = weburl+'/events/month/november';
         break;
       case 'DECEMBER':
-        urla = weburl'+/events/month/december';
+        urla = weburl+'/events/month/december';
         break;
     default:
-    urla = weburl'+/events';
+    urla = weburl+'/events';
   }
   $.ajax({
     type: 'GET',
@@ -665,7 +665,7 @@ function cart() {
     let num = i;
     $.ajax({
       type: 'GET',
-      url: weburl'+/events/'+events[i],
+      url: weburl+'/events/'+events[i],
       success: function(data){
         document.getElementById('tite'+num).innerHTML = data[0].Name;
         document.getElementById('aimge'+num).href = 'single_event.html?id='+events[num];
@@ -680,7 +680,7 @@ function cart() {
     let num = i;
     $.ajax({
       type: 'GET',
-      url: weburl'+/single_book/'+books[i],
+      url: weburl+'/single_book/'+books[i],
       success: function(data){
         console.log(data);
         document.getElementById('titb'+num).innerHTML = data[0].title;
@@ -712,7 +712,7 @@ function profile(){
 
   $.ajax({
     type: 'GET',
-    url: weburl'+/user/'+usu,
+    url: weburl+'/user/'+usu,
     success: function(data){
       console.log(data);
       document.getElementById('name').innerHTML = data[0].name;
