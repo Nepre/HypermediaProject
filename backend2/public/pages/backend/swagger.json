@@ -198,7 +198,7 @@
         "tags": [
           "events"
         ],
-        "summary": "Get event with ID",
+        "summary": "Get event's in specific month",
         "produces": [
           "application/json"
         ],
@@ -206,7 +206,7 @@
           {
             "name": "month",
             "in": "path",
-            "description": "ID of event to return",
+            "description": "Name of the month",
             "required": true,
             "type": "string"
           }
